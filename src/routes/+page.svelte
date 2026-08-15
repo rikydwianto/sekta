@@ -380,9 +380,18 @@
         </h2>
         <p class="text-sm font-black uppercase tracking-widest mb-3 {isDark ? 'text-slate-300' : 'text-slate-600'}">Sekejap Fakta</p>
         <p class="text-sm font-medium leading-relaxed mb-4 {isDark ? 'text-slate-300' : 'text-slate-600'}">
-          Platform pengetahuan harian — satu fakta menarik dari sains, sejarah, teknologi, dan dunia setiap hari,
-          dikemas singkat dan seru lewat artikel serta kuis interaktif.
+          <span class="font-black">SEKTA (Sekejap Fakta)</span> adalah platform pengetahuan harian yang menyajikan fakta
+          unik dari bidang sains, sejarah, teknologi, dan dunia lewat artikel singkat serta kuis interaktif.
         </p>
+        <div class="rounded-2xl border p-4 mb-4 {isDark ? 'bg-slate-950/60 border-slate-800' : 'bg-white border-slate-200'}">
+          <p class="text-[10px] font-black uppercase tracking-[0.2em] mb-1.5 {isDark ? 'text-slate-400' : 'text-slate-500'}">
+            Mengapa Perlu Login Akun Google?
+          </p>
+          <p class="text-xs leading-relaxed {isDark ? 'text-slate-300' : 'text-slate-600'}">
+            Pengguna dapat masuk menggunakan akun Google untuk mengakses fitur personalisasi, seperti menyimpan riwayat
+            kuis, menyimpan artikel favorit, memberi reaksi pada konten, dan melihat statistik progres belajar harian.
+          </p>
+        </div>
         <div class="flex flex-wrap gap-2 mb-5">
           <span class="px-3 py-1.5 rounded-xl text-[10px] font-black border {isDark ? 'bg-slate-800 border-slate-700 text-slate-200' : 'bg-white border-slate-200 text-slate-600'}">📰 Artikel Singkat</span>
           <span class="px-3 py-1.5 rounded-xl text-[10px] font-black border {isDark ? 'bg-slate-800 border-slate-700 text-slate-200' : 'bg-white border-slate-200 text-slate-600'}">🧠 Kuis Interaktif</span>
