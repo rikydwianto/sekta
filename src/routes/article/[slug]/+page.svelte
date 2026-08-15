@@ -290,8 +290,22 @@ import { app, toggleSaveArticle, toggleTheme } from '$lib/stores/app.svelte';
             {/each}
           </ul>
         {:else if block.type === 'fact'}
+          {@const fid = `b${i}`}
           <div class="border p-5 rounded-2xl my-6 {isDark ? 'bg-[#141720] border-slate-800' : 'bg-emerald-50 border-emerald-100'}">
-            <h4 class="text-xs font-black text-emerald-500 uppercase tracking-widest mb-2">TAHUKAH KAMU?</h4>
+            <div class="flex items-center justify-between mb-2">
+              <h4 class="text-xs font-black text-emerald-500 uppercase tracking-widest">TAHUKAH KAMU?</h4>
+              <button
+                onclick={() => speak(fid, blockText(block))}
+                aria-label="Dengarkan fakta"
+                class="flex-shrink-0 p-1.5 rounded-lg transition-colors {speaking === fid
+                  ? 'text-emerald-600 bg-emerald-600/10'
+                  : isDark
+                    ? 'text-slate-600 hover:text-slate-300 hover:bg-slate-800'
+                    : 'text-emerald-400 hover:text-emerald-700 hover:bg-emerald-100'}"
+              >
+                <Volume2 class="w-3.5 h-3.5" />
+              </button>
+            </div>
             <p class="text-xs {isDark ? 'text-slate-300' : 'text-emerald-900'}">
               {@html (block as Extract<ArticleBlock, { type: 'fact' }>).data.text}
             </p>
