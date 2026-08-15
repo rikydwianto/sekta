@@ -415,6 +415,12 @@ create policy "artikel: ubah penulis"
   using (auth.uid() = author_id)
   with check (auth.uid() = author_id and status in ('DRAFT', 'SUBMITTED', 'REJECTED'));
 
+-- Penulis boleh menghapus artikelnya sendiri selama belum PUBLISHED
+drop policy if exists "artikel: hapus penulis" on public.articles;
+create policy "artikel: hapus penulis"
+  on public.articles for delete
+  using (auth.uid() = author_id and status in ('DRAFT', 'SUBMITTED', 'REJECTED'));
+
 -- Admin: lihat & kelola semua artikel (approve/reject), tulis langsung.
 drop policy if exists "artikel: baca admin" on public.articles;
 create policy "artikel: baca admin"
@@ -462,6 +468,15 @@ drop policy if exists "sumber: kelola penulis" on public.sources;
 create policy "sumber: kelola penulis"
   on public.sources for insert
   with check (exists (
+    select 1 from public.articles a
+    where a.id = article_id and a.author_id = auth.uid()
+  ));
+
+-- Penulis boleh menghapus sumber di artikelnya sendiri (dipakai saat edit: ganti sumber)
+drop policy if exists "sumber: hapus penulis" on public.sources;
+create policy "sumber: hapus penulis"
+  on public.sources for delete
+  using (exists (
     select 1 from public.articles a
     where a.id = article_id and a.author_id = auth.uid()
   ));

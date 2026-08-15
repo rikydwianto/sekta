@@ -1,85 +1,57 @@
 <script lang="ts">
-  import { ChevronRight, ChevronLeft } from '@lucide/svelte';
+  import { ChevronRight, ChevronLeft, Brain } from '@lucide/svelte';
   import { goto } from '$app/navigation';
-  import { app, addQuizResult } from '$lib/stores/app.svelte';
+  import { page } from '$app/state';
+  import { app, addQuizResult, setCurrentQuiz } from '$lib/stores/app.svelte';
   import PageHeader from '$lib/components/PageHeader.svelte';
+  import { getQuizQuestions, getQuizList } from '$lib/api';
+  import type { QuizQuestion } from '$lib/types';
 
   let isDark = $derived(app.theme === 'dark');
 
-  // Quiz data - mock data for now
-  const QUIZ_QUESTIONS = [
-    {
-      id: 1,
-      question: 'Berapa banyak tulang yang dimiliki tubuh manusia dewasa?',
-      answers: [
-        { id: 1, text: '186 tulang', correct: false },
-        { id: 2, text: '206 tulang', correct: true },
-        { id: 3, text: '226 tulang', correct: false },
-        { id: 4, text: '246 tulang', correct: false }
-      ]
-    },
-    {
-      id: 2,
-      question: 'Planet manakah yang paling dekat dengan Matahari?',
-      answers: [
-        { id: 1, text: 'Venus', correct: false },
-        { id: 2, text: 'Merkurius', correct: true },
-        { id: 3, text: 'Bumi', correct: false },
-        { id: 4, text: 'Mars', correct: false }
-      ]
-    },
-    {
-      id: 3,
-      question: 'Siapa penemu listrik?',
-      answers: [
-        { id: 1, text: 'Nikola Tesla', correct: false },
-        { id: 2, text: 'Thomas Edison', correct: false },
-        { id: 3, text: 'Benjamin Franklin', correct: true },
-        { id: 4, text: 'James Watt', correct: false }
-      ]
-    },
-    {
-      id: 4,
-      question: 'Berapa persentase air yang mengisi tubuh manusia?',
-      answers: [
-        { id: 1, text: '40%', correct: false },
-        { id: 2, text: '50%', correct: false },
-        { id: 3, text: '60%', correct: true },
-        { id: 4, text: '70%', correct: false }
-      ]
-    },
-    {
-      id: 5,
-      question: 'Negara manakah yang memiliki piramida terbanyak?',
-      answers: [
-        { id: 1, text: 'Mesir', correct: false },
-        { id: 2, text: 'Sudan', correct: true },
-        { id: 3, text: 'Mexico', correct: false },
-        { id: 4, text: 'Inggris', correct: false }
-      ]
-    }
-  ];
+  let quizId = $derived(Number(page.url.searchParams.get('id')) || 0);
+  let questions = $state<QuizQuestion[]>([]);
+  let quizTitle = $state('');
+  let loading = $state(true);
+  let notFound = $state(false);
+
+  $effect(() => {
+    if (!quizId) return;
+    loading = true;
+    notFound = false;
+    Promise.all([getQuizQuestions(quizId), getQuizList()]).then(([qs, quizzes]) => {
+      questions = qs;
+      quizTitle = quizzes.find((q) => q.id === quizId)?.title ?? '';
+      setCurrentQuiz(quizId, quizTitle);
+      currentQuestionIndex = 0;
+      selectedAnswers = {};
+      quizStarted = false;
+      loading = false;
+      notFound = qs.length === 0;
+    });
+  });
 
   // Quiz state
   let currentQuestionIndex = $state(0);
   let selectedAnswers = $state<Record<number, number>>({});
   let quizStarted = $state(false);
 
-  const currentQuestion = $derived(QUIZ_QUESTIONS[currentQuestionIndex]);
-  const isLastQuestion = $derived(currentQuestionIndex === QUIZ_QUESTIONS.length - 1);
-  const totalQuestions = $derived(QUIZ_QUESTIONS.length);
-  const progress = $derived((currentQuestionIndex + 1) / totalQuestions * 100);
+  const currentQuestion = $derived(questions[currentQuestionIndex]);
+  const isLastQuestion = $derived(currentQuestionIndex === questions.length - 1);
+  const totalQuestions = $derived(questions.length);
+  const progress = $derived(questions.length ? ((currentQuestionIndex + 1) / totalQuestions) * 100 : 0);
 
   function startQuiz() {
     quizStarted = true;
   }
 
   function selectAnswer(answerId: number) {
+    if (!currentQuestion) return;
     selectedAnswers[currentQuestion.id] = answerId;
   }
 
   function nextQuestion() {
-    if (currentQuestionIndex < QUIZ_QUESTIONS.length - 1) {
+    if (currentQuestionIndex < questions.length - 1) {
       currentQuestionIndex++;
     }
   }
@@ -91,27 +63,24 @@
   }
 
   function finishQuiz() {
-    // Calculate score
     let correctCount = 0;
-    for (const q of QUIZ_QUESTIONS) {
+    for (const q of questions) {
       const selectedAnswerId = selectedAnswers[q.id];
-      const selectedAnswer = q.answers.find(a => a.id === selectedAnswerId);
-      if (selectedAnswer?.correct) {
+      const selectedAnswer = q.options.find(a => a.id === selectedAnswerId);
+      if (selectedAnswer?.isCorrect) {
         correctCount++;
       }
     }
 
-    const score = Math.round((correctCount / QUIZ_QUESTIONS.length) * 100);
-    
-    // Store quiz result in app store
+    const score = Math.round((correctCount / questions.length) * 100);
+
     addQuizResult({
       score,
       correctAnswers: correctCount,
-      totalQuestions: QUIZ_QUESTIONS.length,
+      totalQuestions: questions.length,
       date: new Date()
     });
 
-    // Redirect to result page
     goto(`/quiz/result?score=${score}&correct=${correctCount}&total=${totalQuestions}`);
   }
 </script>
@@ -124,15 +93,40 @@
   <!-- Quiz Content -->
   <div class="px-6 pt-4">
 
-    {#if !quizStarted}
+    {#if loading}
+      <div class="flex flex-col items-center justify-center py-20 text-center">
+        <div class="w-10 h-10 border-2 border-purple-600 border-t-transparent rounded-full animate-spin mb-4"></div>
+        <p class="text-sm font-bold {isDark ? 'text-slate-400' : 'text-slate-600'}">Memuat kuis...</p>
+      </div>
+
+    {:else if notFound || questions.length === 0}
+      <div class="flex flex-col items-center justify-center py-20 text-center">
+        <div class="w-20 h-20 rounded-3xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-6">
+          <span class="text-4xl">🧠</span>
+        </div>
+        <h2 class="text-2xl font-black mb-3">Kuis Tidak Ditemukan</h2>
+        <p class="text-sm {isDark ? 'text-slate-400' : 'text-slate-600'} mb-6 max-w-xs leading-relaxed">
+          Kuis untuk artikel ini belum tersedia.
+        </p>
+        <button
+          onclick={() => goto('/quiz')}
+          class="w-full py-3 px-4 rounded-2xl bg-purple-600 hover:bg-purple-700 text-white font-bold transition-all active:scale-95 shadow-lg shadow-purple-600/20"
+        >
+          Lihat Kuis Lainnya
+        </button>
+      </div>
+
+    {:else if !quizStarted}
       <!-- Quiz Welcome Screen -->
       <div class="flex flex-col items-center justify-center py-20 text-center">
         <div class="w-20 h-20 rounded-3xl bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center mb-6">
           <span class="text-4xl">🧠</span>
         </div>
-        <h2 class="text-2xl font-black mb-3">Uji Pengetahuanmu!</h2>
+        {#if quizTitle}
+          <h2 class="text-2xl font-black mb-2">{quizTitle}</h2>
+        {/if}
         <p class="text-sm {isDark ? 'text-slate-400' : 'text-slate-600'} mb-6 max-w-xs leading-relaxed">
-          Jawab {totalQuestions} pertanyaan seru dan lihat seberapa banyak yang kamu tahu tentang berbagai topik.
+          Jawab {totalQuestions} pertanyaan seru dan lihat seberapa banyak yang kamu tahu.
         </p>
 
         <div class="w-full mb-8">
@@ -186,11 +180,11 @@
 
           <!-- Answer Options -->
           <div class="space-y-3">
-            {#each currentQuestion.answers as answer}
+            {#each currentQuestion.options as option}
               <button
-                onclick={() => selectAnswer(answer.id)}
+                onclick={() => selectAnswer(option.id)}
                 class="w-full p-4 rounded-2xl border text-left font-bold transition-all card-hover
-                  {selectedAnswers[currentQuestion.id] === answer.id
+                  {selectedAnswers[currentQuestion.id] === option.id
                     ? 'bg-purple-600 border-purple-600 text-white'
                     : isDark
                       ? 'bg-slate-800 border-slate-700 text-slate-100 hover:bg-slate-700'
@@ -198,17 +192,17 @@
               >
                 <div class="flex items-center gap-3">
                   <div class="w-5 h-5 rounded-full border-2 flex items-center justify-center flex-shrink-0
-                    {selectedAnswers[currentQuestion.id] === answer.id
+                    {selectedAnswers[currentQuestion.id] === option.id
                       ? 'bg-white border-white'
                       : isDark
                         ? 'border-slate-600'
                         : 'border-slate-300'}"
                   >
-                    {#if selectedAnswers[currentQuestion.id] === answer.id}
+                    {#if selectedAnswers[currentQuestion.id] === option.id}
                       <div class="w-2 h-2 bg-purple-600 rounded-full"></div>
                     {/if}
                   </div>
-                  <span>{answer.text}</span>
+                  <span>{option.label}</span>
                 </div>
               </button>
             {/each}

@@ -442,11 +442,13 @@ import { app, toggleSaveArticle, toggleTheme } from '$lib/stores/app.svelte';
     {/if}
 
     <!-- Interactive Quiz Trigger in Article -->
-    <a href="/quiz/question" class="bg-gradient-to-br from-blue-700 to-indigo-800 rounded-[2rem] p-6 mb-10 text-white block">
-      <h3 class="text-base font-black mb-1">Kuis Interaktif</h3>
-      <p class="text-xs text-blue-100 mb-4">Seberapa dalam kamu memahami artikel ini? Tantang dirimu sekarang.</p>
-      <span class="inline-block bg-white text-blue-950 font-bold text-xs px-4 py-2.5 rounded-xl shadow">Mulai Kuis</span>
-    </a>
+    {#if data.quiz}
+      <a href={`/quiz/question?id=${data.quiz.id}`} class="bg-gradient-to-br from-blue-700 to-indigo-800 rounded-[2rem] p-6 mb-10 text-white block">
+        <h3 class="text-base font-black mb-1">Kuis Interaktif</h3>
+        <p class="text-xs text-blue-100 mb-4">Seberapa dalam kamu memahami artikel ini? Tantang dirimu sekarang.</p>
+        <span class="inline-block bg-white text-blue-950 font-bold text-xs px-4 py-2.5 rounded-xl shadow">Mulai Kuis</span>
+      </a>
+    {/if}
 
     <!-- Comments -->
     <div class="mb-4">

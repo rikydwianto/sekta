@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Bell, Settings, Edit3, BookOpen, Brain, Flame, ChevronRight, Bookmark, Star, HelpCircle, Clock, PenLine, ShieldCheck, Upload, Play } from '@lucide/svelte';
+  import { Bell, Settings, Edit3, BookOpen, Brain, Flame, ChevronRight, Bookmark, Star, HelpCircle, Clock, PenLine, ShieldCheck, Upload, Play, LayoutDashboard } from '@lucide/svelte';
   import { goto } from '$app/navigation';
   import { getProfile, uploadVideo } from '$lib/api';
   import { app, updateUser } from '$lib/stores/app.svelte';
@@ -119,7 +119,7 @@
   <div class="px-6 pb-4">
     <div class="grid grid-cols-2 gap-2">
       <button
-        onclick={() => goto('/quiz/question')}
+        onclick={() => goto('/quiz')}
         class="flex items-center gap-3 p-3.5 rounded-2xl border transition-all active:scale-95 {isDark ? 'bg-purple-950/30 border-purple-900/50 hover:bg-purple-950/50' : 'bg-purple-50 border-purple-100 hover:bg-purple-100'}"
       >
         <div class="w-8 h-8 rounded-xl bg-purple-600 flex items-center justify-center flex-shrink-0">
@@ -167,6 +167,19 @@
         <div class="text-left">
           <p class="text-xs font-black {isDark ? 'text-rose-200' : 'text-rose-900'}">Unggah Video</p>
           <p class="text-[10px] font-semibold {isDark ? 'text-rose-300/70' : 'text-rose-600'}">Bagikan video-mu</p>
+        </div>
+      </button>
+
+      <button
+        onclick={() => goto('/kelola')}
+        class="flex items-center gap-3 p-3.5 rounded-2xl border transition-all active:scale-95 {isDark ? 'bg-cyan-950/30 border-cyan-900/50 hover:bg-cyan-950/50' : 'bg-cyan-50 border-cyan-100 hover:bg-cyan-100'}"
+      >
+        <div class="w-8 h-8 rounded-xl bg-cyan-600 flex items-center justify-center flex-shrink-0">
+          <LayoutDashboard class="w-4 h-4 text-white" />
+        </div>
+        <div class="text-left">
+          <p class="text-xs font-black {isDark ? 'text-cyan-200' : 'text-cyan-900'}">Kelola Konten</p>
+          <p class="text-[10px] font-semibold {isDark ? 'text-cyan-300/70' : 'text-cyan-600'}">Artikel & video buatanmu</p>
         </div>
       </button>
 
@@ -332,7 +345,7 @@
         </div>
 
         <button
-          onclick={() => goto('/quiz/question')}
+          onclick={() => goto('/quiz')}
           class="w-full flex items-center justify-center gap-2 py-3.5 rounded-2xl border font-bold text-sm transition-all active:scale-95 {isDark ? 'bg-slate-900 border-slate-800 text-slate-200 hover:bg-slate-800' : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-50'}"
         >
           <Brain class="w-4 h-4" />
@@ -348,7 +361,7 @@
           <p class="text-sm font-bold mb-1 {isDark ? 'text-slate-400' : 'text-slate-600'}">Belum ada riwayat kuis</p>
           <p class="text-xs mb-4 {isDark ? 'text-slate-600' : 'text-slate-400'}">Coba kuis pertamamu sekarang!</p>
           <button
-            onclick={() => goto('/quiz/question')}
+            onclick={() => goto('/quiz')}
             class="px-5 py-2.5 bg-purple-600 hover:bg-purple-500 text-white text-xs font-bold rounded-xl transition-all active:scale-95 shadow-md shadow-purple-600/20"
           >
             Mulai Kuis

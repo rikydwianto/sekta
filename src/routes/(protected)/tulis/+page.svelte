@@ -2,13 +2,14 @@
   import {
     Type, Heading2, Heading3, Play, Quote, Sparkles,
     Bold, Italic, Underline, Strikethrough, List, ListOrdered,
-    Trash2, Upload, Send, FileText
+    Trash2, Upload, Send, FileText, CheckCircle2
   } from '@lucide/svelte';
   import { goto } from '$app/navigation';
+  import { page } from '$app/state';
   import type { Category, ArticleBlock } from '$lib/types';
   import { app } from '$lib/stores/app.svelte';
   import TopBar from '$lib/components/TopBar.svelte';
-  import { getCategories, submitArticle, uploadArticleImage, uploadVideoFile } from '$lib/api';
+  import { getCategories, submitArticle, updateArticle, getArticleById, uploadArticleImage, uploadVideoFile } from '$lib/api';
   import { sanitizeHtml } from '$lib/format';
 
   let isDark = $derived(app.theme === 'dark');
@@ -56,10 +57,40 @@
   let submitted = $state(false);
   let refs: (HTMLElement | undefined)[] = [];
 
+  const editId = $derived(Number(page.url.searchParams.get('edit') || 0));
+
+  function blocksToEdit(raw: ArticleBlock[]): EditBlock[] {
+    return raw.map((b) => {
+      if (b.type === 'video') return { type: 'video', url: b.data.url, caption: b.data.caption ?? '' };
+      if (b.type === 'list') {
+        return { type: 'paragraph', html: `<ul><li>${b.data.items.join('</li><li>')}</li></ul>` };
+      }
+      if (b.type === 'paragraph' || b.type === 'heading' || b.type === 'quote' || b.type === 'fact') {
+        return { type: b.type, html: b.data.text };
+      }
+      return { type: 'paragraph', html: '' };
+    });
+  }
+
   $effect(() => {
     getCategories().then((c) => {
       categories = c;
       if (c.length > 0 && !categoryId) categoryId = c[0].id;
+      if (editId) {
+        getArticleById(editId).then((art) => {
+          if (!art) {
+            error = 'Artikel tidak ditemukan atau bukan milikmu.';
+            return;
+          }
+          title = art.title;
+          excerpt = art.excerpt;
+          coverImage = art.image;
+          blocks = blocksToEdit(art.content);
+          sources = art.sources?.map((s) => ({ title: s.title, url: s.url, publisher: s.publisher })) ?? [];
+          const cat = c.find((x) => x.slug === art.categorySlug);
+          if (cat) categoryId = cat.id;
+        });
+      }
     });
   });
 
@@ -121,7 +152,7 @@
     }
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     if (submitting) return;
     if (!title.trim()) { error = 'Judul wajib diisi.'; return; }
     if (!categoryId) { error = 'Pilih kategori.'; return; }
@@ -145,7 +176,7 @@
 
     error = '';
     submitting = true;
-    submitArticle({
+    const input = {
       title: title.trim(),
       categoryId,
       excerpt: excerpt.trim(),
@@ -153,35 +184,39 @@
       content,
       readTimeMinutes,
       sources: sources.filter((s) => s.title.trim())
-    }).then((ok) => {
-      submitting = false;
-      if (ok) {
-        submitted = true;
-      } else {
-        error = 'Gagal mengirim artikel. Periksa koneksi dan coba lagi.';
-      }
-    });
+    };
+    const ok = editId ? await updateArticle(editId, input) : await submitArticle(input);
+    submitting = false;
+    if (ok) {
+      submitted = true;
+    } else {
+      error = editId ? 'Gagal menyimpan perubahan. Periksa koneksi dan coba lagi.' : 'Gagal mengirim artikel. Periksa koneksi dan coba lagi.';
+    }
   }
 </script>
 
 <div class="min-h-full pb-20 transition-colors duration-300 {isDark ? 'text-slate-100 bg-slate-950' : 'text-slate-900 bg-white'}">
-  <TopBar title="Tulis Artikel" backHref="/profile" />
+  <TopBar title={editId ? 'Edit Artikel' : 'Tulis Artikel'} backHref="/kelola" />
 
   {#if submitted}
     <div class="px-6 py-16 flex flex-col items-center text-center">
       <div class="w-16 h-16 rounded-2xl bg-emerald-500/15 flex items-center justify-center mb-4">
-        <Send class="w-7 h-7 text-emerald-500" />
+        {#if editId}
+          <CheckCircle2 class="w-7 h-7 text-emerald-500" />
+        {:else}
+          <Send class="w-7 h-7 text-emerald-500" />
+        {/if}
       </div>
-      <h2 class="text-lg font-black mb-2">Artikel terkirim!</h2>
+      <h2 class="text-lg font-black mb-2">{editId ? 'Perubahan tersimpan!' : 'Artikel terkirim!'}</h2>
       <p class="text-sm mb-6 {isDark ? 'text-slate-400' : 'text-slate-500'}">
-        Artikel kamu masuk antrean dan akan tampil setelah disetujui admin.
+        {editId ? 'Perubahan akan tampil setelah disetujui admin.' : 'Artikel kamu masuk antrean dan akan tampil setelah disetujui admin.'}
       </p>
       <div class="flex gap-2">
         <button
-          onclick={() => { submitted = false; title = ''; excerpt = ''; coverImage = ''; blocks = []; sources = []; }}
+          onclick={() => goto('/kelola')}
           class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-bold rounded-xl transition-all active:scale-95"
         >
-          Tulis Lagi
+          Kelola Konten
         </button>
         <button
           onclick={() => goto('/profile')}
@@ -445,14 +480,14 @@
       >
         {#if submitting}
           <div class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-          Mengirim...
+          {editId ? 'Menyimpan...' : 'Mengirim...'}
         {:else}
           <Send class="w-4 h-4" />
-          Kirim untuk Persetujuan
+          {editId ? 'Simpan Perubahan' : 'Kirim untuk Persetujuan'}
         {/if}
       </button>
       <p class="text-[10px] text-center {isDark ? 'text-slate-600' : 'text-slate-400'}">
-        {words} kata • ±{readTimeMinutes} mnt baca • Artikel tampil setelah disetujui admin
+        {words} kata • ±{readTimeMinutes} mnt baca • {editId ? 'Perubahan butuh persetujuan admin' : 'Artikel tampil setelah disetujui admin'}
       </p>
     </div>
   {/if}

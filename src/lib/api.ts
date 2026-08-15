@@ -202,6 +202,23 @@ export async function getQuizList(): Promise<Quiz[]> {
   });
 }
 
+export async function getQuizByArticle(articleId: number): Promise<Quiz | null> {
+  return cached(`quiz:article:${articleId}`, async () => {
+    const { data, error } = await supabase
+      .from('quizzes')
+      .select('id, title, description')
+      .eq('article_id', articleId)
+      .maybeSingle();
+    if (error) throw error;
+    if (!data) return null;
+    return {
+      id: Number(data.id),
+      title: String(data.title),
+      description: String(data.description ?? '')
+    };
+  });
+}
+
 export async function getQuizQuestions(quizId: number): Promise<QuizQuestion[]> {
   return cached(`questions:${quizId}`, async () => {
     const { data: q, error } = await supabase
@@ -631,6 +648,131 @@ export async function adminSetArticleStatus(articleId: number, status: 'PUBLISHE
       });
     }
     return true;
+  } catch {
+    return false;
+  }
+}
+
+// ============================================================
+// KONTEN SAYA (halaman kelola di profil)
+// ============================================================
+
+export async function getMyArticles(): Promise<Article[]> {
+  try {
+    const { data: auth } = await supabase.auth.getUser();
+    if (!auth?.user) return [];
+    const { data, error } = await supabase
+      .from('articles')
+      .select('*, categories(name, slug)')
+      .eq('author_id', auth.user.id)
+      .order('created_at', { ascending: false })
+      .limit(100);
+    if (error) throw error;
+    return (data ?? []).map(toArticle);
+  } catch {
+    return [];
+  }
+}
+
+export async function getMyVideos(): Promise<VideoItem[]> {
+  try {
+    const { data: auth } = await supabase.auth.getUser();
+    if (!auth?.user) return [];
+    const { data, error } = await supabase
+      .from('videos')
+      .select('*')
+      .eq('user_id', auth.user.id)
+      .order('created_at', { ascending: false })
+      .limit(100);
+    if (error) throw error;
+    return (data ?? []).map((v) => ({
+      id: Number(v.id),
+      title: String(v.title ?? ''),
+      description: String(v.description ?? ''),
+      url: String(v.url),
+      authorName: String(v.author_name ?? 'Pengguna'),
+      createdAt: String(v.created_at ?? '')
+    }));
+  } catch {
+    return [];
+  }
+}
+
+export async function getArticleById(id: number): Promise<Article | null> {
+  try {
+    const { data, error } = await supabase
+      .from('articles')
+      .select('*, categories(name, slug), sources(title, url, publisher)')
+      .eq('id', id)
+      .maybeSingle();
+    if (error || !data) return null;
+    return toArticle(data);
+  } catch {
+    return null;
+  }
+}
+
+export async function updateArticle(
+  id: number,
+  input: {
+    title: string;
+    categoryId: number;
+    excerpt: string;
+    coverImage: string;
+    content: ArticleBlock[];
+    readTimeMinutes: number;
+    sources: { title: string; url: string; publisher: string }[];
+  }
+): Promise<boolean> {
+  try {
+    const { data: auth } = await supabase.auth.getUser();
+    if (!auth?.user) return false;
+    const { error } = await supabase
+      .from('articles')
+      .update({
+        category_id: input.categoryId,
+        title: input.title,
+        excerpt: input.excerpt,
+        cover_image: input.coverImage,
+        content: input.content,
+        read_time_minutes: input.readTimeMinutes
+      })
+      .eq('id', id);
+    if (error) return false;
+
+    // Ganti sumber: hapus lama, isi ulang (RLS membatasi pada penulis artikel).
+    const { error: delErr } = await supabase.from('sources').delete().eq('article_id', id);
+    if (delErr) return false;
+    const rows = input.sources
+      .filter((s) => s.title.trim())
+      .map((s) => ({ article_id: id, title: s.title.trim(), url: s.url.trim(), publisher: s.publisher.trim() }));
+    if (rows.length) {
+      const { error: srcErr } = await supabase.from('sources').insert(rows);
+      if (srcErr) return false;
+    }
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+export async function deleteArticle(id: number): Promise<boolean> {
+  try {
+    const { data: auth } = await supabase.auth.getUser();
+    if (!auth?.user) return false;
+    const { error } = await supabase.from('articles').delete().eq('id', id);
+    return !error;
+  } catch {
+    return false;
+  }
+}
+
+export async function deleteVideo(id: number): Promise<boolean> {
+  try {
+    const { data: auth } = await supabase.auth.getUser();
+    if (!auth?.user) return false;
+    const { error } = await supabase.from('videos').delete().eq('id', id);
+    return !error;
   } catch {
     return false;
   }

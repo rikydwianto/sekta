@@ -56,7 +56,7 @@
 </script>
 
 <div class="min-h-full pb-12 transition-colors duration-300 page-enter {isDark ? 'text-slate-100 bg-slate-950' : 'text-slate-900 bg-white'}">
-  <PageHeader title="Sekejap Fakta" type="dashboard" showNotifications={true}>
+  <PageHeader title="Sekejap Fakta" type="dashboard" titleLeft titleHref="/" showNotifications={true}>
     <a href="/profile" class="hover:opacity-80">
       <AvatarInitials name={app.user.name} size="sm" />
     </a>
@@ -299,7 +299,7 @@
   {#if weeklyQuiz}
     <div class="px-6 mb-6 rise-in" style="animation-delay: 400ms">
       <a
-        href="/quiz/question"
+        href={`/quiz/question?id=${weeklyQuiz.id}`}
         class="block bg-purple-700 text-white p-6 rounded border border-purple-600 hover:bg-purple-600 transition-colors"
       >
         <span class="text-xs font-black bg-purple-800 px-3 py-1 rounded inline-block mb-2 uppercase">KUIS MINGGU INI</span>

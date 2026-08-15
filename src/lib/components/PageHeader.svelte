@@ -9,12 +9,14 @@
     title: string;
     type?: 'dashboard' | 'page';
     backHref?: string;
+    titleLeft?: boolean;
+    titleHref?: string;
     showNotifications?: boolean;
     showSettings?: boolean;
     children?: Snippet;
   }
 
-  let { title, type = 'dashboard', backHref, showNotifications = false, showSettings = false, children }: Props = $props();
+  let { title, type = 'dashboard', backHref, titleLeft = false, titleHref, showNotifications = false, showSettings = false, children }: Props = $props();
 
   let isDark = $derived(app.theme === 'dark');
   let hasUnreadNotifications = $derived(app.notifications?.some(n => n.unread) ?? false);
@@ -40,12 +42,21 @@
     >
       <ChevronLeft class="w-6 h-6 stroke-[2.5]" />
     </button>
+  {:else if titleLeft}
+    {#if titleHref}
+      <a href={titleHref} class="text-2xl font-black tracking-tight min-w-0 truncate">{title}</a>
+    {:else}
+      <h1 class="text-2xl font-black tracking-tight">{title}</h1>
+    {/if}
+    <div class="flex-1"></div>
   {:else}
     <div class="w-6"></div>
   {/if}
 
   <!-- Center: Title -->
-  <h1 class="text-2xl font-black tracking-tight {type === 'page' ? 'absolute left-1/2 -translate-x-1/2' : ''}">{title}</h1>
+  {#if !(titleLeft && type !== 'page')}
+    <h1 class="text-2xl font-black tracking-tight {type === 'page' ? 'absolute left-1/2 -translate-x-1/2' : ''}">{title}</h1>
+  {/if}
 
   <!-- Right: Action buttons -->
   <div class="flex items-center gap-2">
