@@ -56,11 +56,20 @@
 </script>
 
 <div class="min-h-full pb-12 transition-colors duration-300 page-enter {isDark ? 'text-slate-100 bg-slate-950' : 'text-slate-900 bg-white'}">
-  <PageHeader title="Sekejap Fakta" type="dashboard" titleLeft titleHref="/" showNotifications={true}>
+  <PageHeader title="SEKTA" type="dashboard" titleLeft titleHref="/" showNotifications={true}>
     <a href="/profile" class="hover:opacity-80">
       <AvatarInitials name={app.user.name} size="sm" />
     </a>
   </PageHeader>
+
+  <!-- Tujuan Aplikasi -->
+  <div class="px-6 mt-5 rise-in">
+    <p class="text-sm font-semibold leading-relaxed {isDark ? 'text-slate-300' : 'text-slate-600'}">
+      <span class="font-black">SEKTA</span> — Sekejap Fakta adalah platform pengetahuan harian yang menyajikan fakta
+      menarik dari sains, sejarah, teknologi, dan dunia, dikemas singkat lewat artikel dan kuis interaktif untuk
+      rasa ingin tahu setiap hari.
+    </p>
+  </div>
 
   <!-- Hero Banner -->
   {#if hero}
