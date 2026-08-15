@@ -5,7 +5,8 @@ import {
   markAllNotificationsRead as markAllNotificationsReadApi,
   markNotificationRead as markNotificationReadApi,
   deleteNotification as deleteNotificationApi,
-  deleteAllNotifications as deleteAllNotificationsApi
+  deleteAllNotifications as deleteAllNotificationsApi,
+  addQuizResult as saveQuizResultToDb
 } from '$lib/api';
 import { supabase } from '$lib/supabase';
 import { goto } from '$app/navigation';
@@ -177,6 +178,8 @@ export function addQuizResult(result: { score: number; correctAnswers: number; t
   addQuizHistory(entry);
   // Update user stats
   app.user.stats.quizzes = (app.user.stats.quizzes || 0) + 1;
+  // Persist ke Supabase (hanya jika sudah login)
+  saveQuizResultToDb(entry.quizTitle, result.score, result.totalQuestions, app.currentQuizId);
 }
 
 export function clearUser() {

@@ -453,12 +453,13 @@ export async function deleteAllNotifications(): Promise<boolean> {
   }
 }
 
-export async function addQuizResult(quizTitle: string, score: number, totalQuestions: number): Promise<boolean> {
+export async function addQuizResult(quizTitle: string, score: number, totalQuestions: number, quizId = 0): Promise<boolean> {
   try {
     const { data: auth } = await supabase.auth.getUser();
     if (!auth?.user) return false;
     const { error } = await supabase.from('quiz_results').insert({
       user_id: auth.user.id,
+      quiz_id: quizId || null,
       quiz_title: quizTitle,
       score,
       total_questions: totalQuestions
