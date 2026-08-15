@@ -2,7 +2,7 @@
   import {
     Type, Heading2, Heading3, Play, Quote, Sparkles,
     Bold, Italic, Underline, Strikethrough, List, ListOrdered,
-    Trash2, Upload, Send, FileText, CheckCircle2
+    Trash2, Upload, Send, FileText, CheckCircle2, Image
   } from '@lucide/svelte';
   import { goto } from '$app/navigation';
   import { page } from '$app/state';
@@ -15,7 +15,7 @@
   let isDark = $derived(app.theme === 'dark');
 
   type TextType = 'paragraph' | 'heading' | 'quote' | 'fact';
-  type EditBlock = { type: TextType; html: string } | { type: 'video'; url: string; caption: string };
+  type EditBlock = { type: TextType; html: string } | { type: 'video'; url: string; caption: string } | { type: 'image'; src: string; caption: string };
 
   const TEXT_META: Record<TextType, { label: string; accent: string; placeholder: string; editorClass: string }> = {
     paragraph: {
@@ -62,6 +62,7 @@
   function blocksToEdit(raw: ArticleBlock[]): EditBlock[] {
     return raw.map((b) => {
       if (b.type === 'video') return { type: 'video', url: b.data.url, caption: b.data.caption ?? '' };
+      if (b.type === 'image') return { type: 'image', src: b.data.src, caption: b.data.caption ?? '' };
       if (b.type === 'list') {
         return { type: 'paragraph', html: `<ul><li>${b.data.items.join('</li><li>')}</li></ul>` };
       }
@@ -97,8 +98,9 @@
   let words = $derived.by(() => {
     let n = 0;
     for (const b of blocks) {
-      if (b.type !== 'video') n += (b.html ?? '').replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+      if (b.type !== 'video' && b.type !== 'image') n += (b.html ?? '').replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
       if (b.type === 'video' && b.caption) n += b.caption.split(/\s+/).filter(Boolean).length;
+      if (b.type === 'image' && b.caption) n += b.caption.split(/\s+/).filter(Boolean).length;
     }
     return n;
   });
@@ -107,7 +109,9 @@
   function addBlock(type: EditBlock['type']) {
     blocks = [
       ...blocks,
-      type === 'video' ? { type: 'video', url: '', caption: '' } : { type, html: '' }
+      type === 'video' ? { type: 'video', url: '', caption: '' }
+        : type === 'image' ? { type: 'image', src: '', caption: '' }
+        : { type, html: '' }
     ] as EditBlock[];
     requestAnimationFrame(() => refs[blocks.length - 1]?.focus());
   }
@@ -127,7 +131,7 @@
   // WYSIWYG via fitur native browser (document.execCommand).
   // ponytail: execCommand deprecated tapi didukung semua browser; ganti ke Selection.surroundContents / lib (Tiptap) bila browser melepasnya.
   function runCmd(block: EditBlock, cmd: string, value?: string) {
-    if (block.type === 'video') return;
+    if (block.type === 'video' || block.type === 'image') return;
     document.execCommand(cmd, false, value);
     const el = document.activeElement as HTMLElement | null;
     if (el?.isContentEditable) block.html = el.innerHTML;
@@ -152,6 +156,15 @@
     }
   }
 
+  async function uploadImage(idx: number, file: File) {
+    try {
+      const src = await uploadArticleImage(file);
+      blocks = blocks.map((b, i) => (i === idx ? { ...b, src } : b));
+    } catch {
+      error = 'Gagal mengunggah foto. Coba lagi.';
+    }
+  }
+
   async function handleSubmit() {
     if (submitting) return;
     if (!title.trim()) { error = 'Judul wajib diisi.'; return; }
@@ -160,6 +173,7 @@
 
     const content: ArticleBlock[] = blocks.map((b) => {
       if (b.type === 'video') return { type: 'video', data: { url: b.url ?? '', caption: b.caption ?? '' } };
+      if (b.type === 'image') return { type: 'image', data: { src: b.src ?? '', caption: b.caption ?? '' } };
       return { type: b.type, data: { text: sanitizeHtml(b.html ?? '') } };
     });
 
@@ -168,6 +182,9 @@
       if (c.type === 'video') {
         const url = (c as { data: { url: string } }).data.url;
         if (!url.trim()) { error = 'Blok video harus diisi URL atau file video.'; return; }
+      } else if (c.type === 'image') {
+        const src = (c as { data: { src: string } }).data.src;
+        if (!src.trim()) { error = 'Blok foto harus diisi URL atau file gambar.'; return; }
       } else if (!txt.replace(/<[^>]+>/g, ' ').trim()) {
         error = 'Blok teks tidak boleh kosong.';
         return;
@@ -311,7 +328,7 @@
           </button>
         {/if}
 
-        <div class="grid grid-cols-5 gap-2">
+        <div class="grid grid-cols-6 gap-2">
           <button onclick={() => addBlock('paragraph')} class="flex flex-col items-center gap-1 py-2.5 rounded-2xl border transition-all active:scale-95 {isDark ? 'border-slate-700 text-slate-300 hover:bg-slate-900' : 'border-slate-200 text-slate-700 hover:bg-slate-50'}">
             <Type class="w-4 h-4 text-blue-500" />
             <span class="text-[9px] font-black">Paragraf</span>
@@ -327,6 +344,10 @@
           <button onclick={() => addBlock('fact')} class="flex flex-col items-center gap-1 py-2.5 rounded-2xl border transition-all active:scale-95 {isDark ? 'border-slate-700 text-slate-300 hover:bg-slate-900' : 'border-slate-200 text-slate-700 hover:bg-slate-50'}">
             <Sparkles class="w-4 h-4 text-emerald-500" />
             <span class="text-[9px] font-black">Fakta</span>
+          </button>
+          <button onclick={() => addBlock('image')} class="flex flex-col items-center gap-1 py-2.5 rounded-2xl border transition-all active:scale-95 {isDark ? 'border-slate-700 text-slate-300 hover:bg-slate-900' : 'border-slate-200 text-slate-700 hover:bg-slate-50'}">
+            <Image class="w-4 h-4 text-cyan-500" />
+            <span class="text-[9px] font-black">Foto</span>
           </button>
           <button onclick={() => addBlock('video')} class="flex flex-col items-center gap-1 py-2.5 rounded-2xl border transition-all active:scale-95 {isDark ? 'border-slate-700 text-slate-300 hover:bg-slate-900' : 'border-slate-200 text-slate-700 hover:bg-slate-50'}">
             <Play class="w-4 h-4 text-rose-500" />
@@ -361,6 +382,37 @@
                     <input
                       bind:value={block.caption}
                       placeholder="Keterangan video (opsional)"
+                      class="w-full px-3 py-2.5 rounded-xl border text-sm outline-none focus:ring-2 focus:ring-blue-500 {isDark ? 'bg-slate-950 border-slate-800 text-slate-100 placeholder:text-slate-500' : 'bg-white border-slate-200 text-slate-900 placeholder:text-slate-400'}"
+                    />
+                  </div>
+                </div>
+              {:else if block.type === 'image'}
+                <div class="p-3 rounded-2xl border {isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'}">
+                  <div class="flex items-center justify-between mb-2">
+                    <span class="text-[10px] font-black uppercase tracking-widest text-cyan-500">Foto</span>
+                    <button onclick={() => removeBlock(i)} class="p-1 rounded-lg {isDark ? 'text-slate-500 hover:bg-slate-800' : 'text-slate-400 hover:bg-slate-100'}" aria-label="Hapus blok">
+                      <Trash2 class="w-4 h-4" />
+                    </button>
+                  </div>
+                  <div class="space-y-2">
+                    {#if block.src}
+                      <img src={block.src} alt="Pratinjau foto" class="w-full max-h-40 object-cover rounded-xl border {isDark ? 'border-slate-800' : 'border-slate-200'}" />
+                    {/if}
+                    <div class="flex gap-2">
+                      <input
+                        bind:value={block.src}
+                        placeholder="URL gambar, atau unggah file"
+                        class="flex-1 min-w-0 px-3 py-2.5 rounded-xl border text-sm outline-none focus:ring-2 focus:ring-blue-500 {isDark ? 'bg-slate-950 border-slate-800 text-slate-100 placeholder:text-slate-500' : 'bg-white border-slate-200 text-slate-900 placeholder:text-slate-400'}"
+                      />
+                      <label class="flex items-center gap-1 px-3 rounded-xl border text-xs font-bold cursor-pointer {isDark ? 'border-slate-700 text-slate-300 hover:bg-slate-800' : 'border-slate-200 text-slate-700 hover:bg-slate-50'}">
+                        <Upload class="w-3.5 h-3.5" />
+                        Unggah
+                        <input type="file" accept="image/*" class="hidden" onchange={(e) => e.currentTarget.files?.[0] && uploadImage(i, e.currentTarget.files[0])} />
+                      </label>
+                    </div>
+                    <input
+                      bind:value={block.caption}
+                      placeholder="Keterangan foto (opsional)"
                       class="w-full px-3 py-2.5 rounded-xl border text-sm outline-none focus:ring-2 focus:ring-blue-500 {isDark ? 'bg-slate-950 border-slate-800 text-slate-100 placeholder:text-slate-500' : 'bg-white border-slate-200 text-slate-900 placeholder:text-slate-400'}"
                     />
                   </div>

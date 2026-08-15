@@ -81,7 +81,7 @@
       date: new Date()
     });
 
-    goto(`/quiz/result?score=${score}&correct=${correctCount}&total=${totalQuestions}`);
+    goto(`/quiz/result?score=${score}&correct=${correctCount}&total=${totalQuestions}&id=${quizId}`);
   }
 </script>
 

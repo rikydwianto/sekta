@@ -1,9 +1,12 @@
 <script lang="ts">
-  import { RotateCcw, Home, Share2 } from '@lucide/svelte';
+  import { RotateCcw, Home, Share2, BookOpen, ChevronRight } from '@lucide/svelte';
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
   import { app } from '$lib/stores/app.svelte';
+  import { getArticleByQuiz } from '$lib/api';
+  import type { Article } from '$lib/types';
   import PageHeader from '$lib/components/PageHeader.svelte';
+  import CoverImage from '$lib/components/CoverImage.svelte';
 
   let isDark = $derived(app.theme === 'dark');
 
@@ -11,16 +14,21 @@
   let score = $state(0);
   let correct = $state(0);
   let total = $state(5);
+  let sourceArticle = $state<Article | null>(null);
 
   $effect(() => {
     try {
       const s = parseInt($page.url.searchParams.get('score') ?? '0');
       const c = parseInt($page.url.searchParams.get('correct') ?? '0');
       const t = parseInt($page.url.searchParams.get('total') ?? '5');
-      
+      const id = parseInt($page.url.searchParams.get('id') ?? '0');
+
       score = isNaN(s) ? 0 : s;
       correct = isNaN(c) ? 0 : c;
       total = isNaN(t) ? 5 : t;
+      if (id) {
+        getArticleByQuiz(id).then((a) => (sourceArticle = a));
+      }
     } catch (e) {
       console.error('Error parsing URL params:', e);
     }
@@ -162,8 +170,7 @@
       <div class="flex justify-between text-xs font-bold mb-2">
         <span class="text-slate-500">Progress Kuis</span>
         <span class="text-slate-400">{score}%</span>
-      </div>
-      <div class="h-3 rounded-full overflow-hidden {isDark ? 'bg-slate-800' : 'bg-slate-200'}">
+      </div>      <div class="h-3 rounded-full overflow-hidden {isDark ? 'bg-slate-800' : 'bg-slate-200'}">
         <div class="h-full rounded-full transition-all duration-500 {performanceColor === 'emerald'
           ? 'bg-emerald-600'
           : performanceColor === 'blue'
@@ -173,6 +180,30 @@
               : 'bg-red-600'}" style="width: {score}%"></div>
       </div>
     </div>
+
+    <!-- Sumber Artikel -->
+    {#if sourceArticle}
+      <a
+        href={`/article/${sourceArticle.slug}`}
+        class="block border rounded-2xl p-4 mb-6 transition-all active:scale-[0.98] hover:opacity-90 {isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'}"
+      >
+        <p class="text-[10px] font-black uppercase tracking-widest mb-3 {isDark ? 'text-slate-500' : 'text-slate-400'}">
+          Kuis dari artikel
+        </p>
+        <div class="flex items-center gap-3">
+          <div class="w-16 h-12 rounded-xl overflow-hidden flex-shrink-0">
+            <CoverImage image={sourceArticle.image} class="w-full h-full object-cover" />
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-black line-clamp-2 leading-tight">{sourceArticle.title}</p>
+            <p class="text-[11px] mt-1 font-semibold flex items-center gap-1 text-blue-500">
+              Baca artikelnya
+              <ChevronRight class="w-3 h-3" />
+            </p>
+          </div>
+        </div>
+      </a>
+    {/if}
 
     <!-- Action Buttons -->
     <div class="space-y-3">

@@ -219,6 +219,37 @@ export async function getQuizByArticle(articleId: number): Promise<Quiz | null> 
   });
 }
 
+export async function getArticleByQuiz(quizId: number): Promise<Article | null> {
+  try {
+    const { data, error } = await supabase
+      .from('quizzes')
+      .select('articles(slug, title, excerpt, cover_image, published_at, author_name, read_time_minutes, view_count, featured, categories(name, slug))')
+      .eq('id', quizId)
+      .maybeSingle();
+    if (error || !data) return null;
+    const art = (data as unknown as { articles?: Record<string, unknown> | null }).articles;
+    if (!art) return null;
+    const related = (art.categories as Record<string, unknown> | null) ?? null;
+    return {
+      id: 0,
+      slug: String(art.slug),
+      title: String(art.title),
+      category: related ? String(related.name).toUpperCase() : 'FAKTA',
+      categorySlug: related ? String(related.slug) : undefined,
+      readTime: `${Number(art.read_time_minutes ?? 3)} mnt baca`,
+      excerpt: String(art.excerpt ?? ''),
+      author: String(art.author_name ?? 'Sekta'),
+      date: formatDate(art.published_at as string | null | undefined),
+      image: String(art.cover_image ?? ''),
+      featured: Boolean((art as Record<string, unknown>).featured),
+      viewCount: Number(art.view_count ?? 0),
+      content: []
+    };
+  } catch {
+    return null;
+  }
+}
+
 export async function getQuizQuestions(quizId: number): Promise<QuizQuestion[]> {
   return cached(`questions:${quizId}`, async () => {
     const { data: q, error } = await supabase

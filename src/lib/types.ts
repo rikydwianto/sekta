@@ -15,7 +15,8 @@ export type ArticleBlock =
   | { type: 'fact'; data: { text: string } }
   | { type: 'divider'; data: Record<string, never> }
   | { type: 'quiz'; data: { quizId: string } }
-  | { type: 'video'; data: { url: string; caption?: string } };
+  | { type: 'video'; data: { url: string; caption?: string } }
+  | { type: 'image'; data: { src: string; caption?: string } };
 
 export type UserRole = 'USER' | 'CONTRIBUTOR' | 'ADMIN';
 

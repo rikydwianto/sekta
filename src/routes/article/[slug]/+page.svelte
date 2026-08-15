@@ -329,6 +329,19 @@ import { app, toggleSaveArticle, toggleTheme } from '$lib/stores/app.svelte';
               <p class="text-xs mt-2 text-center {isDark ? 'text-slate-500' : 'text-slate-400'}">{vid.caption}</p>
             {/if}
           </div>
+        {:else if block.type === 'image'}
+          {@const img = (block as Extract<ArticleBlock, { type: 'image' }>).data}
+          <figure class="my-6">
+            <img
+              src={img.src}
+              alt={img.caption ?? ''}
+              loading="lazy"
+              class="w-full rounded-2xl border {isDark ? 'border-slate-800' : 'border-slate-200'}"
+            />
+            {#if img.caption}
+              <figcaption class="text-xs mt-2 text-center {isDark ? 'text-slate-500' : 'text-slate-400'}">{img.caption}</figcaption>
+            {/if}
+          </figure>
         {/if}
       {/each}
     </div>
