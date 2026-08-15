@@ -20,6 +20,12 @@
   });
 
   $effect(() => {
+    if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+  });
+
+  $effect(() => {
     const err = $page.url.searchParams.get('error');
     if (err && typeof window !== 'undefined') {
       const desc = $page.url.searchParams.get('error_description');
