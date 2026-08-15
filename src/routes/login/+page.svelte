@@ -33,6 +33,11 @@
     }
   });
 
+  function handleBack() {
+    if (page.url.searchParams.has('redirect')) goto('/');
+    else goBack();
+  }
+
   async function handleLogin() {
     error = '';
     loading = true;
@@ -65,7 +70,7 @@
   <!-- Top bar: back to previous page -->
   <div class="flex items-center justify-between px-6 pt-10 pb-2">
     <button
-      onclick={goBack}
+      onclick={handleBack}
       class="flex items-center gap-1.5 text-xs font-bold transition-colors {isDark ? 'text-slate-400 hover:text-slate-200' : 'text-slate-500 hover:text-slate-800'}"
     >
       <ArrowLeft class="w-4 h-4" />
