@@ -389,12 +389,13 @@
           </p>
           <p class="text-xs leading-relaxed {isDark ? 'text-slate-300' : 'text-slate-600'}">
             Pengguna dapat masuk menggunakan akun Google untuk mengakses fitur personalisasi, seperti menyimpan riwayat
-            kuis, menyimpan artikel favorit, memberi reaksi pada konten, dan melihat statistik progres belajar harian.
+            kuis, menyimpan artikel favorit, memberi reaksi dan komentar pada konten, serta melihat statistik progres belajar harian.
           </p>
         </div>
         <div class="flex flex-wrap gap-2 mb-5">
           <span class="px-3 py-1.5 rounded-xl text-[10px] font-black border {isDark ? 'bg-slate-800 border-slate-700 text-slate-200' : 'bg-white border-slate-200 text-slate-600'}">📰 Artikel Singkat</span>
           <span class="px-3 py-1.5 rounded-xl text-[10px] font-black border {isDark ? 'bg-slate-800 border-slate-700 text-slate-200' : 'bg-white border-slate-200 text-slate-600'}">🧠 Kuis Interaktif</span>
+          <span class="px-3 py-1.5 rounded-xl text-[10px] font-black border {isDark ? 'bg-slate-800 border-slate-700 text-slate-200' : 'bg-white border-slate-200 text-slate-600'}">💬 Komentar</span>
           <span class="px-3 py-1.5 rounded-xl text-[10px] font-black border {isDark ? 'bg-slate-800 border-slate-700 text-slate-200' : 'bg-white border-slate-200 text-slate-600'}">🔊 Bisa Dibacakan</span>
         </div>
         <div class="flex gap-2">
