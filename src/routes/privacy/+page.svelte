@@ -19,6 +19,10 @@
         preferensi minat. Kami juga menyimpan aktivitas dasar seperti artikel yang Anda baca, reaksi yang Anda berikan,
         dan hasil kuis untuk meningkatkan pengalaman Anda.
       </p>
+      <p class="text-sm leading-relaxed {isDark ? 'text-slate-300' : 'text-slate-600'}">
+        Jika Anda masuk menggunakan Akun Google, kami menerima informasi dasar dari Akun Google kamu, seperti nama,
+        alamat email, dan foto profil, untuk mempermudah proses autentikasi.
+      </p>
     </section>
 
     <section class="space-y-2">
@@ -27,6 +31,10 @@
         Data yang kami kumpulkan digunakan untuk: (a) menyediakan dan meningkatkan layanan Sekta, (b) merekomendasikan
         konten yang relevan, (c) menanggapi pertanyaan atau keluhan Anda, dan (d) menjaga keamanan dan integritas
         platform.
+      </p>
+      <p class="text-sm leading-relaxed {isDark ? 'text-slate-300' : 'text-slate-600'}">
+        Kami menggunakan informasi dari Akun Google kamu (seperti nama, email, dan foto profil) hanya untuk keperluan
+        autentikasi dan menyimpan progres belajar pengguna di aplikasi SEKTA.
       </p>
     </section>
 

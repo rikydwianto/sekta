@@ -14,7 +14,7 @@
       <a href="/terms" class="{isDark ? 'text-slate-400 hover:text-slate-200' : 'text-slate-600 hover:text-slate-900'}">Syarat</a>
     </div>
     <p class="text-[10px] font-semibold {isDark ? 'text-slate-600' : 'text-slate-400'}">
-      © {new Date().getFullYear()} Sekejap Fakta. Dibuat dengan 💙 untuk rasa penasaran.
+      © {new Date().getFullYear()} SEKTA — Sekejap Fakta. Dibuat dengan 💙 untuk rasa penasaran.
     </p>
   </div>
 </footer>

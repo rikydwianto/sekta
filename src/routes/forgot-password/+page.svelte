@@ -57,7 +57,7 @@
       <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center flex-shrink-0">
         <Zap class="w-5 h-5 text-white" />
       </div>
-      <span class="text-base font-black tracking-tight">Sekejap Fakta</span>
+      <span class="text-base font-black tracking-tight">SEKTA</span>
     </div>
     <h1 class="text-[28px] font-black tracking-tight leading-tight mb-2">
       Lupa password? 🔑<br />Tenang, kami bantu!

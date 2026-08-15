@@ -92,7 +92,7 @@
       <div class="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center flex-shrink-0">
         <Zap class="w-5 h-5 text-white" />
       </div>
-      <span class="text-base font-black tracking-tight">Sekejap Fakta</span>
+      <span class="text-base font-black tracking-tight">SEKTA</span>
     </div>
     <h1 class="text-[28px] font-black tracking-tight leading-tight mb-2">
       Selamat datang<br />kembali! 👋
@@ -173,6 +173,12 @@
       </svg>
       Lanjut dengan Google
     </button>
+
+    <p class="text-center text-[11px] font-medium leading-relaxed mb-6 {isDark ? 'text-slate-500' : 'text-slate-400'}">
+      Dengan melanjutkan, kamu menyetujui{' '}
+      <a href="/terms" class="underline text-blue-600 hover:text-blue-500">Syarat &amp; Ketentuan</a> dan{' '}
+      <a href="/privacy" class="underline text-blue-600 hover:text-blue-500">Kebijakan Privasi SEKTA</a>.
+    </p>
 
     <!-- Guest CTA -->
     <div class="border rounded-2xl p-4 mb-6 {isDark ? 'border-slate-800 bg-slate-900/50' : 'border-slate-100 bg-slate-50'}">
