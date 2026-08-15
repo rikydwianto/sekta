@@ -62,44 +62,6 @@
     </a>
   </PageHeader>
 
-  <!-- Tujuan Aplikasi -->
-  <div class="px-6 mt-5 rise-in">
-    <div class="relative overflow-hidden rounded-3xl border p-6 {isDark ? 'bg-slate-900 border-slate-800' : 'bg-slate-50 border-slate-100'}">
-      <div class="hero-art absolute inset-0 opacity-40 pointer-events-none">
-        <span class="hero-bubble w-16 h-16 top-4 right-8" style="animation-duration: 8s"></span>
-        <span class="hero-bubble w-8 h-8 bottom-8 right-24" style="animation-duration: 5s"></span>
-      </div>
-      <div class="relative z-10">
-        <div class="flex items-center gap-2 mb-3">
-          <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
-          <span class="text-[10px] font-black uppercase tracking-[0.2em] {isDark ? 'text-slate-400' : 'text-slate-500'}">Apa itu SEKTA?</span>
-        </div>
-        <h1 class="text-3xl font-black tracking-tight leading-none mb-2 bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 bg-clip-text text-transparent">
-          SEKTA
-        </h1>
-        <p class="text-sm font-black uppercase tracking-widest mb-3 {isDark ? 'text-slate-300' : 'text-slate-600'}">Sekejap Fakta</p>
-        <p class="text-sm font-medium leading-relaxed mb-4 {isDark ? 'text-slate-300' : 'text-slate-600'}">
-          Platform pengetahuan harian — satu fakta menarik dari sains, sejarah, teknologi, dan dunia setiap hari,
-          dikemas singkat dan seru lewat artikel serta kuis interaktif.
-        </p>
-        <div class="flex flex-wrap gap-2 mb-5">
-          <span class="px-3 py-1.5 rounded-xl text-[10px] font-black border {isDark ? 'bg-slate-800 border-slate-700 text-slate-200' : 'bg-white border-slate-200 text-slate-600'}">📰 Artikel Singkat</span>
-          <span class="px-3 py-1.5 rounded-xl text-[10px] font-black border {isDark ? 'bg-slate-800 border-slate-700 text-slate-200' : 'bg-white border-slate-200 text-slate-600'}">🧠 Kuis Interaktif</span>
-          <span class="px-3 py-1.5 rounded-xl text-[10px] font-black border {isDark ? 'bg-slate-800 border-slate-700 text-slate-200' : 'bg-white border-slate-200 text-slate-600'}">🔊 Bisa Dibacakan</span>
-        </div>
-        <div class="flex gap-2">
-          <a href="/explore" class="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-black transition-all active:scale-95 shadow-md shadow-blue-600/20">
-            Mulai Jelajahi
-            <ChevronRight class="w-3.5 h-3.5" />
-          </a>
-          <a href="/quiz" class="flex items-center gap-1.5 px-4 py-2.5 rounded-xl border text-xs font-black transition-all active:scale-95 {isDark ? 'border-slate-700 text-slate-200 hover:bg-slate-800' : 'border-slate-200 text-slate-600 hover:bg-slate-50'}">
-            Main Kuis
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Hero Banner -->
   {#if hero}
     <div class="px-6 my-6 rise-in">
@@ -399,5 +361,43 @@
     >
       Jelajahi Semua Artikel 🚀
     </button>
+  </div>
+
+  <!-- Tujuan Aplikasi -->
+  <div class="px-6 mt-8 rise-in" style="animation-delay: 700ms">
+    <div class="relative overflow-hidden rounded-3xl border p-6 {isDark ? 'bg-slate-900 border-slate-800' : 'bg-slate-50 border-slate-100'}">
+      <div class="hero-art absolute inset-0 opacity-40 pointer-events-none">
+        <span class="hero-bubble w-16 h-16 top-4 right-8" style="animation-duration: 8s"></span>
+        <span class="hero-bubble w-8 h-8 bottom-8 right-24" style="animation-duration: 5s"></span>
+      </div>
+      <div class="relative z-10">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+          <span class="text-[10px] font-black uppercase tracking-[0.2em] {isDark ? 'text-slate-400' : 'text-slate-500'}">Apa itu SEKTA?</span>
+        </div>
+        <h2 class="text-3xl font-black tracking-tight leading-none mb-2 bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-600 bg-clip-text text-transparent">
+          SEKTA
+        </h2>
+        <p class="text-sm font-black uppercase tracking-widest mb-3 {isDark ? 'text-slate-300' : 'text-slate-600'}">Sekejap Fakta</p>
+        <p class="text-sm font-medium leading-relaxed mb-4 {isDark ? 'text-slate-300' : 'text-slate-600'}">
+          Platform pengetahuan harian — satu fakta menarik dari sains, sejarah, teknologi, dan dunia setiap hari,
+          dikemas singkat dan seru lewat artikel serta kuis interaktif.
+        </p>
+        <div class="flex flex-wrap gap-2 mb-5">
+          <span class="px-3 py-1.5 rounded-xl text-[10px] font-black border {isDark ? 'bg-slate-800 border-slate-700 text-slate-200' : 'bg-white border-slate-200 text-slate-600'}">📰 Artikel Singkat</span>
+          <span class="px-3 py-1.5 rounded-xl text-[10px] font-black border {isDark ? 'bg-slate-800 border-slate-700 text-slate-200' : 'bg-white border-slate-200 text-slate-600'}">🧠 Kuis Interaktif</span>
+          <span class="px-3 py-1.5 rounded-xl text-[10px] font-black border {isDark ? 'bg-slate-800 border-slate-700 text-slate-200' : 'bg-white border-slate-200 text-slate-600'}">🔊 Bisa Dibacakan</span>
+        </div>
+        <div class="flex gap-2">
+          <a href="/explore" class="flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-black transition-all active:scale-95 shadow-md shadow-blue-600/20">
+            Mulai Jelajahi
+            <ChevronRight class="w-3.5 h-3.5" />
+          </a>
+          <a href="/quiz" class="flex items-center gap-1.5 px-4 py-2.5 rounded-xl border text-xs font-black transition-all active:scale-95 {isDark ? 'border-slate-700 text-slate-200 hover:bg-slate-800' : 'border-slate-200 text-slate-600 hover:bg-slate-50'}">
+            Main Kuis
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
