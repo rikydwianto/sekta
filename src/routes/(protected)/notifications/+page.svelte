@@ -186,9 +186,9 @@
 </div>
 
 {#if showClearAll}
-  <div class="bg-black/70 backdrop-blur-sm min-h-full flex flex-col justify-end absolute inset-0 z-50 p-4">
+  <div class="bg-black/70 backdrop-blur-sm fixed inset-0 z-50 flex items-center justify-center p-4">
     <div
-      class="border rounded-[2.5rem] p-6 pb-8 text-center shadow-2xl {isDark
+      class="w-full max-w-sm border rounded-[2.5rem] p-6 pb-8 text-center shadow-2xl {isDark
         ? 'bg-[#141720] border-slate-800 text-slate-100'
         : 'bg-white border-slate-200 text-slate-900'}"
     >

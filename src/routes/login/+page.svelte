@@ -4,6 +4,7 @@
   import { page } from '$app/state';
   import { supabase } from '$lib/supabase';
   import { app } from '$lib/stores/app.svelte';
+  import { goBack } from '$lib/stores/navigation.svelte';
 
   let isDark = $derived(app.theme === 'dark');
 
@@ -61,15 +62,15 @@
 
 <div class="min-h-full flex flex-col transition-colors duration-300 {isDark ? 'text-slate-100' : 'text-slate-900'}">
 
-  <!-- Top bar: back to homepage -->
+  <!-- Top bar: back to previous page -->
   <div class="flex items-center justify-between px-6 pt-10 pb-2">
-    <a
-      href="/"
+    <button
+      onclick={goBack}
       class="flex items-center gap-1.5 text-xs font-bold transition-colors {isDark ? 'text-slate-400 hover:text-slate-200' : 'text-slate-500 hover:text-slate-800'}"
     >
       <ArrowLeft class="w-4 h-4" />
-      Beranda
-    </a>
+      Kembali
+    </button>
     <a
       href="/"
       class="px-4 py-2 rounded-full border text-xs font-bold transition-all active:scale-95 {isDark

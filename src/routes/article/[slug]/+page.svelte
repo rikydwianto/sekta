@@ -1,7 +1,7 @@
 <script lang="ts">
-import { ChevronLeft, Bookmark, Settings, MessageCircle, Send, ChevronUp, ChevronDown, Volume2, Sun, Moon } from '@lucide/svelte';
+import { ChevronLeft, Bookmark, Settings, MessageCircle, Send, ChevronUp, ChevronDown, Volume2, Sun, Moon, Share2 } from '@lucide/svelte';
 import { goto } from '$app/navigation';
-import type { ArticleBlock, ArticleReaction, CommentItem } from '$lib/types';
+import type { ArticleBlock, ArticleReaction, CommentItem, Article } from '$lib/types';
 import { app, toggleSaveArticle, toggleTheme } from '$lib/stores/app.svelte';
   import { goBack } from '$lib/stores/navigation.svelte';
   import CoverImage from '$lib/components/CoverImage.svelte';
@@ -32,6 +32,16 @@ import { app, toggleSaveArticle, toggleTheme } from '$lib/stores/app.svelte';
   let socialLoading = $state(true);
   let lightboxSrc = $state('');
   let speaking = $state<string | null>(null);
+
+  function shareArticle(article: Article) {
+    const url = window.location.href;
+    const text = `${article.title}\n\n${article.excerpt ?? ''}`;
+    if (navigator.share) {
+      navigator.share({ title: article.title, text, url }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(`${text}\n${url}`).then(() => alert('Link artikel disalin ke clipboard'));
+    }
+  }
 
   $effect(() => {
     const handler = (e: MouseEvent) => {
@@ -174,6 +184,13 @@ import { app, toggleSaveArticle, toggleTheme } from '$lib/stores/app.svelte';
         {:else}
           <Moon class="w-5 h-5" />
         {/if}
+      </button>
+      <button
+        onclick={() => article && shareArticle(article)}
+        class="p-2.5 rounded-full {isDark ? 'hover:bg-slate-800 text-slate-300' : 'hover:bg-slate-100 text-slate-600'}"
+        aria-label="Bagikan artikel"
+      >
+        <Share2 class="w-5 h-5" />
       </button>
       <button onclick={() => article && toggleSaveArticle(article)} class="p-2.5 rounded-full {isSaved ? 'text-blue-600' : isDark ? 'hover:bg-slate-800 text-slate-300' : 'hover:bg-slate-100 text-slate-600'}">
         <Bookmark class="w-5 h-5" fill={isSaved ? 'currentColor' : 'none'} />
