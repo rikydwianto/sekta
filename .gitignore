@@ -1,0 +1,17 @@
+# dependencies
+node_modules
+
+# SvelteKit
+.svelte-kit
+build
+
+# environment
+.env
+.env.*
+!.env.example
+
+# misc
+*.local
+*.log
+.DS_Store
+compile_check.txt
