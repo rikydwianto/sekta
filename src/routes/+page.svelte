@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { ChevronRight, Shuffle, Sparkles, X } from '@lucide/svelte';
+  import { ChevronRight, Shuffle, Sparkles, X, Volume2 } from '@lucide/svelte';
   import { goto } from '$app/navigation';
   import { app } from '$lib/stores/app.svelte';
   import SkeletonLoader from '$lib/components/SkeletonLoader.svelte';
@@ -29,6 +29,20 @@
   };
   let factModal = $state(false);
   let factClosing = $state(false);
+  let speaking = $state(false);
+  function speakFact() {
+    if (!fact || typeof speechSynthesis === 'undefined') return;
+    speechSynthesis.cancel();
+    if (speaking) {
+      speaking = false;
+      return;
+    }
+    const u = new SpeechSynthesisUtterance(fact.fact);
+    u.lang = 'id-ID';
+    u.onend = () => (speaking = false);
+    speaking = true;
+    speechSynthesis.speak(u);
+  }
   let openFactModal = () => {
     factModal = true;
     factClosing = false;
@@ -140,7 +154,26 @@
             <Sparkles class="w-5 h-5 text-emerald-300" />
             <h3 class="text-xs font-black text-emerald-300 uppercase">Sekejap Fakta</h3>
           </div>
-          {#if facts.length > 1}
+          <div class="flex items-center gap-1">
+            <span
+              onclick={(e) => {
+                e.stopPropagation();
+                speakFact();
+              }}
+              onkeydown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.stopPropagation();
+                  speakFact();
+                }
+              }}
+              role="button"
+              tabindex="0"
+              class="p-2 rounded text-emerald-300 hover:bg-emerald-800 hover:text-emerald-200 transition-colors cursor-pointer"
+              aria-label="Dengarkan fakta"
+            >
+              <Volume2 class="w-4 h-4" />
+            </span>
+            {#if facts.length > 1}
             <span
               onclick={(e) => {
                 e.stopPropagation();
@@ -160,6 +193,7 @@
               <Shuffle class="w-4 h-4" />
             </span>
           {/if}
+          </div>
         </div>
         <p class="text-base font-bold leading-snug mb-3 line-clamp-2">
           {fact.fact}
@@ -198,13 +232,22 @@
             <Sparkles class="w-5 h-5 text-emerald-300" />
             <h3 class="text-xs font-black text-emerald-300 uppercase">Sekejap Fakta</h3>
           </div>
-          <button
-            onclick={closeFactModal}
-            class="p-2 rounded text-emerald-300 hover:bg-emerald-800 transition-colors"
-            aria-label="Tutup"
-          >
-            <X class="w-5 h-5" />
-          </button>
+          <div class="flex items-center gap-1">
+            <button
+              onclick={speakFact}
+              class="p-2 rounded text-emerald-300 hover:bg-emerald-800 transition-colors"
+              aria-label="Dengarkan fakta"
+            >
+              <Volume2 class="w-4 h-4" />
+            </button>
+            <button
+              onclick={closeFactModal}
+              class="p-2 rounded text-emerald-300 hover:bg-emerald-800 transition-colors"
+              aria-label="Tutup"
+            >
+              <X class="w-5 h-5" />
+            </button>
+          </div>
         </div>
         <p class="text-xl font-bold leading-snug mb-6">
           {fact.fact}
