@@ -1,0 +1,27 @@
+{
+  "category": "sains",
+  "title": "Contoh Fakta Baru",
+  "excerpt": "Deskripsi singkat contoh artikel.",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Paragraf pertama." } },
+    { "type": "fact", "data": { "text": "Sekejap fakta di tengah artikel." } },
+    { "type": "paragraph", "data": { "text": "Paragraf kedua." } }
+  ],
+  "fact": "Contoh sekejap fakta di halaman utama.",
+  "quiz": {
+    "title": "Kuis: Contoh Fakta Baru",
+    "description": "Tes pengetahuanmu soal contoh fakta.",
+    "questions": [
+      {
+        "question": "Apa warna langit di siang hari?",
+        "options": [
+          { "label": "Biru", "is_correct": true },
+          { "label": "Merah", "is_correct": false },
+          { "label": "Hijau", "is_correct": false },
+          { "label": "Kuning", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [{ "title": "Sumber contoh", "url": "https://example.com", "publisher": "Contoh" }]
+}
