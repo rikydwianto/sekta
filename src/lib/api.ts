@@ -148,9 +148,19 @@ export async function incrementArticleView(articleId: number): Promise<void> {
 
 export async function getRelatedArticles(slug: string): Promise<Article[]> {
   const current = await getArticleBySlug(slug);
-  if (!current) return [];
-  const all = await getArticles();
-  return all.filter(a => a.slug !== slug && a.categorySlug === current.categorySlug).slice(0, 3);
+  if (!current?.categorySlug) return [];
+  const { data, error } = await supabase
+    .from('articles')
+    .select('id, slug, title, excerpt, cover_image, categories!inner(name, slug)')
+    .eq('status', 'PUBLISHED')
+    .eq('categories.slug', current.categorySlug)
+    .order('published_at', { ascending: false })
+    .limit(4);
+  if (error) return [];
+  return (data ?? [])
+    .filter((a) => a.slug !== slug)
+    .map(toLightArticle)
+    .slice(0, 3);
 }
 
 // Prev/next berdasarkan urutan publikasi (list diurutkan published_at DESC).
@@ -158,10 +168,51 @@ export async function getRelatedArticles(slug: string): Promise<Article[]> {
 export async function getAdjacentArticles(
   slug: string
 ): Promise<{ prev: Article | null; next: Article | null }> {
-  const all = await getArticles();
-  const i = all.findIndex((a) => a.slug === slug);
+  const { data, error } = await supabase
+    .from('articles')
+    .select('id, slug, title, cover_image, published_at')
+    .eq('status', 'PUBLISHED')
+    .order('published_at', { ascending: false });
+  if (error || !data) return { prev: null, next: null };
+  const i = data.findIndex((a) => a.slug === slug);
   if (i === -1) return { prev: null, next: null };
-  return { prev: all[i - 1] ?? null, next: all[i + 1] ?? null };
+  const pick = (row: Record<string, unknown> | undefined): Article | null =>
+    row
+      ? {
+          id: Number(row.id),
+          slug: String(row.slug),
+          title: String(row.title),
+          category: '',
+          readTime: '',
+          excerpt: '',
+          author: '',
+          date: formatDate(row.published_at as string | null | undefined),
+          image: String(row.cover_image ?? ''),
+          viewCount: 0,
+          featured: false,
+          content: []
+        }
+      : null;
+  return { prev: pick(data[i - 1]), next: pick(data[i + 1]) };
+}
+
+function toLightArticle(row: Record<string, unknown>): Article {
+  const related = (row.categories as Record<string, unknown> | null) ?? null;
+  return {
+    id: Number(row.id),
+    slug: String(row.slug),
+    title: String(row.title),
+    category: related ? String(related.name).toUpperCase() : 'FAKTA',
+    categorySlug: related ? String(related.slug) : undefined,
+    readTime: '',
+    excerpt: String(row.excerpt ?? ''),
+    author: '',
+    date: '',
+    image: String(row.cover_image ?? ''),
+    viewCount: 0,
+    featured: false,
+    content: []
+  };
 }
 
 // Trending = artikel paling banyak DILIHAT + DIREAKSI (view_count + jumlah reaksi).

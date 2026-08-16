@@ -84,9 +84,30 @@ import { recordRead } from '$lib/stores/reading.svelte';
 
   $effect(() => {
     if (!hasTiktok) return;
-    const s = document.createElement('script');
-    s.src = 'https://www.tiktok.com/embed.js';
-    document.head.appendChild(s);
+    const inject = () => {
+      if (document.querySelector('script[src="https://www.tiktok.com/embed.js"]')) return;
+      const s = document.createElement('script');
+      s.src = 'https://www.tiktok.com/embed.js';
+      document.head.appendChild(s);
+    };
+    const els = document.querySelectorAll('.tiktok-embed');
+    if (els.length === 0) {
+      inject();
+      return;
+    }
+    let done = false;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting) && !done) {
+          done = true;
+          inject();
+          io.disconnect();
+        }
+      },
+      { rootMargin: '600px' }
+    );
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
   });
 
   $effect(() => {
