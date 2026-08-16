@@ -329,7 +329,7 @@
       <div class="grid grid-cols-2 gap-3">
         {#each categories as cat}
           <button
-            onclick={() => goto(`/search?q=${encodeURIComponent(cat.name)}`)}
+            onclick={() => goto(`/search?cat=${encodeURIComponent(cat.slug)}`)}
             class="p-3 rounded border flex items-center gap-3 text-left card-hover {isDark
               ? 'bg-slate-900 border-slate-800 hover:bg-slate-800'
               : 'bg-slate-50 border-slate-200 hover:bg-white'}"

@@ -12,7 +12,9 @@
   let isDark = $derived(app.theme === 'dark');
 
   // ─── Search state ──────────────────────────────────────────────
+  // ─── URL params: q (teks) & cat (kategori) ────────────────────
   let urlQuery = $derived($page.url.searchParams.get('q') ?? '');
+  let catParam = $derived($page.url.searchParams.get('cat') ?? '');
   let query = $state('');
   let isLoading = $state(false);
   let searchResults = $state<Article[]>([]);
@@ -53,6 +55,14 @@
   $effect(() => {
     if (urlQuery && urlQuery !== query) {
       query = urlQuery;
+    }
+  });
+
+  // ─── Sync URL category ──────────────────────────────────────────
+  $effect(() => {
+    if (catParam) {
+      const match = categories.find((c) => c.slug === catParam);
+      if (match) selectedCategory = match.name;
     }
   });
 
