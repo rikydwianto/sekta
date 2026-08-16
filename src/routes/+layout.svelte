@@ -1,11 +1,13 @@
 <script lang="ts">
   import '../app.css';
   import { page } from '$app/stores';
-  import { goto } from '$app/navigation';
+  import { afterNavigate, goto } from '$app/navigation';
   import BottomNav from '$lib/components/BottomNav.svelte';
   import DashboardFooter from '$lib/components/DashboardFooter.svelte';
   import SiteModal from '$lib/components/SiteModal.svelte';
   import { app, initAuth, initTheme } from '$lib/stores/app.svelte';
+  import { PUBLIC_POSTHOG_KEY, PUBLIC_POSTHOG_HOST } from '$env/static/public';
+  import posthog from 'posthog-js';
 
   let { children } = $props();
 
@@ -24,6 +26,20 @@
     if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
       navigator.serviceWorker.register('/sw.js');
     }
+  });
+
+  $effect(() => {
+    if (typeof window !== 'undefined' && PUBLIC_POSTHOG_KEY && !posthog.__loaded) {
+      posthog.init(PUBLIC_POSTHOG_KEY, {
+        api_host: PUBLIC_POSTHOG_HOST,
+        capture_pageview: false,
+        person_profiles: 'identified_only'
+      });
+    }
+  });
+
+  afterNavigate(() => {
+    if (posthog.__loaded) posthog.capture('$pageview');
   });
 
   $effect(() => {

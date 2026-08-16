@@ -1,6 +1,9 @@
 -- ============================================================
 -- SEKTA — TRACKING PENGUNJUNG (kota & negara)
 -- ============================================================
+-- OBSOLETE: tracking custom ini sudah diganti PostHog (posthog-js di
+-- +layout.svelte) dan tabel visits/geo_cache sudah di-drop. File ini
+-- disimpan sebagai referensi skema lama.
 -- Cara pakai:
 --   1. Buka Supabase Dashboard → SQL Editor → New query
 --   2. Salin seluruh isi file ini → Run

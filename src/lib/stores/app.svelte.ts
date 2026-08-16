@@ -10,6 +10,7 @@ import {
 } from '$lib/api';
 import { supabase } from '$lib/supabase';
 import { goto } from '$app/navigation';
+import posthog from 'posthog-js';
 
 const anonymousUser: UserProfile = { name: '', username: '', bio: '', avatar: '', role: 'USER', stats: { articles: 0, quizzes: 0 } };
 
@@ -79,6 +80,7 @@ export async function initAuth() {
     app.isLoggedIn = true;
     await syncFromSession(session.user);
     await consumeRedirect();
+    if (posthog.__loaded) posthog.identify(session.user.id);
   }
 
   supabase.auth.onAuthStateChange(async (_event, session) => {
@@ -87,11 +89,13 @@ export async function initAuth() {
       app.isLoggedIn = true;
       await syncFromSession(session.user);
       await consumeRedirect();
+      if (posthog.__loaded) posthog.identify(session.user.id);
     } else {
       app.isLoggedIn = false;
       app.user = anonymousUser;
       app.savedArticles = [];
       app.notifications = [];
+      if (posthog.__loaded) posthog.reset();
     }
   });
 }
@@ -102,6 +106,7 @@ export async function signOut() {
   app.user = anonymousUser;
   app.savedArticles = [];
   app.notifications = [];
+  if (posthog.__loaded) posthog.reset();
 }
 
 export function initTheme() {
