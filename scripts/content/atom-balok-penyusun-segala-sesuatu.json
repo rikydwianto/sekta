@@ -1,0 +1,51 @@
+{
+  "category": "sains",
+  "title": "Atom: Balok Penyusun Segala Sesuatu",
+  "slug": "atom-balok-penyusun-segala-sesuatu",
+  "excerpt": "Senyawa sekecil atom yang tak terlihat menyusun bintang, lautan, dan tubuhmu sendiri.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Bohr_atom_model.svg/1280px-Bohr_atom_model.svg.png",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Semua materi di alam semesta — dari debu hingga galaksi — tersusun dari atom. Satu atom begitu kecil sehingga diperlukan jutaan atom hanya untuk setebal rambut manusia." } },
+    { "type": "heading", "data": { "text": "Struktur atom" } },
+    { "type": "paragraph", "data": { "text": "Di pusat atom terdapat inti berisi proton (bermuatan positif) dan neutron (netral). Mengelilingi inti ada elektron bermuatan negatif. Kebanyakan ruang dalam atom ternyata kosong." } },
+    { "type": "fact", "data": { "text": "Jika atom diperbesar hingga sebesar stadion, intinya hanya sebesar kelereng di tengah lapangan." } },
+    { "type": "paragraph", "data": { "text": "Jumlah proton menentukan jenis atom: satu proton adalah hidrogen, enam adalah karbon, dan 92 adalah uranium. Kombinasi atom-atom ini membentuk setiap benda di sekitarmu." } }
+  ],
+  "fact": "99,999% volume atom sebenarnya ruang kosong — kamu lebih banyak 'udara' daripada 'materi'.",
+  "quiz": {
+    "title": "Kuis: Atom",
+    "description": "Seberapa kenal kamu dengan atom?",
+    "questions": [
+      {
+        "question": "Partikel bermuatan positif di dalam inti atom disebut?",
+        "options": [
+          { "label": "Proton", "is_correct": true },
+          { "label": "Elektron", "is_correct": false },
+          { "label": "Neutron", "is_correct": false },
+          { "label": "Foton", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Apa yang menentukan jenis sebuah atom?",
+        "options": [
+          { "label": "Jumlah proton", "is_correct": true },
+          { "label": "Jumlah elektron", "is_correct": false },
+          { "label": "Berat total", "is_correct": false },
+          { "label": "Warnanya", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Atom dengan 6 proton adalah...",
+        "options": [
+          { "label": "Karbon", "is_correct": true },
+          { "label": "Oksigen", "is_correct": false },
+          { "label": "Nitrogen", "is_correct": false },
+          { "label": "Hidrogen", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Atom — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Atom", "publisher": "Wikipedia" }
+  ]
+}

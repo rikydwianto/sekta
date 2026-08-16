@@ -1,0 +1,51 @@
+{
+  "category": "sejarah",
+  "title": "Piramida Giza: Makam Raksasa Para Firaun",
+  "slug": "piramida-giza-makam-raksasa-para-firaun",
+  "excerpt": "Ratusan ribu balok batu disusun tanpa crane modern — dan masih berdiri kokoh setelah 4.500 tahun.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/All_Gizah_Pyramids.jpg/1280px-All_Gizah_Pyramids.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Piramida Agung Giza dibangun sekitar 2.560 SM sebagai makam Firaun Khufu. Selama lebih dari 3.800 tahun, ia menjadi bangunan tertinggi di dunia — 146 meter." } },
+    { "type": "heading", "data": { "text": "Bagaimana cara membangunnya?" } },
+    { "type": "paragraph", "data": { "text": "Para arkeolog meyakini balok batu kapur seberat rata-rata 2,5 ton diangkut lewat jalur ramp dan diatur ribuan pekerja. Perkiraan jumlah pekerja: sekitar 20.000–30.000 orang, bukan budak yang dipaksa seperti sering diceritakan." } },
+    { "type": "fact", "data": { "text": "Piramida Agung memuat sekitar 2,3 juta balok batu." } },
+    { "type": "paragraph", "data": { "text": "Presisi susunan batunya sangat tinggi — celah antar balok nyaris tak bisa dimasuki pisau. Hingga kini masih jadi misteri bagaimana tingkat akurasi itu dicapai tanpa teknologi modern." } }
+  ],
+  "fact": "Piramida Agung Giza terdiri dari sekitar 2,3 juta balok batu dengan berat rata-rata 2,5 ton.",
+  "quiz": {
+    "title": "Kuis: Piramida Giza",
+    "description": "Tes pengetahuannmu soal piramida paling terkenal di dunia.",
+    "questions": [
+      {
+        "question": "Piramida Agung Giza dibangun sebagai makam firaun siapa?",
+        "options": [
+          { "label": "Khufu", "is_correct": true },
+          { "label": "Tutankhamun", "is_correct": false },
+          { "label": "Ramses II", "is_correct": false },
+          { "label": "Cleopatra", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Perkiraan jumlah pekerja pembangunan piramida adalah...",
+        "options": [
+          { "label": "20.000–30.000 pekerja", "is_correct": true },
+          { "label": "1 juta budak", "is_correct": false },
+          { "label": "100 pekerja", "is_correct": false },
+          { "label": "5.000 tentara", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Berapa perkiraan tinggi asli Piramida Agung?",
+        "options": [
+          { "label": "146 meter", "is_correct": true },
+          { "label": "50 meter", "is_correct": false },
+          { "label": "300 meter", "is_correct": false },
+          { "label": "400 meter", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Piramida Giza — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Piramida_Giza", "publisher": "Wikipedia" }
+  ]
+}

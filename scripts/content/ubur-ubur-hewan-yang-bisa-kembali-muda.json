@@ -1,0 +1,51 @@
+{
+  "category": "hewan",
+  "title": "Ubur-ubur: Hewan yang Bisa 'Kembali Muda'",
+  "slug": "ubur-ubur-hewan-yang-bisa-kembali-muda",
+  "excerpt": "Satu spesies ubur-ubur bisa memutar balik siklus hidupnya dan berpotensi hidup abadi.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Jellyfish_-_Flickr_-_NOAA_Ocean_Exploration_%5E_Research.jpg/1280px-Jellyfish_-_Flickr_-_NOAA_Ocean_Exploration_%5E_Research.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Ubur-ubur termasuk hewan purba yang sudah ada lebih dari 500 juta tahun — bahkan mendahului dinosaurus. Tubuhnya 95% air dan tidak punya otak, jantung, maupun darah." } },
+    { "type": "heading", "data": { "text": "Rahasia keabadian" } },
+    { "type": "paragraph", "data": { "text": "Ubur-ubur abadi (Turritopsis dohrnii) mampu mengubah sel-selnya kembali ke tahap muda saat tertekan atau terluka. Siklus hidupnya bisa berputar mundur, membuatnya tampak tak pernah benar-benar mati secara alami." } },
+    { "type": "fact", "data": { "text": "Ubur-ubur abadi bisa 'kembali muda' berkali-kali melalui proses bernama transdiferensiasi." } },
+    { "type": "paragraph", "data": { "text": "Meski tanpa otak, ubur-ubur punya jaringan saraf sederhana yang mendeteksi cahaya, sentuhan, dan keseimbangan. Mereka juga dikenal dengan sengatannya yang menyengat — 'berbisa' — walau sebagian besar tak berbahaya bagi manusia." } }
+  ],
+  "fact": "Ubur-ubur abadi (Turritopsis dohrnii) bisa memutar kembali siklus hidupnya ke tahap muda — tampak abadi.",
+  "quiz": {
+    "title": "Kuis: Ubur-ubur",
+    "description": "Seberapa kenal kamu dengan hewan misterius ini?",
+    "questions": [
+      {
+        "question": "Berapa persen tubuh ubur-ubur terdiri dari air?",
+        "options": [
+          { "label": "Sekitar 95%", "is_correct": true },
+          { "label": "Sekitar 20%", "is_correct": false },
+          { "label": "Sekitar 50%", "is_correct": false },
+          { "label": "Sekitar 70%", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Ubur-ubur abadi bisa 'kembali muda' lewat proses bernama...",
+        "options": [
+          { "label": "Transdiferensiasi", "is_correct": true },
+          { "label": "Fotosintesis", "is_correct": false },
+          { "label": "Estivasi", "is_correct": false },
+          { "label": "Migrasi", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Ubur-ubur pertama muncul di Bumi sekitar...",
+        "options": [
+          { "label": "Lebih dari 500 juta tahun lalu", "is_correct": true },
+          { "label": "10.000 tahun lalu", "is_correct": false },
+          { "label": "Bersamaan dengan dinosaurus", "is_correct": false },
+          { "label": "Zaman es terakhir", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Ubur-ubur — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Ubur-ubur", "publisher": "Wikipedia" }
+  ]
+}

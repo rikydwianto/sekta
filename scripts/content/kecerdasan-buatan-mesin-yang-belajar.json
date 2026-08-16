@@ -1,0 +1,51 @@
+{
+  "category": "teknologi",
+  "title": "Kecerdasan Buatan: Mesin yang Belajar",
+  "slug": "kecerdasan-buatan-mesin-yang-belajar",
+  "excerpt": "AI bukan robot jahat di film — ia mesin yang belajar dari pola data untuk membantu pekerjaan manusia.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Artificial_Intelligence_%28AI%29_and_Robotics_exhibition_at_the_Heinz_Nixdorf_MuseumsForum.jpg/1280px-Artificial_Intelligence_%28AI%29_and_Robotics_exhibition_at_the_Heinz_Nixdorf_MuseumsForum.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Kecerdasan buatan (AI) adalah bidang ilmu komputer yang membuat mesin mampu melakukan tugas yang biasa butuh kecerdasan manusia — seperti mengenali gambar, memahami bahasa, dan mengambil keputusan." } },
+    { "type": "heading", "data": { "text": "Belajar dari contoh" } },
+    { "type": "paragraph", "data": { "text": "Model AI 'dilatih' dengan jutaan contoh data. Dengan mempelajari pola berulang, model bisa menebak hal baru yang belum pernah dilihat. Prinsip ini disebut machine learning." } },
+    { "type": "fact", "data": { "text": "Gagasan AI sudah ada sejak 1950-an, jauh sebelum komputer pribadi muncul." } },
+    { "type": "paragraph", "data": { "text": "Saat ini AI ada di mana-mana: rekomendasi video, filter spam, asisten suara, hingga membantu dokter membaca hasil rontgen. Tantangan utamanya bukan teknologi, tapi memastikan AI dipakai secara adil dan aman." } }
+  ],
+  "fact": "Gagasan kecerdasan buatan sudah digagas sejak tahun 1950-an, puluhan tahun sebelum komputer pribadi populer.",
+  "quiz": {
+    "title": "Kuis: Kecerdasan Buatan",
+    "description": "Tes pemahamanmu soal AI.",
+    "questions": [
+      {
+        "question": "Cara utama model AI belajar adalah...",
+        "options": [
+          { "label": "Mempelajari pola dari banyak data", "is_correct": true },
+          { "label": "Diprogram manual baris per baris", "is_correct": false },
+          { "label": "Menyalin dari internet secara acak", "is_correct": false },
+          { "label": "Menebak tanpa contoh", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Istilah untuk proses AI belajar dari data adalah...",
+        "options": [
+          { "label": "Machine learning", "is_correct": true },
+          { "label": "Data mining", "is_correct": false },
+          { "label": "Cloud computing", "is_correct": false },
+          { "label": "Cybersecurity", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Ide kecerdasan buatan sudah ada sejak dekade...",
+        "options": [
+          { "label": "1950-an", "is_correct": true },
+          { "label": "1990-an", "is_correct": false },
+          { "label": "2000-an", "is_correct": false },
+          { "label": "1980-an", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Kecerdasan buatan — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Kecerdasan_buatan", "publisher": "Wikipedia" }
+  ]
+}

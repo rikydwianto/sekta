@@ -1,0 +1,51 @@
+{
+  "category": "manusia",
+  "title": "Jantung: Mesin Pemompa yang Tak Pernah Berhenti",
+  "slug": "jantung-mesin-pemompa-yang-tak-pernah-berhenti",
+  "excerpt": "Seukuran kepalan tangan, memompa sepanjang hidup tanpa libur — inilah jantungmu.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Heart_numlabels.svg/1280px-Heart_numlabels.svg.png",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Jantung adalah otot seukuran kepalan tangan yang memompa darah ke seluruh tubuh. Dalam sehari, ia memompa sekitar 7.500 liter darah — setara menempuh jarak mengelilingi Bumi lebih dari 96.000 km melalui pembuluh darah." } },
+    { "type": "heading", "data": { "text": "Denyut tanpa henti" } },
+    { "type": "paragraph", "data": { "text": "Jantung berdetak sekitar 100.000 kali sehari. Setiap detak didorong oleh sinyal listrik yang dibangkitkan sendiri oleh jaringan khusus jantung, jadi ia tak bergantung perintah otak untuk terus berdetak." } },
+    { "type": "fact", "data": { "text": "Jantung bayi dalam kandungan sudah mulai berdetak sekitar 3 minggu setelah pembuahan." } },
+    { "type": "paragraph", "data": { "text": "Olahraga teratur memperkuat otot jantung, menurunkan tekanan darah, dan menjaga kadar gula tetap stabil. Menjaga jantung berarti menjaga seluruh tubuh." } }
+  ],
+  "fact": "Jantung manusia memompa sekitar 7.500 liter darah setiap hari.",
+  "quiz": {
+    "title": "Kuis: Jantung",
+    "description": "Tes pengetahuannmu tentang mesin tubuh paling penting.",
+    "questions": [
+      {
+        "question": "Berapa kira-kira liter darah yang dipompa jantung setiap hari?",
+        "options": [
+          { "label": "Sekitar 7.500 liter", "is_correct": true },
+          { "label": "Sekitar 50 liter", "is_correct": false },
+          { "label": "Sekitar 1.000 liter", "is_correct": false },
+          { "label": "Sekitar 300 liter", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Apa yang mengendalikan detak jantung?",
+        "options": [
+          { "label": "Sinyal listrik yang dibangkitkan jantung sendiri", "is_correct": true },
+          { "label": "Perintah langsung otak tiap detak", "is_correct": false },
+          { "label": "Hormon dari lambung", "is_correct": false },
+          { "label": "Tekanan udara luar", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Jantung mulai berdetak dalam kandungan sekitar...",
+        "options": [
+          { "label": "3 minggu setelah pembuahan", "is_correct": true },
+          { "label": "9 bulan setelah pembuahan", "is_correct": false },
+          { "label": "Saat bayi lahir", "is_correct": false },
+          { "label": "1 hari sebelum lahir", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Jantung — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Jantung", "publisher": "Wikipedia" }
+  ]
+}

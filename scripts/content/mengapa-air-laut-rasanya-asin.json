@@ -1,0 +1,51 @@
+{
+  "category": "sains",
+  "title": "Mengapa Air Laut Terasa Asin?",
+  "slug": "mengapa-air-laut-rasanya-asin",
+  "excerpt": "Garam di laut tidak datang dari mana-mana — ia hasil perjalanan panjang air dan batuan selama jutaan tahun.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Baltic_Sea_view_from_Schmiedeberg_hill_in_Rerik%2C_2025-06-23.jpg/1280px-Baltic_Sea_view_from_Schmiedeberg_hill_in_Rerik%2C_2025-06-23.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Rasakan seteguk air laut — pasti asin. Rasa itu berasal dari garam terlarut yang terbawa sungai dari daratan. Menurut ilmuwan, sekitar 3,5% bobot air laut adalah garam terlarut, sebagian besar natrium klorida atau garam dapur." } },
+    { "type": "heading", "data": { "text": "Dari mana garamnya?" } },
+    { "type": "paragraph", "data": { "text": "Hujan yang turun ke daratan mengandung sedikit karbon dioksida dan menjadi asam lemah. Air asam ini mengikis batuan dan melepaskan mineral di dalamnya, termasuk ion natrium dan klorida. Sungai-sungai lalu mengangkut mineral itu ke laut, dan garam pun menumpuk selama jutaan tahun." } },
+    { "type": "fact", "data": { "text": "Air laut mengandung sekitar 50 kuadriliun ton garam terlarut." } },
+    { "type": "paragraph", "data": { "text": "Ketika air laut menguap, garamnya tertinggal, sehingga kadar garam laut terus meningkat perlahan. Itulah mengapa laut terasa jauh lebih asin dibanding air sungai yang jadi sumbernya." } }
+  ],
+  "fact": "Sekitar 50 kuadriliun ton garam terlarut mengambang di seluruh samudra Bumi.",
+  "quiz": {
+    "title": "Kuis: Mengapa Air Laut Terasa Asin?",
+    "description": "Uji pengetahuannmu tentang asal garam laut.",
+    "questions": [
+      {
+        "question": "Berapa persen bobot air laut berupa garam terlarut?",
+        "options": [
+          { "label": "Sekitar 3,5%", "is_correct": true },
+          { "label": "Sekitar 10%", "is_correct": false },
+          { "label": "Sekitar 0,5%", "is_correct": false },
+          { "label": "Sekitar 20%", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Apa yang menjadi sumber utama garam di laut?",
+        "options": [
+          { "label": "Batuan daratan yang terkikis", "is_correct": true },
+          { "label": "Meteor dari luar angkasa", "is_correct": false },
+          { "label": "Uap air yang mengembun", "is_correct": false },
+          { "label": "Angin di permukaan laut", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Apa komponen utama garam laut?",
+        "options": [
+          { "label": "Natrium klorida", "is_correct": true },
+          { "label": "Kalsium karbonat", "is_correct": false },
+          { "label": "Magnesium sulfat", "is_correct": false },
+          { "label": "Kalium nitrat", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Air laut — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Air_laut", "publisher": "Wikipedia" }
+  ]
+}

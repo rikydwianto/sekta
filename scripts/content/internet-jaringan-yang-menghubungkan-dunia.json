@@ -1,0 +1,51 @@
+{
+  "category": "teknologi",
+  "title": "Internet: Jaringan yang Menghubungkan Dunia",
+  "slug": "internet-jaringan-yang-menghubungkan-dunia",
+  "excerpt": "Dari proyek militer kecil menjadi jaringan milyaran perangkat — begini internet tumbuh.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Internet_Censorship_and_Surveillance_World_Map.svg/1280px-Internet_Censorship_and_Surveillance_World_Map.svg.png",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Internet berawal dari ARPANET, proyek riset Departemen Pertahanan Amerika Serikat pada 1969 untuk menghubungkan komputer antar universitas. Ide dasarnya: jaringan yang tetap hidup meski sebagian titiknya rusak." } },
+    { "type": "heading", "data": { "text": "Bagaimana data bepergian?" } },
+    { "type": "paragraph", "data": { "text": "Data dipecah menjadi paket-paket kecil yang dikirim lewat berbagai jalur, lalu dirakit ulang di tujuan. Kabel serat optik di dasar laut menjadi tulang punggung koneksi antar benua." } },
+    { "type": "fact", "data": { "text": "Lebih dari 95% trafik data antar benua melewati kabel serat optik bawah laut." } },
+    { "type": "paragraph", "data": { "text": "Karena paket bisa dipilihkan rute secara dinamis, internet tetap berfungsi meski jalur tertentu bermasalah — persis tujuan awal desainnya." } }
+  ],
+  "fact": "Lebih dari 95% trafik data antar benua mengalir lewat kabel serat optik di dasar laut.",
+  "quiz": {
+    "title": "Kuis: Internet",
+    "description": "Tahukah kamu asal-usul internet?",
+    "questions": [
+      {
+        "question": "Internet modern berakar dari jaringan militer Amerika bernama...",
+        "options": [
+          { "label": "ARPANET", "is_correct": true },
+          { "label": "LOTUS", "is_correct": false },
+          { "label": "CYCLADES", "is_correct": false },
+          { "label": "ETHERNET-1", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Bagaimana data dikirim lewat internet?",
+        "options": [
+          { "label": "Dipecah menjadi paket kecil", "is_correct": true },
+          { "label": "Satu file utuh sekali jalan", "is_correct": false },
+          { "label": "Lewat satelit saja", "is_correct": false },
+          { "label": "Dikirim lewat radio FM", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Tulang punggung koneksi antar benua saat ini adalah...",
+        "options": [
+          { "label": "Kabel serat optik bawah laut", "is_correct": true },
+          { "label": "Menara radio", "is_correct": false },
+          { "label": "Merpati pos", "is_correct": false },
+          { "label": "Balon udara", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Internet — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Internet", "publisher": "Wikipedia" }
+  ]
+}

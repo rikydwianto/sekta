@@ -1,0 +1,51 @@
+{
+  "category": "kopi",
+  "title": "Kopi: Minuman yang Mengubah Sejarah Dunia",
+  "slug": "kopi-minuman-yang-mengubah-sejarah-dunia",
+  "excerpt": "Dari legenda kambing yang menari hingga kedai-kedai di seluruh dunia — begitulah kopi merevolusi peradaban.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Coffee_cup_and_coffee_bean.jpg/1280px-Coffee_cup_and_coffee_bean.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Legenda menceritakan seorang penggembala Ethiopia melihat kambingnya jadi sangat energik setelah memakan buah merah di semak tertentu. Buah itu adalah kopi, dan sejak itu manusia tak pernah berhenti mengonsumsinya." } },
+    { "type": "heading", "data": { "text": "Dari tempat ibadah ke seluruh dunia" } },
+    { "type": "paragraph", "data": { "text": "Kopi awalnya dikonsumsi di dunia Islam sebagai minuman penjaga semangat beribadah. Lalu melalui Jalur Sutra dan kolonialisme, kedai kopi menyebar ke Eropa dan seluruh dunia, menjadi pusat diskusi dan lahirnya banyak gagasan modern." } },
+    { "type": "fact", "data": { "text": "Kafein bekerja dengan memblokir molekul rasa kantuk (adenosin) di otak, membuat kita merasa segar." } },
+    { "type": "paragraph", "data": { "text": "Saat ini kopi jadi salah satu komoditas paling diperdagangkan di dunia. Indonesia sendiri punya tradisi kopi yang kuat — dari kopi Gayo hingga kopi luwak." } }
+  ],
+  "fact": "Kafein bekerja dengan memblokir molekul pemicu kantuk bernama adenosin di otak.",
+  "quiz": {
+    "title": "Kuis: Kopi",
+    "description": "Seberapa paham kamu soal sejarah dan sains kopi?",
+    "questions": [
+      {
+        "question": "Kopi pertama kali ditemukan berdasarkan legenda di negara mana?",
+        "options": [
+          { "label": "Ethiopia", "is_correct": true },
+          { "label": "Brazil", "is_correct": false },
+          { "label": "Indonesia", "is_correct": false },
+          { "label": "Italia", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Cara kerja kafein membuat kita segar adalah...",
+        "options": [
+          { "label": "Memblokir molekul adenosin penyebab kantuk", "is_correct": true },
+          { "label": "Menambah gula ke darah", "is_correct": false },
+          { "label": "Mendinginkan tubuh", "is_correct": false },
+          { "label": "Menyerap oksigen", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Kedai kopi modern pertama tumbuh pesat di...",
+        "options": [
+          { "label": "Dunia Islam dan kemudian Eropa", "is_correct": true },
+          { "label": "Amerika Serikat saja", "is_correct": false },
+          { "label": "Australia", "is_correct": false },
+          { "label": "Cina kuno", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Kopi — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Kopi", "publisher": "Wikipedia" }
+  ]
+}

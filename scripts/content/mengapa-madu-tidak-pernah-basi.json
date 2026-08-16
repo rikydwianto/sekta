@@ -1,0 +1,51 @@
+{
+  "category": "sains",
+  "title": "Mengapa Madu Tidak Pernah Basi?",
+  "slug": "mengapa-madu-tidak-pernah-basi",
+  "excerpt": "Madu dalam guci berusia 3.000 tahun masih bisa dimakan. Apa rahasia di balik keawetannya?",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Honey_Jar_icon.svg/1280px-Honey_Jar_icon.svg.png",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Para arkeolog pernah menemukan madu berusia ribuan tahun di makam Mesir kuno yang masih aman dikonsumsi. Madu nyaris tidak bisa basi karena tiga faktor utama bekerja bersamaan." } },
+    { "type": "heading", "data": { "text": "Tiga senjata madu" } },
+    { "type": "list", "data": { "items": ["Kadar air rendah — bakteri butuh air untuk berkembang biak.", "Kadar gula sangat tinggi — menarik air keluar dari sel mikroba.", "pH asam plus sedikit hidrogen peroksida — lingkungan tidak ramah bagi bakteri."] } },
+    { "type": "fact", "data": { "text": "Lebah mengepakkan sayap di sarang untuk menguapkan air dari nektar hingga kadar air madu di bawah 18%." } },
+    { "type": "paragraph", "data": { "text": "Madu bisa mengkristal atau berubah warna seiring waktu, tapi itu bukan tanda basi. Simpan dalam wadah tertutup dan madu akan bertahan praktis selamanya." } }
+  ],
+  "fact": "Madu yang ditemukan di makam Mesir berusia lebih dari 3.000 tahun dan masih layak makan.",
+  "quiz": {
+    "title": "Kuis: Madu",
+    "description": "Coba tebak rahasia madu yang tidak pernah basi.",
+    "questions": [
+      {
+        "question": "Apa alasan utama madu tidak mudah basi?",
+        "options": [
+          { "label": "Kadar airnya sangat rendah", "is_correct": true },
+          { "label": "Mengandung banyak vitamin", "is_correct": false },
+          { "label": "Disimpan di tempat gelap", "is_correct": false },
+          { "label": "Berwarna kuning keemasan", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Bagaimana lebah menurunkan kadar air nektar menjadi madu?",
+        "options": [
+          { "label": "Menguapkan air dengan kepakan sayap", "is_correct": true },
+          { "label": "Menjemurnya di bawah matahari", "is_correct": false },
+          { "label": "Menambahkan garam", "is_correct": false },
+          { "label": "Merebus nektar", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Madu yang mengkristal sebenarnya...",
+        "options": [
+          { "label": "Masih aman dimakan", "is_correct": true },
+          { "label": "Sudah basi dan beracun", "is_correct": false },
+          { "label": "Terkontaminasi bakteri", "is_correct": false },
+          { "label": "Harus segera dibuang", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Madu — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Madu", "publisher": "Wikipedia" }
+  ]
+}

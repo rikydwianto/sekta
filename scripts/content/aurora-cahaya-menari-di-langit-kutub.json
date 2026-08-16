@@ -1,0 +1,51 @@
+{
+  "category": "sains",
+  "title": "Aurora: Cahaya Menari di Langit Kutub",
+  "slug": "aurora-cahaya-menari-di-langit-kutub",
+  "excerpt": "Tirai cahaya hijau dan ungu di langit kutub bukan sihir — itu partikel matahari yang bertabrakan dengan atmosfer Bumi.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Aurora_borealis_above_Storfjorden_and_the_Lyngen_Alps_in_moonlight%2C_2012_March.jpg/1280px-Aurora_borealis_above_Storfjorden_and_the_Lyngen_Alps_in_moonlight%2C_2012_March.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Aurora borealis di kutub utara dan aurora australis di kutub selatan adalah dua pertunjukan cahaya paling spektakuler di Bumi. Lalu apa yang sebenarnya terjadi?" } },
+    { "type": "heading", "data": { "text": "Tabrakan di udara tipis" } },
+    { "type": "paragraph", "data": { "text": "Matahari terus melepaskan aliran partikel bermuatan yang disebut angin matahari. Saat partikel ini mendekati Bumi, medan magnet planet menyalurkannya ke arah kutub. Di sana mereka bertabrakan dengan atom oksigen dan nitrogen di atmosfer, memicu pancaran cahaya berwarna." } },
+    { "type": "fact", "data": { "text": "Warna hijau datang dari oksigen di ketinggian sekitar 100 km; merah dan ungu dari nitrogen." } },
+    { "type": "paragraph", "data": { "text": "Meski tampak dramatis, aurora terjadi ratusan kilometer di atas kepala kita dan tidak berbahaya. Fenomena yang sama juga pernah terdeteksi di planet lain seperti Jupiter dan Saturnus." } }
+  ],
+  "fact": "Aurora di Bumi dan planet raksasa seperti Jupiter ternyata memancarkan warna dan pola yang serupa.",
+  "quiz": {
+    "title": "Kuis: Aurora",
+    "description": "Seberapa paham kamu tentang aurora?",
+    "questions": [
+      {
+        "question": "Apa nama aurora di dekat kutub selatan?",
+        "options": [
+          { "label": "Aurora australis", "is_correct": true },
+          { "label": "Aurora borealis", "is_correct": false },
+          { "label": "Aurora solaris", "is_correct": false },
+          { "label": "Aurora lunaris", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Pemicu utama aurora adalah partikel dari...",
+        "options": [
+          { "label": "Matahari (angin matahari)", "is_correct": true },
+          { "label": "Bulan", "is_correct": false },
+          { "label": "Gempa bumi", "is_correct": false },
+          { "label": "Pesawat terbang", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Warna hijau aurora berasal dari tabrakan dengan atom...",
+        "options": [
+          { "label": "Oksigen", "is_correct": true },
+          { "label": "Nitrogen", "is_correct": false },
+          { "label": "Karbon", "is_correct": false },
+          { "label": "Hidrogen", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Aurora — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Aurora", "publisher": "Wikipedia" }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "category": "hewan",
+  "title": "Gurita: Ahli Kamuflase Laut dengan Tiga Jantung",
+  "slug": "gurita-ahli-kamuflase-laut-tiga-jantung",
+  "excerpt": "Tiga jantung, darah biru, dan kemampuan berubah warna — gurita hampir seperti makhluk dari planet lain.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Pulpo_com%C3%BAn_%28Octopus_vulgaris%29%2C_Parque_natural_de_la_Arr%C3%A1bida%2C_Portugal%2C_2020-07-21%2C_DD_46.jpg/1280px-Pulpo_com%C3%BAn_%28Octopus_vulgaris%29%2C_Parque_natural_de_la_Arr%C3%A1bida%2C_Portugal%2C_2020-07-21%2C_DD_46.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Gurita termasuk hewan paling cerdas di laut. Ia bisa membuka tutup botol, memecahkan teka-teki sederhana, bahkan mengenali wajah manusia." } },
+    { "type": "heading", "data": { "text": "Tiga jantung dan darah biru" } },
+    { "type": "paragraph", "data": { "text": "Dua jantungnya memompa darah ke insang, satu lagi ke seluruh tubuh. Darahnya berwarna biru karena menggunakan tembaga (hemosianin) untuk mengangkut oksigen, bukan besi seperti kita." } },
+    { "type": "fact", "data": { "text": "Sel kulit gurita mengandung pigmen yang bisa dikendalikan secara sadar, memungkinkan ia berubah warna dan tekstur dalam sekejap." } },
+    { "type": "paragraph", "data": { "text": "Delapan lengannya juga punya pikiran 'sendiri' — sebagian sarafnya terdistribusi di tiap lengan, sehingga setiap lengan bisa bergerak dan merasakan secara independen." } }
+  ],
+  "fact": "Gurita punya 3 jantung, darah biru, dan setiap lengannya bisa berpikir dan meraba secara mandiri.",
+  "quiz": {
+    "title": "Kuis: Gurita",
+    "description": "Uji pengetahuannmu tentang sang jenius laut ini.",
+    "questions": [
+      {
+        "question": "Berapa jumlah jantung gurita?",
+        "options": [
+          { "label": "Tiga", "is_correct": true },
+          { "label": "Satu", "is_correct": false },
+          { "label": "Lima", "is_correct": false },
+          { "label": "Tidak punya jantung", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Kenapa darah gurita berwarna biru?",
+        "options": [
+          { "label": "Menggunakan tembaga untuk mengangkut oksigen", "is_correct": true },
+          { "label": "Mengandung banyak zat pewarna", "is_correct": false },
+          { "label": "Selalu dingin", "is_correct": false },
+          { "label": "Menggunakan besi seperti manusia", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Kemampuan gurita berubah warna disebut...",
+        "options": [
+          { "label": "Kamuflase dengan pigmen kulit yang dikendalikan sadar", "is_correct": true },
+          { "label": "Biotermogenesis", "is_correct": false },
+          { "label": "Metamorfosis", "is_correct": false },
+          { "label": "Fotosintesis", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Gurita — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Gurita", "publisher": "Wikipedia" }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "category": "sains",
+  "title": "Fotosintesis: Dapur Makanan di Dalam Daun",
+  "slug": "fotosintesis-dapur-makanan-di-dalam-daun",
+  "excerpt": "Tanaman tidak makan seperti kita — ia memasak makanannya sendiri memakai cahaya matahari.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/The_physiology_of_photosynthesis_%28IA_physiologyofphot00bose%29.pdf/page1-500px-The_physiology_of_photosynthesis_%28IA_physiologyofphot00bose%29.pdf.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Setiap kali kamu melihat daun hijau, kamu sedang melihat pabrik makanan. Lewat proses bernama fotosintesis, tanaman menangkap energi matahari dan mengubahnya menjadi gula untuk bertumbuh." } },
+    { "type": "heading", "data": { "text": "Bahan dan produknya" } },
+    { "type": "list", "data": { "items": ["Bahan baku: air dari akar dan karbon dioksida dari udara.", "Energi: cahaya matahari yang diserap klorofil (pigmen hijau).", "Hasil: glukosa sebagai makanan, dan oksigen sebagai produk sampingan."] } },
+    { "type": "fact", "data": { "text": "Oksigen yang kita hirup sebagian besar dihasilkan oleh fotosintesis fitoplankton di laut." } },
+    { "type": "paragraph", "data": { "text": "Tanpa fotosintesis, tidak ada oksigen di atmosfer dan tidak ada rantai makanan. Kita semua bergantung pada proses sederhana yang terjadi diam-diam di dalam daun." } }
+  ],
+  "fact": "Lebih dari separuh oksigen Bumi dihasilkan fitoplankton laut lewat fotosintesis.",
+  "quiz": {
+    "title": "Kuis: Fotosintesis",
+    "description": "Tes pemahamanmu tentang proses fotosintesis.",
+    "questions": [
+      {
+        "question": "Apa fungsi utama fotosintesis bagi tanaman?",
+        "options": [
+          { "label": "Membuat makanan berupa gula", "is_correct": true },
+          { "label": "Menyaring air tanah", "is_correct": false },
+          { "label": "Menghasilkan bunga", "is_correct": false },
+          { "label": "Mengusir hama", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Pigmen hijau penyerap cahaya pada daun disebut?",
+        "options": [
+          { "label": "Klorofil", "is_correct": true },
+          { "label": "Melanin", "is_correct": false },
+          { "label": "Keratin", "is_correct": false },
+          { "label": "Hemoglobin", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Bahan baku fotosintesis adalah air dan...",
+        "options": [
+          { "label": "Karbon dioksida", "is_correct": true },
+          { "label": "Oksigen", "is_correct": false },
+          { "label": "Nitrogen", "is_correct": false },
+          { "label": "Hidrogen", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Fotosintesis — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Fotosintesis", "publisher": "Wikipedia" }
+  ]
+}

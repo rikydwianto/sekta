@@ -1,0 +1,51 @@
+{
+  "category": "sejarah",
+  "title": "Tembok Besar China: Raksasa Batu Sepanjang Ribuan Kilometer",
+  "slug": "tembok-besar-china-raksasa-batu",
+  "excerpt": "Tembok yang terlihat dari luar angkasa hanyalah mitos, tapi panjang aslinya membuat rahang berdecak.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Badaling_China_Great-Wall-of-China-01.jpg/1280px-Badaling_China_Great-Wall-of-China-01.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Tembok Besar China sering disebut satu-satunya karya manusia yang terlihat dari bulan. Itu mitos — tapi bukan berarti tembok ini biasa-biasa saja." } },
+    { "type": "heading", "data": { "text": "Bukan satu tembok, tapi jaringan" } },
+    { "type": "paragraph", "data": { "text": "Tembok Besar sebenarnya kumpulan benteng dan bentangan tembok dari berbagai dinasti yang dibangun berabad-abad. Jika semua bagian dijumlahkan, total panjangnya melebihi 21.000 kilometer." } },
+    { "type": "fact", "data": { "text": "Pembangunan tembok terpadat terjadi pada Dinasti Ming (1368–1644) dengan panjang sekitar 8.850 km." } },
+    { "type": "paragraph", "data": { "text": "Fungsinya bukan hanya pertahanan — tembok juga menjadi jalur patroli, sistem peringatan dengan api asap, dan kontrol perdagangan di sepanjang Jalur Sutra." } }
+  ],
+  "fact": "Tembok Besar China bukan satu tembok tunggal, melainkan jaringan benteng berbagai dinasti sepanjang lebih dari 21.000 km.",
+  "quiz": {
+    "title": "Kuis: Tembok Besar China",
+    "description": "Uji pengetahuanmu soal Tembok Besar China.",
+    "questions": [
+      {
+        "question": "Mitos populer tentang Tembok Besar China adalah...",
+        "options": [
+          { "label": "Terlihat dari bulan", "is_correct": true },
+          { "label": "Dibangun dalam setahun", "is_correct": false },
+          { "label": "Terbuat dari emas", "is_correct": false },
+          { "label": "Tenggelam di laut", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Perkiraan total panjang seluruh jaringan Tembok Besar adalah...",
+        "options": [
+          { "label": "Lebih dari 21.000 km", "is_correct": true },
+          { "label": "Sekitar 500 km", "is_correct": false },
+          { "label": "Kurang dari 100 km", "is_correct": false },
+          { "label": "Sekitar 3.000 km", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Dinasti yang membangun bentangan tembok paling padat adalah...",
+        "options": [
+          { "label": "Ming", "is_correct": true },
+          { "label": "Han", "is_correct": false },
+          { "label": "Tang", "is_correct": false },
+          { "label": "Song", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Tembok Besar China — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Tembok_Besar_China", "publisher": "Wikipedia" }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "category": "dunia",
+  "title": "Laut Kaspia: 'Laut' Terbesar di Dunia",
+  "slug": "laut-kaspia-laut-terbesar-di-dunia",
+  "excerpt": "Dinamai laut, dikelilingi daratan, dan merupakan danau terbesar di Bumi — inilah paradoks Laut Kaspia.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Caspian_Sea_from_orbit.jpg/1280px-Caspian_Sea_from_orbit.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Laut Kaspia punya luas sekitar 371.000 km² — menjadikannya badan air tertutup terbesar di dunia. Tapi tunggu, apakah ia laut atau danau?" } },
+    { "type": "heading", "data": { "text": "Laut atau danau?" } },
+    { "type": "paragraph", "data": { "text": "Secara geografis, Laut Kaspia adalah danau endorheik: perairan tertutup yang tidak terhubung ke samudra. Ia disebut 'laut' karena ukurannya yang sangat besar dan airnya yang sedikit asin." } },
+    { "type": "fact", "data": { "text": "Laut Kaspia terletak jauh di bawah permukaan laut — permukaannya sekitar 28 meter di bawah permukaan laut global." } },
+    { "type": "paragraph", "data": { "text": "Kaspia dikelilingi lima negara: Rusia, Kazakhstan, Turkmenistan, Iran, dan Azerbaijan. Kawasan ini juga menyimpan salah satu cadangan minyak dan gas terbesar di dunia." } }
+  ],
+  "fact": "Permukaan Laut Kaspia sekitar 28 meter di bawah permukaan laut global, membuatnya tetap datar meski hujan jarang di sana.",
+  "quiz": {
+    "title": "Kuis: Laut Kaspia",
+    "description": "Tes pengetahuannmu soal perairan yang membingungkan ini.",
+    "questions": [
+      {
+        "question": "Laut Kaspia sebenarnya adalah...",
+        "options": [
+          { "label": "Danau terbesar di dunia", "is_correct": true },
+          { "label": "Samudra tersembunyi", "is_correct": false },
+          { "label": "Selat sempit", "is_correct": false },
+          { "label": "Teluk samudra", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Alasan Kaspia disebut 'laut' adalah...",
+        "options": [
+          { "label": "Ukurannya sangat besar dan airnya agak asin", "is_correct": true },
+          { "label": "Terhubung langsung ke Samudra Hindia", "is_correct": false },
+          { "label": "Memiliki gelombang pasang besar", "is_correct": false },
+          { "label": "Dikelilingi es sepanjang tahun", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Berapa negara yang mengelilingi Laut Kaspia?",
+        "options": [
+          { "label": "Lima negara", "is_correct": true },
+          { "label": "Tiga negara", "is_correct": false },
+          { "label": "Tujuh negara", "is_correct": false },
+          { "label": "Satu negara", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Laut Kaspia — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Laut_Kaspia", "publisher": "Wikipedia" }
+  ]
+}

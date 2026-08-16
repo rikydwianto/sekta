@@ -1,0 +1,51 @@
+{
+  "category": "dunia",
+  "title": "Laut Mati: Air Paling Asin yang Bikin Kamu Mengapung",
+  "slug": "laut-mati-air-paling-asin",
+  "excerpt": "Berenang di Laut Mati rasanya seperti duduk di atas bantal air — dan kamu hampir mustahil tenggelam.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Dead_Sea_salt_formation_%28Aerial_view%2C_2007%29.jpg/1280px-Dead_Sea_salt_formation_%28Aerial_view%2C_2007%29.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Laut Mati terletak di perbatasan Israel, Palestina, dan Yordania. Airnya sangat asin — sekitar 10 kali lebih asin dari air laut biasa — sehingga hampir tidak ada makhluk hidup yang bisa bertahan di dalamnya." } },
+    { "type": "heading", "data": { "text": "Kenapa orang tidak tenggelam?" } },
+    { "type": "paragraph", "data": { "text": "Garam terlarut membuat air Laut Mati jauh lebih padat daripada air biasa dan air tubuh manusia. Akibatnya, tubuh mendapat dorongan apung yang sangat kuat — kamu langsung mengapung begitu masuk ke air." } },
+    { "type": "fact", "data": { "text": "Tingkat salinitas Laut Mati mencapai sekitar 34%, hampir 10 kali air laut normal." } },
+    { "type": "paragraph", "data": { "text": "Namun hati-hati: airnya menyengat mata dan luka terbuka. Apalagi permukaan Laut Mati terus menyusut beberapa meter setiap tahun akibat berkurangnya aliran sungai Yordan." } }
+  ],
+  "fact": "Salinitas Laut Mati mencapai sekitar 34% — hampir 10 kali lebih asin dari air laut biasa.",
+  "quiz": {
+    "title": "Kuis: Laut Mati",
+    "description": "Tahukah kamu kenapa orang mengapung di Laut Mati?",
+    "questions": [
+      {
+        "question": "Kenapa orang mudah mengapung di Laut Mati?",
+        "options": [
+          { "label": "Airnya sangat padat karena kadar garam tinggi", "is_correct": true },
+          { "label": "Airnya lebih dingin dari air biasa", "is_correct": false },
+          { "label": "Ada medan magnet kuat", "is_correct": false },
+          { "label": "Anginnya meniup ke atas", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Berapa kadar garam Laut Mati dibanding air laut biasa?",
+        "options": [
+          { "label": "Sekitar 10 kali lipat", "is_correct": true },
+          { "label": "Sama saja", "is_correct": false },
+          { "label": "Setengahnya", "is_correct": false },
+          { "label": "Dua kali lipat", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Kenapa disebut 'mati'?",
+        "options": [
+          { "label": "Hampir tidak ada makhluk hidup yang bisa bertahan", "is_correct": true },
+          { "label": "Pernah ada perang besar", "is_correct": false },
+          { "label": "Airnya berwarna hitam pekat", "is_correct": false },
+          { "label": "Selalu beku", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Laut Mati — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Laut_Mati", "publisher": "Wikipedia" }
+  ]
+}
