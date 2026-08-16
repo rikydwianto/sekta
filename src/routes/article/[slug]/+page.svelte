@@ -1,6 +1,7 @@
 <script lang="ts">
 import { ChevronLeft, Bookmark, Settings, MessageCircle, Send, ChevronUp, ChevronDown, Volume2, Pause, Play, Square, Sun, Moon, Share2 } from '@lucide/svelte';
 import { goto, onNavigate } from '$app/navigation';
+import { page } from '$app/stores';
 import { untrack } from 'svelte';
 import type { ArticleBlock, ArticleReaction, CommentItem, Article } from '$lib/types';
 import { app, toggleSaveArticle, toggleTheme } from '$lib/stores/app.svelte';
@@ -289,6 +290,8 @@ import { recordRead } from '$lib/stores/reading.svelte';
     <meta property="og:description" content={article.excerpt} />
     <meta property="og:image" content={article.image} />
     <meta property="og:type" content="article" />
+    <meta property="og:url" content={`{$page.url.origin}/article/{article.slug}`} />
+    <link rel="canonical" href={`{$page.url.origin}/article/{article.slug}`} />
   {/if}
 </svelte:head>
 

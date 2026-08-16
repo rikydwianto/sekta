@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sekta.my.id/sitemap.xml
