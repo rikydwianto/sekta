@@ -6,7 +6,7 @@ function within<T>(ms: number, fallback: T, p: Promise<T>): Promise<T> {
 
 export const load = async ({ params }: { params: { slug: string } }) => {
   const slug = params.slug ?? '';
-  const article = await getArticleBySlug(slug).catch(() => undefined);
+  const article = await within(5000, undefined, getArticleBySlug(slug)).catch(() => undefined);
   if (article) incrementArticleView(article.id).catch(() => {});
   const [related, adjacent, quiz] = await Promise.all([
     within(2500, [], getRelatedArticles(slug).catch(() => [])),

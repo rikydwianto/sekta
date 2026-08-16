@@ -25,35 +25,41 @@ export function tiktokVideoId(url: string): string | null {
   return m ? m[1] : null;
 }
 
-let cachedIdVoice: SpeechSynthesisVoice | undefined;
+let idVoices: SpeechSynthesisVoice[] = [];
 
-function refreshIdVoice() {
+function refreshIdVoices() {
   if (typeof speechSynthesis === 'undefined') return;
-  const voices = speechSynthesis.getVoices();
-  const id = voices.filter((v) => v.lang?.toLowerCase().startsWith('id'));
-  if (id.length === 0) {
-    cachedIdVoice = undefined;
-    return;
-  }
-  // Preferensi suara perempuan (nama umum voice Indonesia perempuan).
-  const female = id.find((v) => /damayanti|gadis|andini|female|wanita|google bahasa indonesia|indonesian female/i.test(v.name));
-  cachedIdVoice = female ?? id[0];
+  idVoices = speechSynthesis.getVoices().filter((v) => v.lang?.toLowerCase().startsWith('id'));
 }
 
-// Paksa TTS memakai suara Bahasa Indonesia (wanita jika tersedia) dengan volume penuh,
-// agar tidak terbaca dengan aksen/ucapan bahasa lain.
+// Pilih suara Bahasa Indonesia (wanita jika tersedia). Voice divalidasi dari daftar
+// getVoices() saat dipanggil agar tidak memakai referensi voice yang sudah stale,
+// yang bisa membuat Chrome membuang pilihan voice dan jatuh ke suara default (English).
+export function pickIdVoice(): SpeechSynthesisVoice | undefined {
+  refreshIdVoices();
+  const female = idVoices.find((v) => /damayanti|gadis|andini|female|wanita|google bahasa indonesia|indonesian female/i.test(v.name));
+  return female ?? idVoices[0];
+}
+
+// Paksa TTS memakai suara Bahasa Indonesia dengan volume penuh. Saat voice terpilih,
+// lang diset persis dari voice agar voice ↔ lang selalu cocok (Chrome membuang keduanya
+// bila tidak match) dan teks tidak terbaca dengan aksen/ucapan bahasa lain.
 export function applyIdVoice(u: SpeechSynthesisUtterance) {
   if (typeof speechSynthesis === 'undefined') return;
-  u.lang = 'id-ID';
   u.volume = 1;
   u.pitch = 1;
-  refreshIdVoice();
-  if (cachedIdVoice) u.voice = cachedIdVoice;
+  const v = pickIdVoice();
+  if (v) {
+    u.voice = v;
+    u.lang = v.lang;
+  } else {
+    u.lang = 'id-ID';
+  }
 }
 
 if (typeof speechSynthesis !== 'undefined') {
-  refreshIdVoice();
-  speechSynthesis.addEventListener?.('voiceschanged', refreshIdVoice);
+  speechSynthesis.addEventListener?.('voiceschanged', refreshIdVoices);
+  refreshIdVoices();
 }
 
 // URL profil TikTok (tiktok.com/@user); selain itu null. Profil tidak bisa di-embed,

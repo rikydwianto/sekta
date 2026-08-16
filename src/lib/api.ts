@@ -8,7 +8,7 @@ async function cached<T>(key: string, fn: () => Promise<T>): Promise<T> {
   const hit = cache.get(key);
   if (hit && Date.now() - hit.t < CACHE_TTL_MS) return hit.v as T;
   const v = await fn();
-  cache.set(key, { t: Date.now(), v });
+  if (v != null) cache.set(key, { t: Date.now(), v });
   return v;
 }
 

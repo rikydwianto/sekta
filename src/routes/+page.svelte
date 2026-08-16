@@ -41,11 +41,14 @@
       speaking = false;
       return;
     }
-    const u = new SpeechSynthesisUtterance(fact.fact);
-    applyIdVoice(u);
-    u.onend = () => (speaking = false);
+    const text = fact.fact;
     speaking = true;
-    speechSynthesis.speak(u);
+    window.setTimeout(() => {
+      const u = new SpeechSynthesisUtterance(text);
+      applyIdVoice(u);
+      u.onend = () => (speaking = false);
+      speechSynthesis.speak(u);
+    }, 50);
   }
   let openFactModal = () => {
     factModal = true;
@@ -70,11 +73,14 @@
       speaking = false;
       return;
     }
-    const u = new SpeechSynthesisUtterance(flashFact.fact);
-    applyIdVoice(u);
-    u.onend = () => (speaking = false);
+    const text = flashFact.fact;
     speaking = true;
-    speechSynthesis.speak(u);
+    window.setTimeout(() => {
+      const u = new SpeechSynthesisUtterance(text);
+      applyIdVoice(u);
+      u.onend = () => (speaking = false);
+      speechSynthesis.speak(u);
+    }, 50);
   }
   function shareFact() {
     if (!fact) return;

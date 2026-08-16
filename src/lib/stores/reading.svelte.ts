@@ -23,10 +23,8 @@ export const readingHistory = $state<HistoryEntry[]>(load());
 
 export function recordRead(article: Article) {
   const entry: HistoryEntry = { slug: article.slug, title: article.title, image: article.image, at: Date.now() };
-  readingHistory.splice(
-    readingHistory.findIndex((h) => h.slug === article.slug),
-    1
-  );
+  const i = readingHistory.findIndex((h) => h.slug === article.slug);
+  if (i > -1) readingHistory.splice(i, 1);
   readingHistory.unshift(entry);
   save(readingHistory);
 }

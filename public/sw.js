@@ -1,4 +1,4 @@
-const CACHE = 'sekta-v1';
+const CACHE = 'sekta-v2';
 const APP_SHELL = ['/', '/manifest.json'];
 
 self.addEventListener('install', (e) => {
@@ -17,16 +17,18 @@ self.addEventListener('fetch', (e) => {
   const url = new URL(e.request.url);
   if (url.origin !== location.origin) return;
 
-  // Navigasi: network-first, fallback cache
+  // Navigasi: network-first, fallback ke cache halaman yang sesuai.
+  // Halaman TIDAK pernah disimpan sebagai '/', agar URL /article/x tidak
+  // menampilkan homepage saat jaringan bermasalah.
   if (e.request.mode === 'navigate') {
     e.respondWith(
       fetch(e.request)
         .then((res) => {
           const copy = res.clone();
-          caches.open(CACHE).then((c) => c.put('/', copy));
+          caches.open(CACHE).then((c) => c.put(e.request, copy));
           return res;
         })
-        .catch(() => caches.match('/'))
+        .catch(() => caches.match(e.request).then((found) => found || caches.match('/')))
     );
     return;
   }

@@ -53,7 +53,9 @@ import { recordRead } from '$lib/stores/reading.svelte';
 
   $effect(() => {
     const handler = (e: MouseEvent) => {
-      const img = (e.target as HTMLElement).closest('img');
+      const t = e.target;
+      if (!(t instanceof Element)) return;
+      const img = t.closest('img');
       if (!img || img.closest('a')) return;
       lightboxSrc = img.src;
     };
@@ -159,6 +161,15 @@ import { recordRead } from '$lib/stores/reading.svelte';
     (article?.content ?? []).filter((b) => ['paragraph', 'heading', 'quote', 'fact', 'list'].includes(b.type))
   );
 
+  // Teks "Baca Semua" digabung sekali (bukan di setiap klik tombol).
+  const allQueue = $derived(
+    [article?.title ?? '', ...speakableBlocks.map(blockText)].filter((t) => t.trim().length > 0)
+  );
+
+  // Penanda generasi antrean; menambahnya membatalkan antrean "Baca Semua" yang berjalan
+  // (misal saat user memulai blok tertentu atau memulai ulang).
+  let allGen = 0;
+
   function speak(id: string, text: string) {
     if (typeof speechSynthesis === 'undefined') return;
     if (speaking === id && paused) {
@@ -173,18 +184,64 @@ import { recordRead } from '$lib/stores/reading.svelte';
     }
     speechSynthesis.cancel();
     paused = false;
-    const u = new SpeechSynthesisUtterance(text);
-    applyIdVoice(u);
-    u.rate = rate;
-    u.onend = () => {
+    allGen += 1;
+    speaking = id;
+    // cancel() lalu speak() di tick yang sama bisa membuat Chrome membuang utterance baru.
+    window.setTimeout(() => {
+      const u = new SpeechSynthesisUtterance(text);
+      applyIdVoice(u);
+      u.rate = rate;
+      u.onend = () => {
+        if (speaking === id) {
+          speaking = null;
+          paused = false;
+        }
+      };
+      speechSynthesis.speak(u);
+    }, 50);
+  }
+
+  // "Baca Semua" dipecah jadi 1 utterance per blok; utterance berikutnya diucapkan di onend.
+  // Jadi pause/resume/stop bekerja per blok pendek (responsif), bukan satu utterance raksasa
+  // yang memblokir main thread di perangkat mobile.
+  function speakAll() {
+    if (typeof speechSynthesis === 'undefined') return;
+    if (speaking === 'all' && paused) {
+      speechSynthesis.resume();
+      paused = false;
+      return;
+    }
+    if (speaking === 'all') {
+      speechSynthesis.pause();
+      paused = true;
+      return;
+    }
+    if (allQueue.length === 0) return;
+    speechSynthesis.cancel();
+    paused = false;
+    allGen += 1;
+    speaking = 'all';
+    const gen = allGen;
+    window.setTimeout(() => speakNextAll(0, gen), 50);
+  }
+
+  function speakNextAll(i: number, gen: number) {
+    if (gen !== allGen || speaking !== 'all') return;
+    if (i >= allQueue.length) {
       speaking = null;
       paused = false;
-    };
-    speaking = id;
+      return;
+    }
+    const u = new SpeechSynthesisUtterance(allQueue[i]);
+    applyIdVoice(u);
+    u.rate = rate;
+    u.onend = () => speakNextAll(i + 1, gen);
+    u.onerror = () => speakNextAll(i + 1, gen);
     speechSynthesis.speak(u);
   }
 
   function stopSpeaking() {
+    allGen += 1;
     speechSynthesis.cancel();
     speaking = null;
     paused = false;
@@ -298,7 +355,7 @@ import { recordRead } from '$lib/stores/reading.svelte';
       {#if speakableBlocks.length}
         <div class="mt-4 flex items-center gap-2">
           <button
-            onclick={() => speak('all', [article.title, ...speakableBlocks.map(blockText)].join('. '))}
+            onclick={speakAll}
             class="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl border text-xs font-bold transition-colors {speaking === 'all'
               ? isDark
                 ? 'border-slate-700 text-slate-300 hover:bg-slate-800'
@@ -697,7 +754,7 @@ import { recordRead } from '$lib/stores/reading.svelte';
 {#if speaking !== null}
   <div class="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2 px-4 py-2.5 rounded-2xl shadow-2xl border backdrop-blur-xl {isDark ? 'bg-slate-900/95 border-slate-700' : 'bg-white/95 border-slate-200'}">
     <button
-      onclick={() => speak('all', [article?.title ?? '', ...speakableBlocks.map(blockText)].join('. '))}
+      onclick={speakAll}
       class="p-2 rounded-full transition-colors {isDark ? 'text-slate-300 hover:bg-slate-800' : 'text-slate-700 hover:bg-slate-100'}"
       aria-label={paused ? 'Lanjutkan membaca' : 'Jeda membaca'}
     >
