@@ -1,6 +1,7 @@
 <script lang="ts">
 import { ChevronLeft, Bookmark, Settings, MessageCircle, Send, ChevronUp, ChevronDown, Volume2, Pause, Play, Square, Sun, Moon, Share2 } from '@lucide/svelte';
 import { goto, onNavigate } from '$app/navigation';
+import { untrack } from 'svelte';
 import type { ArticleBlock, ArticleReaction, CommentItem, Article } from '$lib/types';
 import { app, toggleSaveArticle, toggleTheme } from '$lib/stores/app.svelte';
   import { goBack } from '$lib/stores/navigation.svelte';
@@ -119,7 +120,7 @@ import { recordRead } from '$lib/stores/reading.svelte';
     if (currentId <= 0) return;
     let alive = true;
     socialLoading = true;
-    recordRead(article!);
+    untrack(() => recordRead(article!));
     Promise.all([
       getArticleReactions(currentId).catch(() => null),
       getComments(currentId).catch(() => null)
@@ -169,6 +170,7 @@ import { recordRead } from '$lib/stores/reading.svelte';
   // Penanda generasi antrean; menambahnya membatalkan antrean "Baca Semua" yang berjalan
   // (misal saat user memulai blok tertentu atau memulai ulang).
   let allGen = 0;
+  let speakTimer: number | null = null;
 
   function speak(id: string, text: string) {
     if (typeof speechSynthesis === 'undefined') return;
@@ -187,7 +189,9 @@ import { recordRead } from '$lib/stores/reading.svelte';
     allGen += 1;
     speaking = id;
     // cancel() lalu speak() di tick yang sama bisa membuat Chrome membuang utterance baru.
-    window.setTimeout(() => {
+    if (speakTimer !== null) window.clearTimeout(speakTimer);
+    speakTimer = window.setTimeout(() => {
+      speakTimer = null;
       const u = new SpeechSynthesisUtterance(text);
       applyIdVoice(u);
       u.rate = rate;
@@ -222,7 +226,11 @@ import { recordRead } from '$lib/stores/reading.svelte';
     allGen += 1;
     speaking = 'all';
     const gen = allGen;
-    window.setTimeout(() => speakNextAll(0, gen), 50);
+    if (speakTimer !== null) window.clearTimeout(speakTimer);
+    speakTimer = window.setTimeout(() => {
+      speakTimer = null;
+      speakNextAll(0, gen);
+    }, 50);
   }
 
   function speakNextAll(i: number, gen: number) {
@@ -241,6 +249,10 @@ import { recordRead } from '$lib/stores/reading.svelte';
   }
 
   function stopSpeaking() {
+    if (speakTimer !== null) {
+      window.clearTimeout(speakTimer);
+      speakTimer = null;
+    }
     allGen += 1;
     speechSynthesis.cancel();
     speaking = null;
