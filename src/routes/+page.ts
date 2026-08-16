@@ -1,12 +1,13 @@
-import { getArticles, getCategories, getQuizList, getSekejapFacts, getTrendingArticles } from '$lib/api';
+import { getArticles, getCategories, getFeaturedArticle, getQuizList, getSekejapFacts, getTrendingArticles } from '$lib/api';
 
 export const load = async () => {
-  const [articles, categories, facts, quizzes, trending] = await Promise.all([
+  const [articles, categories, facts, quizzes, trending, featured] = await Promise.all([
     getArticles(10).catch(() => []),
     getCategories().catch(() => []),
     getSekejapFacts().catch(() => []),
     getQuizList().catch(() => []),
-    getTrendingArticles(5).catch(() => [])
+    getTrendingArticles(5).catch(() => []),
+    getFeaturedArticle().catch(() => undefined)
   ]);
-  return { articles, categories, facts, quizzes, trending };
+  return { articles, categories, facts, quizzes, trending, featured };
 };

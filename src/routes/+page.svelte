@@ -15,7 +15,7 @@
   let facts = $derived(data.facts);
   let quizzes = $derived(data.quizzes);
 
-  let hero = $derived(articles.find((a) => a.featured) ?? articles[0]);
+  let hero = $derived(data.featured ?? articles[0]);
   let heroImageError = $state(false);
   let rest = $derived(articles.filter((a) => a !== hero));
   let trending = $derived(data.trending);

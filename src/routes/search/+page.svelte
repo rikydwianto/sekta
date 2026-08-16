@@ -3,7 +3,7 @@
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
   import type { Article } from '$lib/types';
-  import { getArticles, getCategories, searchArticles } from '$lib/api';
+  import { getArticlesPage, getCategories, searchArticles } from '$lib/api';
   import { app } from '$lib/stores/app.svelte';
   import SkeletonLoader from '$lib/components/SkeletonLoader.svelte';
   import PageHeader from '$lib/components/PageHeader.svelte';
@@ -45,10 +45,40 @@
 
   const TRENDING_TOPICS = ['Black Hole', 'Gurita', 'Luar Angkasa', 'Sejarah', 'AI', 'Sains', 'Teknologi'];
 
-  // ─── Load articles and categories on mount ──────────────────────
+  // ─── Lazy load: 10 artikel per halaman ──────────────────────────
+  let allTotal = $state(0);
+  let loadingMore = $state(false);
+
+  async function fetchPage(offset: number): Promise<Article[]> {
+    const slug = categories.find((c) => c.name === selectedCategory)?.slug ?? null;
+    const { articles, total } = await getArticlesPage(slug, offset, 10);
+    if (total != null) allTotal = total;
+    return articles;
+  }
+
+  async function loadMore() {
+    if (loadingMore || allArticles.length >= allTotal) return;
+    loadingMore = true;
+    try {
+      const more = await fetchPage(allArticles.length);
+      allArticles = [...allArticles, ...more];
+    } catch {
+    } finally {
+      loadingMore = false;
+    }
+  }
+
+  // ─── Load first page on mount / when category changes ───────────
   $effect(() => {
-    getArticles().then(a => { allArticles = a; }).catch(() => {});
     getCategories().then(c => { categories = c; }).catch(() => {});
+  });
+
+  $effect(() => {
+    const slug = categories.find((c) => c.name === selectedCategory)?.slug ?? null;
+    void slug;
+    fetchPage(0).then((arts) => {
+      allArticles = arts;
+    }).catch(() => {});
   });
 
   // ─── Sync URL query ─────────────────────────────────────────────
@@ -354,6 +384,20 @@
             </a>
           {/each}
         </div>
+        {#if allArticles.length < allTotal}
+          <div class="pb-8">
+            <button
+              onclick={loadMore}
+              disabled={loadingMore}
+              class="w-full py-3 rounded-xl border text-sm font-black transition-colors disabled:opacity-50
+                {isDark
+                  ? 'border-slate-700 text-slate-200 hover:bg-slate-800'
+                  : 'border-slate-200 text-slate-600 hover:bg-slate-50'}"
+            >
+              {loadingMore ? 'Memuat...' : `Muat Lainnya (${allArticles.length}/${allTotal})`}
+            </button>
+          </div>
+        {/if}
       {:else}
         <!-- Loading skeleton for all articles -->
         <div class="space-y-3 pb-6">

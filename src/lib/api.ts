@@ -115,6 +115,21 @@ export async function getArticleBySlug(slug: string): Promise<Article | undefine
   });
 }
 
+export async function getFeaturedArticle(): Promise<Article | undefined> {
+  return cached('featured', async () => {
+    const { data, error } = await supabase
+      .from('articles')
+      .select('*, categories(name, slug)')
+      .eq('status', 'PUBLISHED')
+      .eq('featured', true)
+      .order('published_at', { ascending: false })
+      .limit(1)
+      .maybeSingle();
+    if (error) throw error;
+    return data ? toArticle(data) : undefined;
+  });
+}
+
 export async function incrementArticleView(articleId: number): Promise<void> {
   try {
     await supabase.rpc('increment_article_view', { aid: articleId });
