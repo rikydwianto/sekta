@@ -1,6 +1,6 @@
 {
-  "name": "SEKTA",
-  "short_name": "SEKTA",
+  "name": "SEKTA — Sekejap Fakta",
+  "short_name": "SEKTA — Sekejap Fakta",
   "description": "Sekejap Fakta — fakta unik setiap hari, artikel sains, sejarah, dan kuis.",
   "start_url": "/",
   "display": "standalone",
