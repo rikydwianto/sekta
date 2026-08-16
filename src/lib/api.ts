@@ -493,6 +493,57 @@ export async function addQuizResult(quizTitle: string, score: number, totalQuest
   }
 }
 
+export interface QuizStats {
+  count: number;
+  avgPercent: number;
+  bestPercent: number;
+  streak: number;
+}
+
+export async function getQuizStats(): Promise<QuizStats> {
+  try {
+    const { data: auth } = await supabase.auth.getUser();
+    if (!auth?.user) return { count: 0, avgPercent: 0, bestPercent: 0, streak: 0 };
+    const { data, error } = await supabase
+      .from('quiz_results')
+      .select('score, total_questions, created_at')
+      .eq('user_id', auth.user.id)
+      .order('created_at', { ascending: false })
+      .limit(500);
+    if (error) throw error;
+    const rows = (data ?? []) as { score: number; total_questions: number; created_at: string }[];
+    if (rows.length === 0) return { count: 0, avgPercent: 0, bestPercent: 0, streak: 0 };
+
+    const percents = rows.map((r) =>
+      r.total_questions > 0 ? Math.round((r.score / r.total_questions) * 100) : 0
+    );
+
+    // Streak: jumlah hari beruntun dengan aktivitas kuis, berakhir hari ini/kemarin.
+    const days = new Set(rows.map((r) => new Date(r.created_at).toDateString()));
+    let streak = 0;
+    const d = new Date();
+    if (days.has(d.toDateString())) {
+      streak = 1;
+    } else {
+      d.setDate(d.getDate() - 1);
+      if (!days.has(d.toDateString())) return { count: rows.length, avgPercent: Math.round(percents.reduce((a, b) => a + b, 0) / percents.length), bestPercent: Math.max(...percents), streak: 0 };
+    }
+    for (let i = 1; i < 365; i++) {
+      d.setDate(d.getDate() - 1);
+      if (days.has(d.toDateString())) streak += 1;
+      else break;
+    }
+    return {
+      count: rows.length,
+      avgPercent: Math.round(percents.reduce((a, b) => a + b, 0) / percents.length),
+      bestPercent: Math.max(...percents),
+      streak
+    };
+  } catch {
+    return { count: 0, avgPercent: 0, bestPercent: 0, streak: 0 };
+  }
+}
+
 export async function uploadAvatar(file: File): Promise<string> {
   const { data: auth } = await supabase.auth.getUser();
   if (!auth?.user) throw new Error('Belum login');

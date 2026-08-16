@@ -3,7 +3,7 @@
   import { goto } from '$app/navigation';
   import { page } from '$app/stores';
   import { app } from '$lib/stores/app.svelte';
-  import { getArticleByQuiz } from '$lib/api';
+  import { getArticleByQuiz, getQuizStats } from '$lib/api';
   import type { Article } from '$lib/types';
   import PageHeader from '$lib/components/PageHeader.svelte';
   import CoverImage from '$lib/components/CoverImage.svelte';
@@ -15,6 +15,7 @@
   let correct = $state(0);
   let total = $state(5);
   let sourceArticle = $state<Article | null>(null);
+  let quizStats = $state({ count: 0, avgPercent: 0, bestPercent: 0, streak: 0 });
 
   $effect(() => {
     try {
@@ -29,6 +30,7 @@
       if (id) {
         getArticleByQuiz(id).then((a) => (sourceArticle = a));
       }
+      getQuizStats().then((s) => (quizStats = s)).catch(() => {});
     } catch (e) {
       console.error('Error parsing URL params:', e);
     }
@@ -249,22 +251,18 @@
       <div class="space-y-2">
         <div class="flex items-center justify-between text-sm">
           <span class={isDark ? 'text-slate-400' : 'text-slate-600'}>Total Kuis Diselesaikan</span>
-          <span class="font-bold">{app.user.stats.quizzes}</span>
+          <span class="font-bold">{quizStats.count}</span>
         </div>
         <div class="flex items-center justify-between text-sm">
           <span class={isDark ? 'text-slate-400' : 'text-slate-600'}>Rata-rata Skor</span>
           <span class="font-bold text-blue-600">
-            {app.quizHistory.length > 0
-              ? Math.round(app.quizHistory.reduce((acc, q) => acc + q.score, 0) / app.quizHistory.length)
-              : 0}%
+            {quizStats.avgPercent}%
           </span>
         </div>
         <div class="flex items-center justify-between text-sm">
           <span class={isDark ? 'text-slate-400' : 'text-slate-600'}>Tertinggi</span>
           <span class="font-bold text-emerald-600">
-            {app.quizHistory.length > 0
-              ? Math.max(...app.quizHistory.map(q => q.score))
-              : 0}%
+            {quizStats.bestPercent}%
           </span>
         </div>
       </div>

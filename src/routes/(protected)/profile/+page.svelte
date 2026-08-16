@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Bell, Settings, Edit3, BookOpen, Brain, Flame, ChevronRight, Bookmark, Star, HelpCircle, Clock, PenLine, ShieldCheck, Upload, Play, LayoutDashboard } from '@lucide/svelte';
   import { goto } from '$app/navigation';
-  import { getProfile, uploadVideo } from '$lib/api';
+  import { getProfile, getQuizStats, uploadVideo } from '$lib/api';
   import { app, updateUser } from '$lib/stores/app.svelte';
   import PageHeader from '$lib/components/PageHeader.svelte';
   import CoverImage from '$lib/components/CoverImage.svelte';
@@ -45,8 +45,13 @@
 
   // Reactive stats
   let savedCount = $derived(app.savedArticles.length);
+  let quizStats = $state({ count: 0, avgPercent: 0, bestPercent: 0, streak: 0 });
+  let streak = $derived(quizStats.streak);
   let quizCount = $derived(app.user.stats.quizzes);
-  let streak = 7; // Static placeholder — real value would come from API
+
+  $effect(() => {
+    getQuizStats().then((s) => (quizStats = s)).catch(() => {});
+  });
 </script>
 
 <div class="min-h-full pb-20 transition-colors duration-300 page-enter {isDark ? 'text-slate-100 bg-slate-950' : 'text-slate-900 bg-slate-50'}">
@@ -306,7 +311,7 @@
         </div>
       {/if}
 
-    {:else}
+      {:else}
       <!-- Quiz tab -->
       {#if quizCount > 0}
         <div class="border rounded-2xl p-4 {isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'}">
@@ -316,30 +321,30 @@
             </div>
             <div>
               <p class="text-sm font-black">Ringkasan Kuis</p>
-              <p class="text-xs {isDark ? 'text-slate-400' : 'text-slate-500'}">{quizCount} kuis diselesaikan</p>
+              <p class="text-xs {isDark ? 'text-slate-400' : 'text-slate-500'}">{quizStats.count} kuis diselesaikan</p>
             </div>
           </div>
 
           <!-- Score stats grid -->
           <div class="grid grid-cols-2 gap-3 mb-4">
             <div class="border rounded-xl p-3 {isDark ? 'border-slate-700 bg-slate-800' : 'border-slate-100 bg-slate-50'}">
-              <div class="text-lg font-black text-purple-500">{quizCount}</div>
-              <div class="text-[11px] font-semibold {isDark ? 'text-slate-400' : 'text-slate-500'}">Total Kuis</div>
+              <div class="text-lg font-black text-purple-500">{quizStats.avgPercent}%</div>
+              <div class="text-[11px] font-semibold {isDark ? 'text-slate-400' : 'text-slate-500'}">Rata-rata Skor</div>
             </div>
             <div class="border rounded-xl p-3 {isDark ? 'border-slate-700 bg-slate-800' : 'border-slate-100 bg-slate-50'}">
-              <div class="text-lg font-black text-emerald-500">85%</div>
-              <div class="text-[11px] font-semibold {isDark ? 'text-slate-400' : 'text-slate-500'}">Rata-rata Skor</div>
+              <div class="text-lg font-black text-emerald-500">{quizStats.bestPercent}%</div>
+              <div class="text-[11px] font-semibold {isDark ? 'text-slate-400' : 'text-slate-500'}">Skor Terbaik</div>
             </div>
           </div>
 
           <!-- Score progress bar -->
           <div class="space-y-1.5">
             <div class="flex justify-between text-xs font-bold">
-              <span class="{isDark ? 'text-slate-400' : 'text-slate-600'}">Skor Rata-rata</span>
-              <span class="text-purple-500">85%</span>
+              <span class="{isDark ? 'text-slate-400' : 'text-slate-600'}">Rata-rata Skor</span>
+              <span class="text-purple-500">{quizStats.avgPercent}%</span>
             </div>
             <div class="h-2 rounded-full overflow-hidden {isDark ? 'bg-slate-800' : 'bg-slate-100'}">
-              <div class="h-full w-[85%] bg-purple-600 rounded-full"></div>
+              <div class="h-full w-[{quizStats.avgPercent}%] bg-purple-600 rounded-full"></div>
             </div>
           </div>
         </div>
