@@ -30,6 +30,8 @@
   };
   let factModal = $state(false);
   let factClosing = $state(false);
+  let flashMode = $state(false);
+  let flashIdx = $state(0);
   let speaking = $state(false);
   function speakFact() {
     if (!fact || typeof speechSynthesis === 'undefined') return;
@@ -48,6 +50,31 @@
     factModal = true;
     factClosing = false;
   };
+  let openFlash = () => {
+    flashIdx = factIdx;
+    flashMode = true;
+  };
+  let flashFact = $derived(facts[flashIdx % (facts.length || 1)] ?? null);
+  let touchX = $state(0);
+  let flashNext = () => {
+    flashIdx = (flashIdx + 1) % (facts.length || 1);
+  };
+  let flashPrev = () => {
+    flashIdx = (flashIdx - 1 + (facts.length || 1)) % (facts.length || 1);
+  };
+  function flashSpeak() {
+    if (!flashFact || typeof speechSynthesis === 'undefined') return;
+    speechSynthesis.cancel();
+    if (speaking) {
+      speaking = false;
+      return;
+    }
+    const u = new SpeechSynthesisUtterance(flashFact.fact);
+    u.lang = 'id-ID';
+    u.onend = () => (speaking = false);
+    speaking = true;
+    speechSynthesis.speak(u);
+  }
   function shareFact() {
     if (!fact) return;
     const text = `💡 Sekejap Fakta: ${fact.fact}\n\nCek fakta menarik lain di SEKTA — Sekejap Fakta!`;
@@ -234,6 +261,12 @@
           Lihat Selengkapnya
           <ChevronRight class="w-4 h-4" />
         </a>
+        <button
+          onclick={openFlash}
+          class="text-sm font-bold text-emerald-300 hover:text-emerald-200 inline-flex items-center gap-1 ml-4"
+        >
+          🃏 Mode Belajar
+        </button>
       </div>
     </div>
   {:else}
@@ -310,6 +343,79 @@
             </button>
           {/if}
         </div>
+      </div>
+    </div>
+  {/if}
+
+  <!-- Flashcards Mode -->
+  {#if flashMode && flashFact}
+    <div
+      class="fixed inset-0 z-50 flex flex-col"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Mode Belajar"
+    >
+      <div class="absolute inset-0 bg-emerald-950"></div>
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-emerald-950 via-emerald-900 to-teal-950"
+        role="presentation"
+        ontouchstart={(e) => (touchX = e.touches[0].clientX)}
+        ontouchend={(e) => {
+          const dx = e.changedTouches[0].clientX - touchX;
+          if (dx > 40) flashPrev();
+          else if (dx < -40) flashNext();
+        }}
+      ></div>
+      <div class="relative z-10 flex items-center justify-between p-5">
+        <span class="text-xs font-black text-emerald-300 uppercase tracking-widest">
+          Mode Belajar • {flashIdx + 1}/{facts.length}
+        </span>
+        <button
+          onclick={() => {
+            flashMode = false;
+            speechSynthesis.cancel();
+            speaking = false;
+          }}
+          class="p-2.5 rounded-full bg-white/10 text-white"
+          aria-label="Tutup mode belajar"
+        >
+          <X class="w-5 h-5" />
+        </button>
+      </div>
+      <div class="relative z-10 flex-1 flex items-center justify-center px-10">
+        <div class="w-full max-w-md rounded-3xl bg-white/10 border border-white/20 backdrop-blur p-8 text-center fact-pop-in">
+          <div class="flex items-center justify-center gap-2 mb-4">
+            <Sparkles class="w-5 h-5 text-emerald-300" />
+            <h3 class="text-xs font-black text-emerald-300 uppercase">Sekejap Fakta</h3>
+          </div>
+          <p class="text-2xl font-black leading-snug text-white mb-8">{flashFact.fact}</p>
+          <div class="flex items-center justify-center gap-4">
+            <button
+              onclick={flashPrev}
+              class="p-3.5 rounded-full bg-white/10 text-white active:scale-95 transition-transform"
+              aria-label="Fakta sebelumnya"
+            >
+              <ChevronRight class="w-6 h-6 rotate-180" />
+            </button>
+            <button
+              onclick={flashSpeak}
+              class="p-3.5 rounded-full bg-white/10 text-white active:scale-95 transition-transform"
+              aria-label="Dengarkan fakta"
+            >
+              <Volume2 class="w-6 h-6" />
+            </button>
+            <button
+              onclick={flashNext}
+              class="p-3.5 rounded-full bg-white/10 text-white active:scale-95 transition-transform"
+              aria-label="Fakta berikutnya"
+            >
+              <ChevronRight class="w-6 h-6" />
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="relative z-10 p-6 text-center">
+        <p class="text-[10px] font-semibold text-emerald-400/70 uppercase tracking-widest">Geser kiri / kanan untuk ganti fakta</p>
       </div>
     </div>
   {/if}

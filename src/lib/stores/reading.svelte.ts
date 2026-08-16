@@ -30,3 +30,26 @@ export function recordRead(article: Article) {
   readingHistory.unshift(entry);
   save(readingHistory);
 }
+
+function toDateKey(ts: number): string {
+  const d = new Date(ts);
+  return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+}
+
+export function getReadingStreak(): number {
+  const days = new Set(readingHistory.map((h) => toDateKey(h.at)));
+  if (days.size === 0) return 0;
+  let streak = 0;
+  const d = new Date();
+  if (!days.has(toDateKey(d.getTime()))) {
+    d.setDate(d.getDate() - 1);
+    if (!days.has(toDateKey(d.getTime()))) return 0;
+  }
+  for (;;) {
+    if (!days.has(toDateKey(d.getTime()))) break;
+    streak += 1;
+    d.setDate(d.getDate() - 1);
+    if (streak > 3650) break;
+  }
+  return streak;
+}

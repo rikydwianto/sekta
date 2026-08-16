@@ -68,6 +68,8 @@ export interface Quiz {
   title: string;
   description: string;
   coverImage?: string;
+  category?: string;
+  categorySlug?: string;
 }
 
 export interface UserProfile {

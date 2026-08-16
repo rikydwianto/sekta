@@ -214,14 +214,23 @@ export async function getSekejapFacts(): Promise<SekejapFact[]> {
 
 export async function getQuizList(): Promise<Quiz[]> {
   return cached('quizzes', async () => {
-    const { data, error } = await supabase.from('quizzes').select('*, articles(cover_image)').order('id', { ascending: true });
+    const { data, error } = await supabase
+      .from('quizzes')
+      .select('*, articles(cover_image, categories(name, slug))')
+      .order('id', { ascending: true });
     if (error) throw error;
-    return (data ?? []).map(q => ({
-      id: Number(q.id),
-      title: String(q.title),
-      description: String(q.description ?? ''),
-      coverImage: q.articles && typeof q.articles === 'object' ? String((q.articles as Record<string, unknown>).cover_image ?? '') : ''
-    }));
+    return (data ?? []).map(q => {
+      const art = q.articles && typeof q.articles === 'object' ? (q.articles as Record<string, unknown>) : null;
+      const cat = art?.categories && typeof art.categories === 'object' ? (art.categories as Record<string, unknown>) : null;
+      return {
+        id: Number(q.id),
+        title: String(q.title),
+        description: String(q.description ?? ''),
+        coverImage: art ? String(art.cover_image ?? '') : '',
+        category: cat ? String(cat.name ?? '') : '',
+        categorySlug: cat ? String(cat.slug ?? '') : ''
+      };
+    });
   });
 }
 

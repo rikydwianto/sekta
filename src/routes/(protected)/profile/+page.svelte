@@ -3,6 +3,7 @@
   import { goto } from '$app/navigation';
   import { getProfile, getQuizStats, uploadVideo } from '$lib/api';
   import { app, updateUser } from '$lib/stores/app.svelte';
+  import { getReadingStreak } from '$lib/stores/reading.svelte';
   import PageHeader from '$lib/components/PageHeader.svelte';
   import CoverImage from '$lib/components/CoverImage.svelte';
   import AvatarInitials from '$lib/components/AvatarInitials.svelte';
@@ -46,7 +47,7 @@
   // Reactive stats
   let savedCount = $derived(app.savedArticles.length);
   let quizStats = $state({ count: 0, avgPercent: 0, bestPercent: 0, streak: 0 });
-  let streak = $derived(quizStats.streak);
+  let streak = $derived(getReadingStreak());
   let quizCount = $derived(app.user.stats.quizzes);
 
   $effect(() => {
@@ -96,7 +97,7 @@
           <div class="flex flex-col items-center gap-1 py-2 px-1 rounded-xl {isDark ? 'bg-slate-800/60' : 'bg-slate-50'}">
             <Flame class="w-4 h-4 {isDark ? 'text-orange-400' : 'text-orange-500'}" />
             <span class="text-lg font-black leading-none">{streak}</span>
-            <span class="text-[10px] font-semibold {isDark ? 'text-slate-400' : 'text-slate-500'}">Hari 🔥</span>
+            <span class="text-[10px] font-semibold {isDark ? 'text-slate-400' : 'text-slate-500'}">Hari Baca 🔥</span>
           </div>
         </div>
       </div>

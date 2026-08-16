@@ -34,6 +34,12 @@ import { recordRead } from '$lib/stores/reading.svelte';
   let lightboxSrc = $state('');
   let speaking = $state<string | null>(null);
   let paused = $state(false);
+  let rate = $state(1);
+  let fontSize = $state(2);
+  let readProgress = $state(0);
+
+  const FONT_SIZES = ['text-sm', 'text-[15px]', 'text-base', 'text-lg'];
+  const RATES = [0.75, 1, 1.25];
 
   function shareArticle(article: Article) {
     const url = window.location.href;
@@ -53,6 +59,16 @@ import { recordRead } from '$lib/stores/reading.svelte';
     };
     document.addEventListener('click', handler);
     return () => document.removeEventListener('click', handler);
+  });
+
+  $effect(() => {
+    const onScroll = () => {
+      const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      readProgress = h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0;
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
   });
   let counts = $derived.by(() => {
     const c: Record<ArticleReaction, number> = { LIKE: 0, WOW: 0, FUNNY: 0, SAD: 0 };
@@ -135,6 +151,7 @@ import { recordRead } from '$lib/stores/reading.svelte';
     paused = false;
     const u = new SpeechSynthesisUtterance(text);
     u.lang = 'id-ID';
+    u.rate = rate;
     u.onend = () => {
       speaking = null;
       paused = false;
@@ -221,6 +238,9 @@ import { recordRead } from '$lib/stores/reading.svelte';
       </a>
     </div>
   </div>
+  <div class="h-1 bg-transparent {isDark ? 'bg-slate-800' : 'bg-slate-100'}">
+    <div class="h-full bg-blue-600 transition-[width] duration-150" style="width: {readProgress}%"></div>
+  </div>
 
   {#if !article}
     <div class="flex flex-col items-center justify-center py-24 px-6 text-center">
@@ -282,10 +302,39 @@ import { recordRead } from '$lib/stores/reading.svelte';
             </button>
           {/if}
         </div>
+        <div class="mt-2 flex items-center gap-1.5">
+          <button
+            onclick={() => (rate = RATES[(RATES.indexOf(rate) + 1) % RATES.length])}
+            class="px-2.5 py-1 rounded-lg border text-[10px] font-bold transition-colors {isDark
+              ? 'border-slate-700 text-slate-400 hover:bg-slate-800'
+              : 'border-slate-200 text-slate-500 hover:bg-slate-100'}"
+          >
+            ⏩ {rate}x
+          </button>
+          <span class="flex-1"></span>
+          <button
+            onclick={() => (fontSize = Math.max(0, fontSize - 1))}
+            disabled={fontSize === 0}
+            class="px-2.5 py-1 rounded-lg border text-[10px] font-bold transition-colors disabled:opacity-40 {isDark
+              ? 'border-slate-700 text-slate-400 hover:bg-slate-800'
+              : 'border-slate-200 text-slate-500 hover:bg-slate-100'}"
+          >
+            A−
+          </button>
+          <button
+            onclick={() => (fontSize = Math.min(FONT_SIZES.length - 1, fontSize + 1))}
+            disabled={fontSize === FONT_SIZES.length - 1}
+            class="px-2.5 py-1 rounded-lg border text-xs font-bold transition-colors disabled:opacity-40 {isDark
+              ? 'border-slate-700 text-slate-400 hover:bg-slate-800'
+              : 'border-slate-200 text-slate-500 hover:bg-slate-100'}"
+          >
+            A+
+          </button>
+        </div>
       {/if}
     </div>
 
-    <div class="space-y-5 text-sm leading-relaxed font-medium mb-10 md:text-[15px] prose-html {isDark ? 'text-slate-300' : 'text-slate-700'}">
+    <div class="space-y-5 leading-relaxed font-medium mb-10 prose-html {FONT_SIZES[fontSize]} {isDark ? 'text-slate-300' : 'text-slate-700'}">
       {#each article.content as block, i (block)}
         {#if block.type === 'paragraph'}
           {@const pid = `b${i}`}
