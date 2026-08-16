@@ -1,14 +1,15 @@
 <script lang="ts">
-import { ChevronLeft, Bookmark, Settings, MessageCircle, Send, ChevronUp, ChevronDown, Volume2, Sun, Moon, Share2 } from '@lucide/svelte';
-import { goto } from '$app/navigation';
+import { ChevronLeft, Bookmark, Settings, MessageCircle, Send, ChevronUp, ChevronDown, Volume2, Pause, Play, Square, Sun, Moon, Share2 } from '@lucide/svelte';
+import { goto, onNavigate } from '$app/navigation';
 import type { ArticleBlock, ArticleReaction, CommentItem, Article } from '$lib/types';
 import { app, toggleSaveArticle, toggleTheme } from '$lib/stores/app.svelte';
   import { goBack } from '$lib/stores/navigation.svelte';
   import CoverImage from '$lib/components/CoverImage.svelte';
   import AvatarInitials from '$lib/components/AvatarInitials.svelte';
   import TikTokFollowCard from '$lib/components/TikTokFollowCard.svelte';
-  import { getArticleReactions, setArticleReaction, getComments, addComment } from '$lib/api';
-  import { timeAgo, videoEmbedUrl, tiktokVideoId, tiktokProfile } from '$lib/format';
+import { getArticleReactions, setArticleReaction, getComments, addComment } from '$lib/api';
+import { timeAgo, videoEmbedUrl, tiktokVideoId, tiktokProfile } from '$lib/format';
+import { recordRead } from '$lib/stores/reading.svelte';
 
   let { data } = $props();
 
@@ -32,6 +33,7 @@ import { app, toggleSaveArticle, toggleTheme } from '$lib/stores/app.svelte';
   let socialLoading = $state(true);
   let lightboxSrc = $state('');
   let speaking = $state<string | null>(null);
+  let paused = $state(false);
 
   function shareArticle(article: Article) {
     const url = window.location.href;
@@ -75,6 +77,7 @@ import { app, toggleSaveArticle, toggleTheme } from '$lib/stores/app.svelte';
     if (currentId <= 0) return;
     let alive = true;
     socialLoading = true;
+    recordRead(article!);
     Promise.all([
       getArticleReactions(currentId).catch(() => null),
       getComments(currentId).catch(() => null)
@@ -118,17 +121,35 @@ import { app, toggleSaveArticle, toggleTheme } from '$lib/stores/app.svelte';
 
   function speak(id: string, text: string) {
     if (typeof speechSynthesis === 'undefined') return;
-    speechSynthesis.cancel();
-    if (speaking === id) {
-      speaking = null;
+    if (speaking === id && paused) {
+      speechSynthesis.resume();
+      paused = false;
       return;
     }
+    if (speaking === id) {
+      speechSynthesis.pause();
+      paused = true;
+      return;
+    }
+    speechSynthesis.cancel();
+    paused = false;
     const u = new SpeechSynthesisUtterance(text);
     u.lang = 'id-ID';
-    u.onend = () => (speaking = null);
+    u.onend = () => {
+      speaking = null;
+      paused = false;
+    };
     speaking = id;
     speechSynthesis.speak(u);
   }
+
+  function stopSpeaking() {
+    speechSynthesis.cancel();
+    speaking = null;
+    paused = false;
+  }
+
+  onNavigate(() => stopSpeaking());
 
   async function submitComment() {
     const text = commentText.trim();
@@ -229,17 +250,38 @@ import { app, toggleSaveArticle, toggleTheme } from '$lib/stores/app.svelte';
         <span class="flex-shrink-0">{article.readTime}{article.date ? ` • ${article.date}` : ''} • {article.viewCount} dibaca</span>
       </div>
       {#if speakableBlocks.length}
-        <button
-          onclick={() => speak('all', speakableBlocks.map(blockText).join('. '))}
-          class="mt-4 w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border text-xs font-bold transition-colors {speaking === 'all'
-            ? 'bg-blue-600 text-white border-blue-600'
-            : isDark
-              ? 'border-slate-700 text-slate-300 hover:bg-slate-800'
-              : 'border-slate-200 text-slate-600 hover:bg-slate-50'}"
-        >
-          <Volume2 class="w-4 h-4" />
-          {speaking === 'all' ? 'Berhenti Membaca' : 'Baca Semua'}
-        </button>
+        <div class="mt-4 flex items-center gap-2">
+          <button
+            onclick={() => speak('all', [article.title, ...speakableBlocks.map(blockText)].join('. '))}
+            class="flex-1 flex items-center justify-center gap-2 py-2.5 rounded-xl border text-xs font-bold transition-colors {speaking === 'all'
+              ? isDark
+                ? 'border-slate-700 text-slate-300 hover:bg-slate-800'
+                : 'border-slate-200 text-slate-600 hover:bg-slate-50'
+              : 'bg-blue-600 text-white border-blue-600'}"
+          >
+            {#if speaking === 'all' && paused}
+              <Play class="w-4 h-4" />
+              Lanjutkan Membaca
+            {:else if speaking === 'all'}
+              <Pause class="w-4 h-4" />
+              Jeda Membaca
+            {:else}
+              <Volume2 class="w-4 h-4" />
+              Baca Semua
+            {/if}
+          </button>
+          {#if speaking !== null}
+            <button
+              onclick={stopSpeaking}
+              aria-label="Berhenti membaca"
+              class="p-2.5 rounded-xl border text-xs font-bold transition-colors {isDark
+                ? 'border-slate-700 text-slate-300 hover:bg-slate-800'
+                : 'border-slate-200 text-slate-600 hover:bg-slate-50'}"
+            >
+              <Square class="w-4 h-4" />
+            </button>
+          {/if}
+        </div>
       {/if}
     </div>
 

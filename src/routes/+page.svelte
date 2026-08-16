@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { ChevronRight, Shuffle, Sparkles, X, Volume2 } from '@lucide/svelte';
+  import { ChevronRight, Shuffle, Sparkles, X, Volume2, Share2 } from '@lucide/svelte';
   import { goto } from '$app/navigation';
   import { app } from '$lib/stores/app.svelte';
+  import { readingHistory } from '$lib/stores/reading.svelte';
   import SkeletonLoader from '$lib/components/SkeletonLoader.svelte';
   import AvatarInitials from '$lib/components/AvatarInitials.svelte';
   import PageHeader from '$lib/components/PageHeader.svelte';
@@ -47,6 +48,15 @@
     factModal = true;
     factClosing = false;
   };
+  function shareFact() {
+    if (!fact) return;
+    const text = `💡 Sekejap Fakta: ${fact.fact}\n\nCek fakta menarik lain di SEKTA — Sekejap Fakta!`;
+    if (navigator.share) {
+      navigator.share({ title: 'Sekejap Fakta', text }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(text).then(() => alert('Fakta disalin ke clipboard'));
+    }
+  }
   let closeFactModal = () => {
     if (factClosing) return;
     factClosing = true;
@@ -56,6 +66,7 @@
     }, 200);
   };
   let weeklyQuiz = $derived(quizzes[0]);
+  let recentReads = $derived(readingHistory.slice(0, 3));
 
   const categoryEmoji: Record<string, string> = {
     sains: '🔬',
@@ -124,6 +135,35 @@
     </div>
   {/if}
 
+  <!-- Lanjutkan Membaca -->
+  {#if recentReads.length > 0}
+    <div class="px-6 mb-6 rise-in" style="animation-delay: 60ms">
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="text-base font-black">Lanjutkan Membaca 📖</h3>
+        <span class="text-[10px] font-bold uppercase tracking-wider {isDark ? 'text-slate-500' : 'text-slate-400'}">Terakhir dibaca</span>
+      </div>
+      <div class="space-y-2">
+        {#each recentReads as h}
+          <a
+            href={`/article/${h.slug}`}
+            class="p-3 flex items-center gap-3 card-hover transition-colors border rounded {isDark
+              ? 'bg-slate-900 border-slate-800 hover:bg-slate-800'
+              : 'bg-white border-slate-200 hover:bg-slate-50'}"
+          >
+            <CoverImage image={h.image} class="w-14 h-14 rounded flex-shrink-0" />
+            <div class="flex-1 min-w-0">
+              <h4 class="text-sm font-bold {isDark ? 'text-slate-100' : 'text-slate-800'} line-clamp-2 mb-1">
+                {h.title}
+              </h4>
+              <p class="text-xs {isDark ? 'text-slate-500' : 'text-slate-400'}">Lanjut baca di sini</p>
+            </div>
+            <ChevronRight class="w-5 h-5 {isDark ? 'text-slate-600' : 'text-slate-300'} flex-shrink-0 ml-2" />
+          </a>
+        {/each}
+      </div>
+    </div>
+  {/if}
+
   <!-- Stats Strip -->
   <div class="px-6 mb-6 rise-in" style="animation-delay: 50ms">
     <div class="grid grid-cols-3 gap-2">
@@ -160,6 +200,13 @@
               aria-label="Dengarkan fakta"
             >
               <Volume2 class="w-4 h-4" />
+            </button>
+            <button
+              onclick={shareFact}
+              class="p-2 rounded text-emerald-300 hover:bg-emerald-800 hover:text-emerald-200 transition-colors"
+              aria-label="Bagikan fakta"
+            >
+              <Share2 class="w-4 h-4" />
             </button>
             {#if facts.length > 1}
             <button
@@ -224,6 +271,13 @@
               aria-label="Dengarkan fakta"
             >
               <Volume2 class="w-4 h-4" />
+            </button>
+            <button
+              onclick={shareFact}
+              class="p-2 rounded text-emerald-300 hover:bg-emerald-800 transition-colors"
+              aria-label="Bagikan fakta"
+            >
+              <Share2 class="w-4 h-4" />
             </button>
             <button
               onclick={closeFactModal}

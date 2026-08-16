@@ -90,7 +90,7 @@ export async function getArticlesPage(
   offset: number,
   limit: number
 ): Promise<{ articles: Article[]; total: number | null }> {
-  const select = categorySlug ? '*, categories!inner(name, slug)' : '*, categories(name, slug)';
+  const select = categorySlug ? '*, categories!inner(name, slug), reactions:article_reactions(count)' : '*, categories(name, slug), reactions:article_reactions(count)';
   let q = supabase
     .from('articles')
     .select(select, { count: 'exact' })
@@ -100,7 +100,14 @@ export async function getArticlesPage(
   if (categorySlug) q = q.eq('categories.slug', categorySlug);
   const { data, error, count } = await q;
   if (error) throw error;
-  return { articles: (data ?? []).map(toArticle), total: count };
+  return {
+    articles: (data ?? []).map((row) => {
+      const a = toArticle(row);
+      const rc = Array.isArray(row.reactions) ? Number((row.reactions[0] as { count?: number })?.count ?? 0) : 0;
+      return { ...a, reactionCount: rc };
+    }),
+    total: count
+  };
 }
 
 export async function getArticleBySlug(slug: string): Promise<Article | undefined> {

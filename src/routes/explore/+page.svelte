@@ -52,9 +52,9 @@
       });
     }
     if (selectedSort === 'trending') {
-      return [...base].sort((a, b) => Number(b.featured) - Number(a.featured));
+      return [...base].sort((a, b) => (b.viewCount + (b.reactionCount ?? 0)) - (a.viewCount + (a.reactionCount ?? 0)));
     } else if (selectedSort === 'most-read') {
-      return [...base].sort((a, b) => parseInt(b.readTime) - parseInt(a.readTime));
+      return [...base].sort((a, b) => b.viewCount - a.viewCount);
     }
     return base;
   });

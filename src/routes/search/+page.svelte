@@ -147,11 +147,11 @@
       // already ordered by published_at desc from API
       return base;
     } else if (selectedSort === 'trending') {
-      // sort featured first, then rest
-      return [...base].sort((a, b) => Number(b.featured) - Number(a.featured));
+      // popular by views + reactions
+      return [...base].sort((a, b) => (b.viewCount + (b.reactionCount ?? 0)) - (a.viewCount + (a.reactionCount ?? 0)));
     } else if (selectedSort === 'most-read') {
-      // sort by read time (more time = more content = more read)
-      return [...base].sort((a, b) => parseInt(b.readTime) - parseInt(a.readTime));
+      // most views
+      return [...base].sort((a, b) => b.viewCount - a.viewCount);
     }
     return base;
   });
