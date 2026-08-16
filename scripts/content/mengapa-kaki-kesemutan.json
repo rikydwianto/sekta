@@ -1,0 +1,51 @@
+{
+  "category": "manusia",
+  "title": "Kenapa Kaki Sering Kesemutan?",
+  "slug": "mengapa-kaki-kesemutan",
+  "excerpt": "Duduk bersila terlalu lama lalu kaki terasa seperti ditusuk jarum? Itulah kesemutan, dan inilah penyebabnya.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/1280px-1029Men_or_women_sitting_with_legs_crossed_in_the_Philippines_02.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Setelah duduk bersila lama, kaki terasa seperti kesemutan — ada rasa nyeri menusuk dan kebas. Rasanya tidak nyaman, tapi biasanya hilang sendiri." } },
+    { "type": "heading", "data": { "text": "Apa yang terjadi sebenarnya?" } },
+    { "type": "paragraph", "data": { "text": "Saat kaki tertekan terlalu lama, saraf tertekan dan aliran darah terganggu. Akibatnya sinyal dari saraf jadi kacau — otak menerima sensasi aneh berupa kesemutan. Begitu posisi diubah dan aliran pulih, sensasinya perlahan menghilang." } },
+    { "type": "fact", "data": { "text": "Kesemutan yang berlangsung lama atau sering muncul tanpa sebab bisa menjadi tanda masalah saraf — konsultasikan ke dokter." } },
+    { "type": "paragraph", "data": { "text": "Cara paling mudah mengatasinya: ubah posisi, goyangkan kaki, dan tunggu beberapa saat. Jangan panik — kesemutan biasa karena posisi umumnya tidak berbahaya." } }
+  ],
+  "fact": "Kesemutan terjadi saat saraf tertekan dan aliran darah terganggu sehingga sinyal saraf jadi kacau.",
+  "quiz": {
+    "title": "Kuis: Kenapa Kaki Kesemutan",
+    "description": "Cari tahu penyebab kesemutan.",
+    "questions": [
+      {
+        "question": "Penyebab utama kesemutan setelah duduk lama adalah...",
+        "options": [
+          { "label": "Saraf tertekan dan aliran darah terganggu", "is_correct": true },
+          { "label": "Tulang patah", "is_correct": false },
+          { "label": "Kekurangan vitamin C", "is_correct": false },
+          { "label": "Terlalu banyak minum", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Cara paling cepat mengatasi kesemutan biasa adalah...",
+        "options": [
+          { "label": "Ubah posisi dan goyangkan kaki", "is_correct": true },
+          { "label": "Berbaring tanpa bergerak", "is_correct": false },
+          { "label": "Makan makanan manis", "is_correct": false },
+          { "label": "Menahan napas", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Kapan kesemutan perlu diwaspadai?",
+        "options": [
+          { "label": "Sering muncul tanpa sebab yang jelas", "is_correct": true },
+          { "label": "Terjadi setelah duduk bersila", "is_correct": false },
+          { "label": "Setelah olahraga ringan", "is_correct": false },
+          { "label": "Saat kedinginan", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Parestesia — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Parestesia", "publisher": "Wikipedia" }
+  ]
+}

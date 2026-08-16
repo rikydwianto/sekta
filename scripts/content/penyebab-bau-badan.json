@@ -1,0 +1,51 @@
+{
+  "category": "manusia",
+  "title": "Apa Penyebab Bau Badan?",
+  "slug": "penyebab-bau-badan",
+  "excerpt": "Bau badan bikin kurang percaya diri. Inilah penyebab sebenarnya dan cara mengatasinya.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/1280px-2023_Dezodoranty.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Semua orang bisa mengalaminya: bau badan yang muncul terutama saat banyak berkeringat. Tapi tahukah kamu, keringat sendiri sebenarnya tidak berbau?" } },
+    { "type": "heading", "data": { "text": "Keringat bertemu bakteri" } },
+    { "type": "paragraph", "data": { "text": "Keringat yang diproduksi kelenjar apokrin, terutama di ketiak, mengandung protein dan lemak. Saat bertemu bakteri di permukaan kulit, zat itu diurai dan menghasilkan bau khas. Itulah sumber bau badan." } },
+    { "type": "fact", "data": { "text": "Makanan seperti bawang, durian, dan makanan beraroma kuat bisa ikut memengaruhi aroma tubuh selama beberapa jam." } },
+    { "type": "paragraph", "data": { "text": "Cara mencegahnya sederhana: mandi rutin terutama setelah berkeringat, keringkan tubuh, gunakan deodoran atau antiperspiran, dan kenakan pakaian dari bahan yang menyerap keringat." } }
+  ],
+  "fact": "Bau badan berasal dari bakteri kulit yang mengurai keringat kelenjar apokrin, bukan dari keringat itu sendiri.",
+  "quiz": {
+    "title": "Kuis: Penyebab Bau Badan",
+    "description": "Seberapa paham kamu soal bau badan?",
+    "questions": [
+      {
+        "question": "Sumber utama bau badan adalah...",
+        "options": [
+          { "label": "Bakteri kulit yang mengurai keringat", "is_correct": true },
+          { "label": "Keringat murni", "is_correct": false },
+          { "label": "Sinar matahari", "is_correct": false },
+          { "label": "Pakaian berwarna gelap", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Kelenjar yang keringatnya paling berperan membuat bau badan adalah...",
+        "options": [
+          { "label": "Kelenjar apokrin", "is_correct": true },
+          { "label": "Kelenjar ludah", "is_correct": false },
+          { "label": "Kelenjar timus", "is_correct": false },
+          { "label": "Kelenjar pituitari", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Cara paling efektif mencegah bau badan adalah...",
+        "options": [
+          { "label": "Mandi rutin dan keringkan tubuh", "is_correct": true },
+          { "label": "Memakai parfum tebal tanpa mandi", "is_correct": false },
+          { "label": "Menghindari minum air", "is_correct": false },
+          { "label": "Berjemur di malam hari", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Bau badan — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Bau_badan", "publisher": "Wikipedia" }
+  ]
+}

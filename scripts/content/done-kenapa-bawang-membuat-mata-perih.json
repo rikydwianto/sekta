@@ -1,0 +1,116 @@
+{
+  "category": "sains",
+  "title": "Kenapa Bawang Membuat Mata Perih?",
+  "slug": "kenapa-bawang-membuat-mata-perih",
+  "excerpt": "Tiap memotong bawang, mata langsung perih dan berair. Ternyata bawang menyerang balik dengan 'gas'.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/1280px-Mixed_onions.jpg",
+  "content": [
+    {
+      "type": "paragraph",
+      "data": {
+        "text": "Memotong bawang hampir selalu diakhiri dengan mata perih dan berair. Rasanya seperti bawang membalas dendam — dan secara ilmiah, itulah yang terjadi."
+      }
+    },
+    {
+      "type": "heading",
+      "data": {
+        "text": "Gas yang membuat mata menangis"
+      }
+    },
+    {
+      "type": "paragraph",
+      "data": {
+        "text": "Saat bawang dipotong, sel-selnya pecah dan mengeluarkan enzim yang mengubah senyawa bawang menjadi gas yang disebut syn-propanethial-S-oxide. Gas ini naik ke mata, mengiritasi, dan mata pun memproduksi air mata untuk membasuhnya."
+      }
+    },
+    {
+      "type": "fact",
+      "data": {
+        "text": "Mendinginkan bawang di kulkas dulu sebelum dipotong bisa mengurangi gas sehingga mata tidak terlalu perih."
+      }
+    },
+    {
+      "type": "paragraph",
+      "data": {
+        "text": "Selain itu, gunakan pisau tajam agar lebih sedikit sel yang pecah, atau potong di dekat air mengalir agar gas cepat terbawa. Tapi yang pasti — air mata itu, bukan karena sedih!"
+      }
+    }
+  ],
+  "fact": "Memotong bawang melepaskan gas syn-propanethial-S-oxide yang mengiritasi mata sehingga kita menangis.",
+  "quiz": {
+    "title": "Kuis: Bawang dan Mata",
+    "description": "Kenapa bawang bikin nangis? Cari tahu.",
+    "questions": [
+      {
+        "question": "Apa yang membuat mata perih saat memotong bawang?",
+        "options": [
+          {
+            "label": "Gas syn-propanethial-S-oxide",
+            "is_correct": true
+          },
+          {
+            "label": "Serbuk cabai",
+            "is_correct": false
+          },
+          {
+            "label": "Bakteri dari pisau",
+            "is_correct": false
+          },
+          {
+            "label": "Uap air panas",
+            "is_correct": false
+          }
+        ]
+      },
+      {
+        "question": "Kenapa mata mengeluarkan air?",
+        "options": [
+          {
+            "label": "Untuk membasuh zat pengiritasi",
+            "is_correct": true
+          },
+          {
+            "label": "Karena bawang membuat sedih",
+            "is_correct": false
+          },
+          {
+            "label": "Karena kelenjar air mata rusak",
+            "is_correct": false
+          },
+          {
+            "label": "Karena tekanan udara",
+            "is_correct": false
+          }
+        ]
+      },
+      {
+        "question": "Cara mengurangi mata perih saat memotong bawang adalah...",
+        "options": [
+          {
+            "label": "Dinginkan bawang dulu di kulkas",
+            "is_correct": true
+          },
+          {
+            "label": "Potong dengan pisau tumpul",
+            "is_correct": false
+          },
+          {
+            "label": "Potong sangat pelan",
+            "is_correct": false
+          },
+          {
+            "label": "Tutup mata rapat-rapat",
+            "is_correct": false
+          }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    {
+      "title": "Bawang bombai — Wikipedia Indonesia",
+      "url": "https://id.wikipedia.org/wiki/Bawang_bombai",
+      "publisher": "Wikipedia"
+    }
+  ]
+}

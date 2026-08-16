@@ -1,0 +1,51 @@
+{
+  "category": "manusia",
+  "title": "Mengapa Kita Berkeringat?",
+  "slug": "mengapa-kita-berkeringat",
+  "excerpt": "Keringat yang bikin lepek ternyata sistem pendingin paling canggih yang pernah dimiliki tubuh.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/1280px-Sweat_%282%29.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Saat berolahraga atau kepanasan, tubuh mengeluarkan keringat. Sebagian orang menganggapnya menjengkelkan, padahal keringat adalah cara tubuh menjaga suhu tetap stabil." } },
+    { "type": "heading", "data": { "text": "Cara kerja sistem pendingin tubuh" } },
+    { "type": "paragraph", "data": { "text": "Ketika suhu tubuh naik, kelenjar keringat mengeluarkan air ke permukaan kulit. Saat air itu menguap, panas ikut terlepas dari tubuh — persis cara kerja pendingin. Proses ini membuat kita tetap dingin walau udara panas." } },
+    { "type": "fact", "data": { "text": "Keringat sendiri tidak berbau. Bau muncul ketika bakteri di kulit mengurai protein dalam keringat." } },
+    { "type": "paragraph", "data": { "text": "Jangan lupa minum air setelah banyak berkeringat, karena tubuh kehilangan cairan dan elektrolit. Mandi dan pakai pakaian menyerap keringat juga membantu menjaga kesegaran." } }
+  ],
+  "fact": "Keringat tidak berbau; bau badan muncul dari bakteri kulit yang mengurai keringat.",
+  "quiz": {
+    "title": "Kuis: Mengapa Kita Berkeringat",
+    "description": "Uji pengetahuanmu tentang keringat.",
+    "questions": [
+      {
+        "question": "Fungsi utama berkeringat adalah...",
+        "options": [
+          { "label": "Menjaga suhu tubuh tetap stabil", "is_correct": true },
+          { "label": "Menambah berat badan", "is_correct": false },
+          { "label": "Menghilangkan lemak secara instan", "is_correct": false },
+          { "label": "Membuat kulit putih", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Mengapa keringat yang menguap mendinginkan tubuh?",
+        "options": [
+          { "label": "Panas ikut terlepas saat air menguap", "is_correct": true },
+          { "label": "Karena keringat berwarna biru", "is_correct": false },
+          { "label": "Karena angin selalu dingin", "is_correct": false },
+          { "label": "Karena garam menyerap dingin", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Sumber bau badan adalah...",
+        "options": [
+          { "label": "Bakteri yang mengurai keringat", "is_correct": true },
+          { "label": "Keringat itu sendiri", "is_correct": false },
+          { "label": "Makanan pedas saja", "is_correct": false },
+          { "label": "Udara dingin", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Keringat — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Keringat", "publisher": "Wikipedia" }
+  ]
+}

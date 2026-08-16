@@ -1,0 +1,51 @@
+{
+  "category": "sains",
+  "title": "Mengapa Langit Berwarna Biru?",
+  "slug": "mengapa-langit-berwarna-biru",
+  "excerpt": "Warna biru langit ternyata bukan karena lautan, melainkan permainan cahaya matahari dengan udara.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/1280px-Cirrus_uncinus_clouds_in_the_morning_sky.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Coba lihat ke atas di siang hari. Langit tampak biru indah. Banyak yang menduga warnanya pantulan laut, tapi sebenarnya jawabannya ada pada fisika cahaya dan partikel di atmosfer." } },
+    { "type": "heading", "data": { "text": "Cahaya matahari itu campuran banyak warna" } },
+    { "type": "paragraph", "data": { "text": "Cahaya matahari tampak putih, padahal berisi semua warna pelangi. Saat melewati atmosfer, cahaya biru yang punya gelombang pendek lebih mudah dihamburkan oleh molekul udara dibanding warna lain. Itulah kenapa biru terpancar ke segala arah dan mata kita melihat langit berwarna biru." } },
+    { "type": "fact", "data": { "text": "Saat matahari terbenam, cahaya melewati udara lebih tebal sehingga biru terhambur habis dan yang tersisa adalah merah serta jingga." } },
+    { "type": "paragraph", "data": { "text": "Fenomena ini disebut hamburan Rayleigh. Semakin bersih udara, semakin pekat warna birunya. Di planet yang atmosfernya berbeda, warna langit bisa merah atau bahkan oranye!" } }
+  ],
+  "fact": "Warna biru langit berasal dari hamburan Rayleigh: cahaya biru bergetar pendek sehingga paling mudah dihamburkan udara.",
+  "quiz": {
+    "title": "Kuis: Mengapa Langit Biru",
+    "description": "Uji pemahamanmu tentang warna langit.",
+    "questions": [
+      {
+        "question": "Apa penyebab utama langit berwarna biru?",
+        "options": [
+          { "label": "Hamburan cahaya biru oleh atmosfer", "is_correct": true },
+          { "label": "Pantulan air laut", "is_correct": false },
+          { "label": "Gas oksigen berwarna biru", "is_correct": false },
+          { "label": "Debu di udara", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Nama fenomena yang membuat langit biru adalah...",
+        "options": [
+          { "label": "Hamburan Rayleigh", "is_correct": true },
+          { "label": "Efek Doppler", "is_correct": false },
+          { "label": "Refraksi Newton", "is_correct": false },
+          { "label": "Radiasi termal", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Kenapa langit tampak jingga saat senja?",
+        "options": [
+          { "label": "Cahaya melewati udara lebih tebal", "is_correct": true },
+          { "label": "Matahari berubah warna", "is_correct": false },
+          { "label": "Debu memantulkan jingga", "is_correct": false },
+          { "label": "Karena awan berwarna", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Hamburan Rayleigh — Wikipedia", "url": "https://id.wikipedia.org/wiki/Hamburan_Rayleigh", "publisher": "Wikipedia" }
+  ]
+}

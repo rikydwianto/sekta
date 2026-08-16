@@ -1,0 +1,116 @@
+{
+  "category": "manusia",
+  "title": "Mengapa Kita Bersin?",
+  "slug": "mengapa-kita-bersin",
+  "excerpt": "Bersin adalah refleks tubuh yang hebat — lewat satu kali bersin, partikel bisa melesat jauh.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/1280px-Woman_sneezing_minot.jpg",
+  "content": [
+    {
+      "type": "paragraph",
+      "data": {
+        "text": "Hampir semua orang pernah bersin. Meski terkesan sepele, bersin sebenarnya adalah mekanisme pertahanan tubuh yang cerdas untuk mengeluarkan benda asing dari saluran hidung."
+      }
+    },
+    {
+      "type": "heading",
+      "data": {
+        "text": "Apa yang terjadi saat kita bersin?"
+      }
+    },
+    {
+      "type": "paragraph",
+      "data": {
+        "text": "Saat debu, serbuk bunga, atau virus masuk ke hidung, saraf mengirim sinyal ke otak. Tubuh lalu menarik napas dalam, dan dalam sekejap mengeluarkan udara kencang — bisa lebih dari 160 km per jam — membawa benda asing itu keluar."
+      }
+    },
+    {
+      "type": "fact",
+      "data": {
+        "text": "Satu bersin bisa mengeluarkan ribuan butir droplet yang menyebar hingga beberapa meter."
+      }
+    },
+    {
+      "type": "paragraph",
+      "data": {
+        "text": "Tutup mulut dan hidung saat bersin, idealnya ke siku dalam, agar kuman tidak beterbangan. Dan ingat: menahan bersin berbahaya, karena tekanan bisa naik ke telinga atau pembuluh darah."
+      }
+    }
+  ],
+  "fact": "Bersin bisa melontarkan udara lebih dari 160 km per jam untuk mengeluarkan benda asing dari hidung.",
+  "quiz": {
+    "title": "Kuis: Mengapa Kita Bersin",
+    "description": "Tahu tidak kenapa tubuhmu bersin?",
+    "questions": [
+      {
+        "question": "Fungsi utama bersin adalah...",
+        "options": [
+          {
+            "label": "Mengeluarkan benda asing dari hidung",
+            "is_correct": true
+          },
+          {
+            "label": "Menambah oksigen ke paru-paru",
+            "is_correct": false
+          },
+          {
+            "label": "Menurunkan suhu tubuh",
+            "is_correct": false
+          },
+          {
+            "label": "Membersihkan gigi",
+            "is_correct": false
+          }
+        ]
+      },
+      {
+        "question": "Kecepatan udara saat bersin bisa mencapai...",
+        "options": [
+          {
+            "label": "Lebih dari 160 km per jam",
+            "is_correct": true
+          },
+          {
+            "label": "10 km per jam",
+            "is_correct": false
+          },
+          {
+            "label": "500 km per jam",
+            "is_correct": false
+          },
+          {
+            "label": "1 km per jam",
+            "is_correct": false
+          }
+        ]
+      },
+      {
+        "question": "Cara bersin yang baik untuk mencegah penyebaran kuman adalah...",
+        "options": [
+          {
+            "label": "Ke siku dalam",
+            "is_correct": true
+          },
+          {
+            "label": "Ke telapak tangan terbuka",
+            "is_correct": false
+          },
+          {
+            "label": "Menahannya",
+            "is_correct": false
+          },
+          {
+            "label": "Ke arah orang lain",
+            "is_correct": false
+          }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    {
+      "title": "Bersin — Wikipedia Indonesia",
+      "url": "https://id.wikipedia.org/wiki/Bersin",
+      "publisher": "Wikipedia"
+    }
+  ]
+}

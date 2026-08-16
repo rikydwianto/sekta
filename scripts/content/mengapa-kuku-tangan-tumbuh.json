@@ -1,0 +1,51 @@
+{
+  "category": "manusia",
+  "title": "Mengapa Kuku Tangan Selalu Tumbuh?",
+  "slug": "mengapa-kuku-tangan-tumbuh",
+  "excerpt": "Kuku terus tumbuh seumur hidup — inilah bahan keratin yang sebenarnya bekerja melindungi ujung jari.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/1280px-Fingernails2.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Potong kuku minggu lalu, sekarang sudah panjang lagi. Kuku memang tumbuh terus-menerus, dan prosesnya ternyata lebih rumit dari yang terlihat." } },
+    { "type": "heading", "data": { "text": "Dari mana kuku tumbuh?" } },
+    { "type": "paragraph", "data": { "text": "Kuku tumbuh dari pangkal di bawah kulit bernama matriks kuku. Sel-sel di sana terus memperbanyak diri dan terdorong ke depan, lalu mengeras menjadi keratin — protein yang sama dengan penyusun rambut." } },
+    { "type": "fact", "data": { "text": "Kuku tangan tumbuh rata-rata 3,5 milimeter per bulan, dan kuku tangan lebih cepat tumbuh daripada kuku kaki." } },
+    { "type": "paragraph", "data": { "text": "Meski tak bisa menumbuhkan kuku lebih cepat secara signifikan, asupan protein dan biotin yang cukup membantu kuku tetap kuat. Potong secara rutin agar tetap bersih dan tidak menyimpan kotoran." } }
+  ],
+  "fact": "Kuku tangan tumbuh rata-rata 3,5 mm per bulan, lebih cepat daripada kuku kaki.",
+  "quiz": {
+    "title": "Kuis: Kuku yang Tumbuh",
+    "description": "Tahu tidak bagaimana kuku bertumbuh?",
+    "questions": [
+      {
+        "question": "Kuku tumbuh dari bagian bernama...",
+        "options": [
+          { "label": "Matriks kuku di bawah kulit", "is_correct": true },
+          { "label": "Ujung jari", "is_correct": false },
+          { "label": "Persendian", "is_correct": false },
+          { "label": "Tulang ruas", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Bahan utama penyusun kuku adalah...",
+        "options": [
+          { "label": "Keratin", "is_correct": true },
+          { "label": "Kalsium murni", "is_correct": false },
+          { "label": "Kolagen cair", "is_correct": false },
+          { "label": "Gula", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Rata-rata kecepatan tumbuh kuku tangan adalah...",
+        "options": [
+          { "label": "3,5 mm per bulan", "is_correct": true },
+          { "label": "10 cm per bulan", "is_correct": false },
+          { "label": "0,1 mm per bulan", "is_correct": false },
+          { "label": "1 meter per bulan", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Kuku (anatomi) — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Kuku", "publisher": "Wikipedia" }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "category": "manusia",
+  "title": "Kenapa Sarapan Itu Penting?",
+  "slug": "mengapa-sarapan-penting",
+  "excerpt": "Sarapan bukan sekadar rutinitas — ini bahan bakar pertama otak dan tubuh setelah semalaman puasa.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/1280px-A_plate_of_Food_for_Breakfast_in_Africa.jpg",
+  "content": [
+    {
+      "type": "paragraph",
+      "data": {
+        "text": "Setelah tidur sekitar 8 jam, tubuh seperti mobil yang tangki bensinnya hampir kosong. Sarapan mengisi ulang energi agar otak dan tubuh siap menjalani aktivitas."
+      }
+    },
+    {
+      "type": "heading",
+      "data": {
+        "text": "Apa manfaat sarapan?"
+      }
+    },
+    {
+      "type": "paragraph",
+      "data": {
+        "text": "Sarapan membantu menjaga kadar gula darah tetap stabil, meningkatkan fokus dan konsentrasi, serta mengurangi keinginan ngemil berlebihan di siang hari. Anak-anak yang sarapan terbukti lebih mudah menyerap pelajaran di sekolah."
+      }
+    },
+    {
+      "type": "fact",
+      "data": {
+        "text": "Sarapan sehat tidak harus mahal: nasi, telur, buah, atau roti gandum sudah cukup untuk memulai hari."
+      }
+    },
+    {
+      "type": "paragraph",
+      "data": {
+        "text": "Kuncinya rutin dan porsi wajar. Hindari sarapan yang terlalu manis karena membuat energi cepat naik lalu cepat turun — siap-siap lapar lagi sebelum siang."
+      }
+    }
+  ],
+  "fact": "Sarapan mengisi kembali kadar gula darah setelah semalaman puasa, sehingga otak dan tubuh siap beraktivitas.",
+  "quiz": {
+    "title": "Kuis: Kenapa Sarapan Penting",
+    "description": "Cek kebiasaan sarapanmu di sini.",
+    "questions": [
+      {
+        "question": "Mengapa sarapan itu penting?",
+        "options": [
+          {
+            "label": "Mengisi ulang energi setelah semalaman puasa",
+            "is_correct": true
+          },
+          {
+            "label": "Membuat tubuh lebih berat",
+            "is_correct": false
+          },
+          {
+            "label": "Agar tidak perlu minum air",
+            "is_correct": false
+          },
+          {
+            "label": "Hanya untuk anak-anak",
+            "is_correct": false
+          }
+        ]
+      },
+      {
+        "question": "Salah satu manfaat sarapan adalah...",
+        "options": [
+          {
+            "label": "Meningkatkan fokus dan konsentrasi",
+            "is_correct": true
+          },
+          {
+            "label": "Membuat kantuk sepanjang hari",
+            "is_correct": false
+          },
+          {
+            "label": "Menghilangkan nafsu makan selamanya",
+            "is_correct": false
+          },
+          {
+            "label": "Mengganti kebutuhan tidur",
+            "is_correct": false
+          }
+        ]
+      },
+      {
+        "question": "Contoh sarapan yang baik adalah...",
+        "options": [
+          {
+            "label": "Nasi, telur, dan buah",
+            "is_correct": true
+          },
+          {
+            "label": "Minuman bersoda saja",
+            "is_correct": false
+          },
+          {
+            "label": "Permen dan cokelat saja",
+            "is_correct": false
+          },
+          {
+            "label": "Tidak makan sama sekali",
+            "is_correct": false
+          }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    {
+      "title": "Sarapan — Wikipedia Indonesia",
+      "url": "https://id.wikipedia.org/wiki/Sarapan",
+      "publisher": "Wikipedia"
+    }
+  ]
+}

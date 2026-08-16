@@ -1,0 +1,116 @@
+{
+  "category": "manusia",
+  "title": "Manfaat Minum Air Putih",
+  "slug": "manfaat-minum-air-putih",
+  "excerpt": "Minum air putih terdengar sepele, padahal hampir semua fungsi tubuh bergantung padanya.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/1280px-Fasting_4-Fasting-a-glass-of-water-on-an-empty-plate.jpg",
+  "content": [
+    {
+      "type": "paragraph",
+      "data": {
+        "text": "Tubuh manusia sekitar 60 persennya adalah air. Dari otak, darah, hingga otot — semuanya butuh air agar bekerja dengan baik."
+      }
+    },
+    {
+      "type": "heading",
+      "data": {
+        "text": "Apa yang dilakukan air untuk tubuh?"
+      }
+    },
+    {
+      "type": "paragraph",
+      "data": {
+        "text": "Air membantu mengatur suhu tubuh, melancarkan pencernaan, membawa nutrisi ke sel, membuang limbah lewat urine, serta melumasi sendi. Saat kekurangan air, kita cepat lelah, pusing, dan sulit fokus."
+      }
+    },
+    {
+      "type": "fact",
+      "data": {
+        "text": "Rasa haus sebenarnya sudah menjadi tanda tubuh mulai dehidrasi ringan — jangan menunggu sampai haus banget untuk minum."
+      }
+    },
+    {
+      "type": "paragraph",
+      "data": {
+        "text": "Kebutuhan tiap orang berbeda, tapi aturan mudahnya: minumlah sebelum merasa haus dan perhatikan warna urine. Urine yang kuning pekat menandakan tubuh butuh lebih banyak air."
+      }
+    }
+  ],
+  "fact": "Rasa haus adalah tanda awal dehidrasi ringan — lebih baik minum rutin sebelum haus menyerang.",
+  "quiz": {
+    "title": "Kuis: Manfaat Air Putih",
+    "description": "Uji pengetahuanmu soal air putih.",
+    "questions": [
+      {
+        "question": "Sekitar berapa persen tubuh manusia terdiri dari air?",
+        "options": [
+          {
+            "label": "60 persen",
+            "is_correct": true
+          },
+          {
+            "label": "10 persen",
+            "is_correct": false
+          },
+          {
+            "label": "95 persen",
+            "is_correct": false
+          },
+          {
+            "label": "30 persen",
+            "is_correct": false
+          }
+        ]
+      },
+      {
+        "question": "Salah satu fungsi air dalam tubuh adalah...",
+        "options": [
+          {
+            "label": "Mengatur suhu dan membawa nutrisi",
+            "is_correct": true
+          },
+          {
+            "label": "Mengganti tulang",
+            "is_correct": false
+          },
+          {
+            "label": "Membuat rambut berubah warna",
+            "is_correct": false
+          },
+          {
+            "label": "Menambah massa otot secara instan",
+            "is_correct": false
+          }
+        ]
+      },
+      {
+        "question": "Tanda sederhana tubuh butuh lebih banyak air adalah...",
+        "options": [
+          {
+            "label": "Urine berwarna kuning pekat",
+            "is_correct": true
+          },
+          {
+            "label": "Kuku memanjang",
+            "is_correct": false
+          },
+          {
+            "label": "Mata berkedip cepat",
+            "is_correct": false
+          },
+          {
+            "label": "Telinga berdenging",
+            "is_correct": false
+          }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    {
+      "title": "Air — Wikipedia Indonesia",
+      "url": "https://id.wikipedia.org/wiki/Air",
+      "publisher": "Wikipedia"
+    }
+  ]
+}

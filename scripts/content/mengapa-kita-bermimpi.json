@@ -1,0 +1,51 @@
+{
+  "category": "manusia",
+  "title": "Mengapa Kita Bermimpi?",
+  "slug": "mengapa-kita-bermimpi",
+  "excerpt": "Mimpi masih jadi misteri, tapi para ilmuwan punya beberapa teori menarik kenapa otak memproduksinya.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/1280px-Sleeping_baby%2C_Baby%27s_dreams%2C_Moscow%2C_Russia.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Setiap malam kita bermimpi, walau sering lupa begitu bangun. Mimpi terjadi saat tidur fase REM (rapid eye movement), ketika aktivitas otak hampir seaktif saat terjaga." } },
+    { "type": "heading", "data": { "text": "Teori tentang mimpi" } },
+    { "type": "paragraph", "data": { "text": "Ilmuwan belum sepakat, tapi ada beberapa teori populer. Teori pengolahan memori menyebut mimpi membantu otak mengurutkan dan menyimpan ingatan. Teori lain menyebut mimpi sebagai simulasi untuk melatih kita menghadapi ancaman atau melatih emosi." } },
+    { "type": "fact", "data": { "text": "Manusia menghabiskan sekitar 2 jam setiap malam bermimpi, dan mayoritas mimpi terlupakan dalam hitungan menit." } },
+    { "type": "paragraph", "data": { "text": "Yang jelas, mimpi tidak bisa mengendalikan kenyataan. Tapi tidur cukup sangat penting — kekurangan tidur justru membuat otak kesulitan mengolah emosi dan memori sepanjang hari." } }
+  ],
+  "fact": "Mimpi terbanyak terjadi saat fase tidur REM, saat otak hampir seaktif ketika kita terjaga.",
+  "quiz": {
+    "title": "Kuis: Mengapa Kita Bermimpi",
+    "description": "Seberapa tahu kamu soal dunia mimpi?",
+    "questions": [
+      {
+        "question": "Mimpi paling sering terjadi pada fase tidur...",
+        "options": [
+          { "label": "REM (rapid eye movement)", "is_correct": true },
+          { "label": "Tidur nyenyak paling dalam", "is_correct": false },
+          { "label": "Tidur siang saja", "is_correct": false },
+          { "label": "Saat menguap", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Salah satu teori fungsi mimpi adalah...",
+        "options": [
+          { "label": "Mengolah dan menyimpan memori", "is_correct": true },
+          { "label": "Menambah berat badan", "is_correct": false },
+          { "label": "Mendinginkan otak secara permanen", "is_correct": false },
+          { "label": "Menghapus semua memori", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Rata-rata manusia bermimpi sekitar...",
+        "options": [
+          { "label": "2 jam per malam", "is_correct": true },
+          { "label": "30 detik per malam", "is_correct": false },
+          { "label": "8 jam per malam", "is_correct": false },
+          { "label": "Seminggu sekali", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Mimpi — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Mimpi", "publisher": "Wikipedia" }
+  ]
+}
