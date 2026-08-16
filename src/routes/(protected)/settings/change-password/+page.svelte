@@ -1,12 +1,12 @@
 <script lang="ts">
-  import TopBar from '$lib/components/TopBar.svelte';
+  import PageHeader from '$lib/components/PageHeader.svelte';
   import { app } from '$lib/stores/app.svelte';
 
   let isDark = $derived(app.theme === 'dark');
 </script>
 
 <div class="min-h-full flex flex-col transition-colors duration-300 {isDark ? 'text-slate-100' : 'text-slate-900'}">
-  <TopBar title="Ubah Password" backHref="/settings/account-security" />
+  <PageHeader title="Ubah Password" type="page" backHref="/settings/account-security" />
   <div class="px-6 py-4 space-y-4 flex-1">
     <input
       type="password"

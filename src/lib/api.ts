@@ -90,9 +90,10 @@ export async function getArticlesPage(
   offset: number,
   limit: number
 ): Promise<{ articles: Article[]; total: number | null }> {
+  const select = categorySlug ? '*, categories!inner(name, slug)' : '*, categories(name, slug)';
   let q = supabase
     .from('articles')
-    .select('*, categories(name, slug)', { count: 'exact' })
+    .select(select, { count: 'exact' })
     .eq('status', 'PUBLISHED')
     .order('published_at', { ascending: false })
     .range(offset, offset + limit - 1);

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import TopBar from '$lib/components/TopBar.svelte';
+  import PageHeader from '$lib/components/PageHeader.svelte';
   import { CheckCircle2, Upload, LoaderCircle } from '@lucide/svelte';
   import { updateProfile, uploadAvatar, USERNAME_PATTERN } from '$lib/api';
   import { app, updateUser } from '$lib/stores/app.svelte';
@@ -54,7 +54,7 @@
 </script>
 
 <div class="min-h-full flex flex-col transition-colors duration-300 {isDark ? 'text-slate-100 bg-slate-950' : 'text-slate-900 bg-white'}">
-  <TopBar title="Edit Profil" backHref="/profile" />
+  <PageHeader title="Edit Profil" type="page" backHref="/profile" />
 
   <div class="px-6 py-5 flex-1 space-y-5">
 

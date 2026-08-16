@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Search, ChevronRight, ChevronDown, Atom, Landmark, Cpu, Globe, PawPrint, UserRound, Sparkles, Compass, Coffee } from '@lucide/svelte';
+  import { ChevronRight, ChevronDown, Atom, Landmark, Cpu, Globe, PawPrint, UserRound, Sparkles, Compass, Coffee, SlidersHorizontal, Clock, TrendingUp, Star } from '@lucide/svelte';
   import { app } from '$lib/stores/app.svelte';
   import SkeletonLoader from '$lib/components/SkeletonLoader.svelte';
   import PageHeader from '$lib/components/PageHeader.svelte';
@@ -22,6 +22,45 @@
   let total = $state(initialTotal ?? initialArticles.length);
   let active = $state('all');
   let loading = $state(false);
+
+  let selectedReadTime = $state<string>('');
+  let selectedSort = $state<'newest' | 'trending' | 'most-read'>('newest');
+  let showFilters = $state(false);
+
+  const READ_TIME_OPTIONS = [
+    { label: 'Semua', value: '' },
+    { label: '< 3 mnt', value: 'short' },
+    { label: '3–5 mnt', value: 'medium' },
+    { label: '> 5 mnt', value: 'long' }
+  ];
+
+  const SORT_OPTIONS: { label: string; value: 'newest' | 'trending' | 'most-read'; icon: typeof TrendingUp }[] = [
+    { label: 'Terbaru', value: 'newest', icon: Clock },
+    { label: 'Trending', value: 'trending', icon: TrendingUp },
+    { label: 'Terpopuler', value: 'most-read', icon: Star }
+  ];
+
+  let displayArticles = $derived.by(() => {
+    let base = articles;
+    if (selectedReadTime) {
+      base = base.filter((a) => {
+        const mins = parseInt(a.readTime);
+        if (selectedReadTime === 'short') return mins < 3;
+        if (selectedReadTime === 'medium') return mins >= 3 && mins <= 5;
+        if (selectedReadTime === 'long') return mins > 5;
+        return true;
+      });
+    }
+    if (selectedSort === 'trending') {
+      return [...base].sort((a, b) => Number(b.featured) - Number(a.featured));
+    } else if (selectedSort === 'most-read') {
+      return [...base].sort((a, b) => parseInt(b.readTime) - parseInt(a.readTime));
+    }
+    return base;
+  });
+
+  let hasActiveFilters = $derived(selectedReadTime !== '' || selectedSort !== 'newest');
+  let activeFilterCount = $derived((selectedReadTime ? 1 : 0) + (selectedSort !== 'newest' ? 1 : 0));
 
   const CAT_ICONS: Record<string, { icon: typeof Compass; cls: string }> = {
     sains: { icon: Atom, cls: 'text-sky-500 bg-sky-500/10' },
@@ -59,11 +98,7 @@
 </script>
 
 <div class="min-h-full pb-12 transition-colors duration-300 page-enter {isDark ? 'text-slate-100' : 'text-slate-900'}">
-  <PageHeader title="Jelajahi Konten" type="page" showNotifications={true}>
-    <button onclick={() => goto('/search')} class="p-2.5 rounded border {isDark ? 'bg-slate-900 border-slate-700 text-slate-300 hover:bg-slate-800' : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-slate-200'}">
-      <Search class="w-5 h-5" />
-    </button>
-  </PageHeader>
+  <PageHeader title="Jelajahi Konten" type="page" showNotifications={true}></PageHeader>
 
   <div class="px-6 pt-4">
     <div class="flex gap-2 overflow-x-auto hide-scrollbar pb-2 mb-4">
@@ -103,13 +138,73 @@
       {/if}
     </div>
 
+    <!-- Filter & Sort Bar -->
+    <div class="flex items-center gap-2 mb-4">
+      <button
+        onclick={() => showFilters = !showFilters}
+        class="flex items-center gap-1.5 px-3 py-1.5 rounded border text-xs font-bold transition-colors relative
+          {showFilters || hasActiveFilters
+            ? 'bg-blue-600 border-blue-600 text-white'
+            : isDark
+              ? 'bg-slate-900 border-slate-700 text-slate-300 hover:bg-slate-800'
+              : 'bg-white border-slate-200 text-slate-700 hover:bg-slate-100'}"
+      >
+        <SlidersHorizontal class="w-3.5 h-3.5" />
+        Filter
+        {#if activeFilterCount > 0}
+          <span class="ml-0.5 bg-white text-blue-600 rounded-full w-4 h-4 flex items-center justify-center text-[10px] font-black">
+            {activeFilterCount}
+          </span>
+        {/if}
+      </button>
+
+      <div class="flex gap-2 overflow-x-auto hide-scrollbar flex-1">
+        {#each SORT_OPTIONS as opt}
+          <button
+            onclick={() => selectedSort = opt.value}
+            class="flex items-center gap-1 px-3 py-1.5 rounded border text-xs font-bold whitespace-nowrap transition-colors
+              {selectedSort === opt.value
+                ? 'bg-slate-900 border-slate-900 text-white ' + (isDark ? 'bg-slate-100 border-slate-100 text-slate-900' : '')
+                : isDark
+                  ? 'bg-slate-900 border-slate-700 text-slate-400 hover:bg-slate-800 hover:text-slate-200'
+                  : 'bg-white border-slate-200 text-slate-500 hover:bg-slate-100 hover:text-slate-700'}"
+          >
+            <opt.icon class="w-3 h-3" />
+            {opt.label}
+          </button>
+        {/each}
+      </div>
+    </div>
+
+    <!-- Read time filter panel -->
+    {#if showFilters}
+      <div class="mb-4">
+        <p class="text-xs font-black uppercase tracking-wider mb-2 {isDark ? 'text-slate-500' : 'text-slate-400'}">Waktu Baca</p>
+        <div class="flex flex-wrap gap-2">
+          {#each READ_TIME_OPTIONS as opt}
+            <button
+              onclick={() => selectedReadTime = opt.value}
+              class="px-3 py-1.5 rounded border text-xs font-bold transition-colors
+                {selectedReadTime === opt.value
+                  ? 'bg-blue-600 border-blue-600 text-white'
+                  : isDark
+                    ? 'bg-slate-800 border-slate-700 text-slate-300 hover:bg-slate-700'
+                    : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-100'}"
+            >
+              {opt.label}
+            </button>
+          {/each}
+        </div>
+      </div>
+    {/if}
+
     {#if articles.length > 0 || loading}
       {#if articles.length > 0}
         <p class="text-xs font-semibold uppercase tracking-wider mb-3 {isDark ? 'text-slate-500' : 'text-slate-500'}">
-          {articles.length} artikel{total != null && total > articles.length ? ` dari ${total}` : ''}
+          {displayArticles.length} artikel{total != null && total > displayArticles.length ? ` dari ${total}` : ''}
         </p>
         <div class="space-y-3">
-          {#each articles as art}
+          {#each displayArticles as art}
             <a
               href={`/article/${art.slug}`}
               class="p-3 rounded border flex items-center gap-3 cursor-pointer transition-colors card-hover {isDark ? 'bg-slate-900 border-slate-800 hover:bg-slate-800' : 'bg-slate-50 border-slate-200 hover:bg-white'}"

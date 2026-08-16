@@ -1,12 +1,12 @@
 <script lang="ts">
-  import TopBar from '$lib/components/TopBar.svelte';
+  import PageHeader from '$lib/components/PageHeader.svelte';
   import { app } from '$lib/stores/app.svelte';
 
   let isDark = $derived(app.theme === 'dark');
 </script>
 
 <div class="min-h-full pb-12 transition-colors duration-300 {isDark ? 'text-slate-100' : 'text-slate-900'}">
-  <TopBar title="Account & Security" backHref="/settings" />
+  <PageHeader title="Account & Security" type="page" backHref="/settings" />
   <div class="px-6 py-4 space-y-6">
     <div class="border p-4 rounded-2xl {isDark ? 'bg-[#141720] border-slate-800' : 'bg-white border-slate-200'}">
       <div class="flex justify-between items-center mb-1">

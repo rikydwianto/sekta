@@ -1,12 +1,12 @@
 <script lang="ts">
-  import TopBar from '$lib/components/TopBar.svelte';
+  import PageHeader from '$lib/components/PageHeader.svelte';
   import { app } from '$lib/stores/app.svelte';
 
   let isDark = $derived(app.theme === 'dark');
 </script>
 
 <div class="min-h-full pb-12 transition-colors duration-300 {isDark ? 'text-slate-100' : 'text-slate-900'}">
-  <TopBar title="Tentang Sekejap Fakta" backHref="/" />
+  <PageHeader title="Tentang Sekejap Fakta" type="page" backHref="/" />
   <div class="px-6 py-6 max-w-2xl mx-auto space-y-8">
 
     <section class="text-center space-y-3 py-2">

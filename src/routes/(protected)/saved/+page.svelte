@@ -1,5 +1,5 @@
 <script lang="ts">
-  import TopBar from '$lib/components/TopBar.svelte';
+  import PageHeader from '$lib/components/PageHeader.svelte';
   import type { Article } from '$lib/types';
   import { getSavedArticles } from '$lib/api';
   import { app } from '$lib/stores/app.svelte';
@@ -17,7 +17,7 @@
 </script>
 
 <div class="min-h-full pb-12 transition-colors duration-300 {isDark ? 'text-slate-100' : 'text-slate-900'}">
-  <TopBar title="Artikel Tersimpan" backHref="/profile" />
+  <PageHeader title="Artikel Tersimpan" type="page" backHref="/profile" />
   <div class="px-6 py-4 space-y-3">
     {#if saved.length > 0}
       {#each saved as art}

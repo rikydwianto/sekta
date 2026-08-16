@@ -8,7 +8,7 @@
   import { page } from '$app/state';
   import type { Category, ArticleBlock } from '$lib/types';
   import { app } from '$lib/stores/app.svelte';
-  import TopBar from '$lib/components/TopBar.svelte';
+  import PageHeader from '$lib/components/PageHeader.svelte';
   import { getCategories, submitArticle, updateArticle, getArticleById, uploadArticleImage, uploadVideoFile } from '$lib/api';
   import { sanitizeHtml } from '$lib/format';
 
@@ -213,7 +213,7 @@
 </script>
 
 <div class="min-h-full pb-20 transition-colors duration-300 {isDark ? 'text-slate-100 bg-slate-950' : 'text-slate-900 bg-white'}">
-  <TopBar title={editId ? 'Edit Artikel' : 'Tulis Artikel'} backHref="/kelola" />
+  <PageHeader title={editId ? 'Edit Artikel' : 'Tulis Artikel'} type="page" backHref="/kelola" />
 
   {#if submitted}
     <div class="px-6 py-16 flex flex-col items-center text-center">

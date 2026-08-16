@@ -170,6 +170,9 @@
   function handleQueryInput(e: Event) {
     const val = (e.target as HTMLInputElement).value;
     query = val;
+    selectedCategory = '';
+    selectedReadTime = '';
+    selectedSort = 'newest';
   }
 
   function clearQuery() {
@@ -541,6 +544,21 @@
               {/each}
             </div>
           </div>
+        </div>
+      {/if}
+
+      {#if query.trim() === '' && allArticles.length < allTotal}
+        <div class="pb-8">
+          <button
+            onclick={loadMore}
+            disabled={loadingMore}
+            class="w-full py-3 rounded-xl border text-sm font-black transition-colors disabled:opacity-50
+              {isDark
+                ? 'border-slate-700 text-slate-200 hover:bg-slate-800'
+                : 'border-slate-200 text-slate-600 hover:bg-slate-50'}"
+          >
+            {loadingMore ? 'Memuat...' : `Muat Lainnya (${allArticles.length}/${allTotal})`}
+          </button>
         </div>
       {/if}
     {/if}

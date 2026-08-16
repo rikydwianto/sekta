@@ -3,7 +3,7 @@
   import { goto } from '$app/navigation';
   import type { Article } from '$lib/types';
   import { app } from '$lib/stores/app.svelte';
-  import TopBar from '$lib/components/TopBar.svelte';
+  import PageHeader from '$lib/components/PageHeader.svelte';
   import { getModeratableArticles, adminSetArticleStatus } from '$lib/api';
 
   let isDark = $derived(app.theme === 'dark');
@@ -44,7 +44,7 @@
 </script>
 
 <div class="min-h-full pb-20 transition-colors duration-300 {isDark ? 'text-slate-100 bg-slate-950' : 'text-slate-900 bg-white'}">
-  <TopBar title="Kelola Artikel" backHref="/profile" />
+  <PageHeader title="Kelola Artikel" type="page" backHref="/profile" />
 
   <div class="px-6 py-5 space-y-3">
     <p class="text-xs font-black uppercase tracking-widest {isDark ? 'text-slate-500' : 'text-slate-500'}">
