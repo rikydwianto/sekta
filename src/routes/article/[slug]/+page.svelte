@@ -36,7 +36,7 @@ import { recordRead } from '$lib/stores/reading.svelte';
   let paused = $state(false);
   let rate = $state(1);
   let fontSize = $state(2);
-  let readProgress = $state(0);
+  let progressBar = $state<HTMLElement | null>(null);
 
   const FONT_SIZES = ['text-sm', 'text-[15px]', 'text-base', 'text-lg'];
   const RATES = [0.75, 1, 1.25];
@@ -62,9 +62,12 @@ import { recordRead } from '$lib/stores/reading.svelte';
   });
 
   $effect(() => {
+    const el = progressBar;
+    if (!el) return;
     const onScroll = () => {
       const h = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      readProgress = h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0;
+      const p = h > 0 ? Math.min(100, (window.scrollY / h) * 100) : 0;
+      el.style.width = `${p}%`;
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
@@ -221,11 +224,15 @@ import { recordRead } from '$lib/stores/reading.svelte';
 </svelte:head>
 
 <div class="min-h-full pb-12 transition-colors duration-300 {isDark ? 'text-slate-100' : 'text-slate-900'}">
-  <div
-    class="sticky top-0 backdrop-blur-xl z-40 px-5 py-3.5 flex items-center justify-between border-b {isDark
-      ? 'bg-[#0b0d10]/90 border-slate-800 text-slate-100'
-      : 'bg-white/90 border-slate-200 text-slate-900'}"
-  >
+  <div class="sticky top-0 z-40">
+    <div class="h-1 {isDark ? 'bg-slate-800' : 'bg-slate-100'}">
+      <div bind:this={progressBar} class="h-full bg-blue-600" style="width: 0%"></div>
+    </div>
+    <div
+      class="backdrop-blur-xl px-5 py-3.5 flex items-center justify-between border-b {isDark
+        ? 'bg-[#0b0d10]/90 border-slate-800 text-slate-100'
+        : 'bg-white/90 border-slate-200 text-slate-900'}"
+    >
     <button onclick={goBack} class="p-2 -ml-2 rounded-full {isDark ? 'hover:bg-slate-800 text-slate-200' : 'hover:bg-slate-100 text-slate-700'}">
       <ChevronLeft class="w-6 h-6 stroke-[2.5]" />
     </button>
@@ -259,8 +266,6 @@ import { recordRead } from '$lib/stores/reading.svelte';
       </a>
     </div>
   </div>
-  <div class="h-1 bg-transparent {isDark ? 'bg-slate-800' : 'bg-slate-100'}">
-    <div class="h-full bg-blue-600 transition-[width] duration-150" style="width: {readProgress}%"></div>
   </div>
 
   {#if !article}
@@ -686,5 +691,31 @@ import { recordRead } from '$lib/stores/reading.svelte';
     tabindex="0"
   >
     <img src={lightboxSrc} alt="" class="max-w-full max-h-full rounded-xl shadow-2xl" />
+  </div>
+{/if}
+
+{#if speaking !== null}
+  <div class="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2 px-4 py-2.5 rounded-2xl shadow-2xl border backdrop-blur-xl {isDark ? 'bg-slate-900/95 border-slate-700' : 'bg-white/95 border-slate-200'}">
+    <button
+      onclick={() => speak('all', [article?.title ?? '', ...speakableBlocks.map(blockText)].join('. '))}
+      class="p-2 rounded-full transition-colors {isDark ? 'text-slate-300 hover:bg-slate-800' : 'text-slate-700 hover:bg-slate-100'}"
+      aria-label={paused ? 'Lanjutkan membaca' : 'Jeda membaca'}
+    >
+      {#if paused}
+        <Play class="w-5 h-5" />
+      {:else}
+        <Pause class="w-5 h-5" />
+      {/if}
+    </button>
+    <span class="text-[10px] font-black px-2 py-1 rounded-lg {isDark ? 'bg-slate-800 text-slate-400' : 'bg-slate-100 text-slate-500'}">
+      {rate}x
+    </span>
+    <button
+      onclick={stopSpeaking}
+      class="p-2 rounded-full transition-colors {isDark ? 'text-slate-300 hover:bg-slate-800' : 'text-slate-700 hover:bg-slate-100'}"
+      aria-label="Berhenti membaca"
+    >
+      <Square class="w-5 h-5" />
+    </button>
   </div>
 {/if}
