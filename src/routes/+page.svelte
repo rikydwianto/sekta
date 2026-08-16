@@ -3,6 +3,7 @@
   import { goto } from '$app/navigation';
   import { app } from '$lib/stores/app.svelte';
   import { readingHistory } from '$lib/stores/reading.svelte';
+  import { applyIdVoice } from '$lib/format';
   import SkeletonLoader from '$lib/components/SkeletonLoader.svelte';
   import AvatarInitials from '$lib/components/AvatarInitials.svelte';
   import PageHeader from '$lib/components/PageHeader.svelte';
@@ -41,7 +42,7 @@
       return;
     }
     const u = new SpeechSynthesisUtterance(fact.fact);
-    u.lang = 'id-ID';
+    applyIdVoice(u);
     u.onend = () => (speaking = false);
     speaking = true;
     speechSynthesis.speak(u);
@@ -70,7 +71,7 @@
       return;
     }
     const u = new SpeechSynthesisUtterance(flashFact.fact);
-    u.lang = 'id-ID';
+    applyIdVoice(u);
     u.onend = () => (speaking = false);
     speaking = true;
     speechSynthesis.speak(u);

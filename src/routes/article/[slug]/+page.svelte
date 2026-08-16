@@ -8,7 +8,7 @@ import { app, toggleSaveArticle, toggleTheme } from '$lib/stores/app.svelte';
   import AvatarInitials from '$lib/components/AvatarInitials.svelte';
   import TikTokFollowCard from '$lib/components/TikTokFollowCard.svelte';
 import { getArticleReactions, setArticleReaction, getComments, addComment } from '$lib/api';
-import { timeAgo, videoEmbedUrl, tiktokVideoId, tiktokProfile } from '$lib/format';
+import { timeAgo, videoEmbedUrl, tiktokVideoId, tiktokProfile, applyIdVoice } from '$lib/format';
 import { recordRead } from '$lib/stores/reading.svelte';
 
   let { data } = $props();
@@ -174,7 +174,7 @@ import { recordRead } from '$lib/stores/reading.svelte';
     speechSynthesis.cancel();
     paused = false;
     const u = new SpeechSynthesisUtterance(text);
-    u.lang = 'id-ID';
+    applyIdVoice(u);
     u.rate = rate;
     u.onend = () => {
       speaking = null;

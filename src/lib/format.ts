@@ -25,6 +25,28 @@ export function tiktokVideoId(url: string): string | null {
   return m ? m[1] : null;
 }
 
+let cachedIdVoice: SpeechSynthesisVoice | undefined;
+
+function refreshIdVoice() {
+  if (typeof speechSynthesis === 'undefined') return;
+  const voices = speechSynthesis.getVoices();
+  cachedIdVoice = voices.find((v) => v.lang?.toLowerCase().startsWith('id'));
+}
+
+// Paksa TTS memakai suara Bahasa Indonesia (jika tersedia di perangkat),
+// agar tidak terbaca dengan aksen/ucapan bahasa lain.
+export function applyIdVoice(u: SpeechSynthesisUtterance) {
+  if (typeof speechSynthesis === 'undefined') return;
+  u.lang = 'id-ID';
+  refreshIdVoice();
+  if (cachedIdVoice) u.voice = cachedIdVoice;
+}
+
+if (typeof speechSynthesis !== 'undefined') {
+  refreshIdVoice();
+  speechSynthesis.addEventListener?.('voiceschanged', refreshIdVoice);
+}
+
 // URL profil TikTok (tiktok.com/@user); selain itu null. Profil tidak bisa di-embed,
 // dipakai untuk kartu "Ikuti di TikTok".
 export function tiktokProfile(url: string): string | null {
