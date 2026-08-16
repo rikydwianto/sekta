@@ -30,14 +30,23 @@ let cachedIdVoice: SpeechSynthesisVoice | undefined;
 function refreshIdVoice() {
   if (typeof speechSynthesis === 'undefined') return;
   const voices = speechSynthesis.getVoices();
-  cachedIdVoice = voices.find((v) => v.lang?.toLowerCase().startsWith('id'));
+  const id = voices.filter((v) => v.lang?.toLowerCase().startsWith('id'));
+  if (id.length === 0) {
+    cachedIdVoice = undefined;
+    return;
+  }
+  // Preferensi suara perempuan (nama umum voice Indonesia perempuan).
+  const female = id.find((v) => /damayanti|gadis|andini|female|wanita|google bahasa indonesia|indonesian female/i.test(v.name));
+  cachedIdVoice = female ?? id[0];
 }
 
-// Paksa TTS memakai suara Bahasa Indonesia (jika tersedia di perangkat),
+// Paksa TTS memakai suara Bahasa Indonesia (wanita jika tersedia) dengan volume penuh,
 // agar tidak terbaca dengan aksen/ucapan bahasa lain.
 export function applyIdVoice(u: SpeechSynthesisUtterance) {
   if (typeof speechSynthesis === 'undefined') return;
   u.lang = 'id-ID';
+  u.volume = 1;
+  u.pitch = 1;
   refreshIdVoice();
   if (cachedIdVoice) u.voice = cachedIdVoice;
 }
