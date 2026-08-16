@@ -12,6 +12,7 @@
       <a href="/about" class="{isDark ? 'text-slate-400 hover:text-slate-200' : 'text-slate-600 hover:text-slate-900'}">Tentang</a>
       <a href="/privacy" class="{isDark ? 'text-slate-400 hover:text-slate-200' : 'text-slate-600 hover:text-slate-900'}">Privasi</a>
       <a href="/terms" class="{isDark ? 'text-slate-400 hover:text-slate-200' : 'text-slate-600 hover:text-slate-900'}">Syarat</a>
+      <a href="/monitoring" class="{isDark ? 'text-slate-400 hover:text-slate-200' : 'text-slate-600 hover:text-slate-900'}">Monitoring</a>
     </div>
     <p class="text-[10px] font-semibold {isDark ? 'text-slate-600' : 'text-slate-400'}">
       © {new Date().getFullYear()} SEKTA — Sekejap Fakta. Dibuat dengan 💙 untuk rasa penasaran.

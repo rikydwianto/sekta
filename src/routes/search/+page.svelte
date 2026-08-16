@@ -8,6 +8,7 @@
   import SkeletonLoader from '$lib/components/SkeletonLoader.svelte';
   import PageHeader from '$lib/components/PageHeader.svelte';
   import CoverImage from '$lib/components/CoverImage.svelte';
+  import { track } from '$lib/track';
 
   let isDark = $derived(app.theme === 'dark');
 
@@ -112,6 +113,9 @@
       try {
         const results = await searchArticles(q.trim());
         searchResults = results;
+        if (q.trim().length > 0) {
+          track('search_performed', { query: q.trim(), result_count: results.length });
+        }
       } catch {
         searchResults = [];
       } finally {

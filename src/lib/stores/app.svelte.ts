@@ -10,7 +10,7 @@ import {
 } from '$lib/api';
 import { supabase } from '$lib/supabase';
 import { goto } from '$app/navigation';
-import posthog from 'posthog-js';
+import { identifyPostHog, resetPostHog, track } from '$lib/track';
 
 const anonymousUser: UserProfile = { name: '', username: '', bio: '', avatar: '', role: 'USER', stats: { articles: 0, quizzes: 0 } };
 
@@ -49,6 +49,16 @@ function profileFromSessionUser(user: User): UserProfile {
   };
 }
 
+function identifyUser(user: User) {
+  const meta = (user.user_metadata ?? {}) as Record<string, unknown>;
+  const rawName = String(meta.full_name ?? meta.name ?? '');
+  identifyPostHog(user.id, {
+    email: user.email ?? undefined,
+    name: app.user.name || rawName || undefined,
+    username: app.user.username || undefined
+  });
+}
+
 async function syncFromSession(user: User) {
   const profile = await getProfile();
   if (profile) {
@@ -80,7 +90,7 @@ export async function initAuth() {
     app.isLoggedIn = true;
     await syncFromSession(session.user);
     await consumeRedirect();
-    if (posthog.__loaded) posthog.identify(session.user.id);
+    identifyUser(session.user);
   }
 
   supabase.auth.onAuthStateChange(async (_event, session) => {
@@ -89,13 +99,13 @@ export async function initAuth() {
       app.isLoggedIn = true;
       await syncFromSession(session.user);
       await consumeRedirect();
-      if (posthog.__loaded) posthog.identify(session.user.id);
+      identifyUser(session.user);
     } else {
       app.isLoggedIn = false;
       app.user = anonymousUser;
       app.savedArticles = [];
       app.notifications = [];
-      if (posthog.__loaded) posthog.reset();
+      resetPostHog();
     }
   });
 }
@@ -106,7 +116,7 @@ export async function signOut() {
   app.user = anonymousUser;
   app.savedArticles = [];
   app.notifications = [];
-  if (posthog.__loaded) posthog.reset();
+  resetPostHog();
 }
 
 export function initTheme() {
@@ -119,6 +129,7 @@ export function initTheme() {
 export function toggleTheme() {
   app.theme = app.theme === 'light' ? 'dark' : 'light';
   if (typeof localStorage !== 'undefined') localStorage.setItem('sekta-theme', app.theme);
+  track('theme_toggled', { theme: app.theme });
 }
 
 export function updateUser(partial: Partial<UserProfile>) {
@@ -133,6 +144,7 @@ export function toggleSaveArticle(article: Article) {
     app.savedArticles = [...app.savedArticles, article];
   }
   setArticleSaved(article.id, !isSaved);
+  track(isSaved ? 'article_unsaved' : 'article_saved', { slug: article.slug, title: article.title });
 }
 
 export async function markAllNotificationsRead(): Promise<boolean> {

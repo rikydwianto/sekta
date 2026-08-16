@@ -6,6 +6,7 @@
   import PageHeader from '$lib/components/PageHeader.svelte';
   import { getQuizQuestions, getQuizList } from '$lib/api';
   import type { QuizQuestion } from '$lib/types';
+  import { track } from '$lib/track';
 
   let isDark = $derived(app.theme === 'dark');
 
@@ -43,6 +44,7 @@
 
   function startQuiz() {
     quizStarted = true;
+    track('quiz_started', { quiz_id: quizId, quiz_title: quizTitle, total_questions: totalQuestions });
   }
 
   function selectAnswer(answerId: number) {
@@ -73,6 +75,14 @@
     }
 
     const score = Math.round((correctCount / questions.length) * 100);
+
+    track('quiz_completed', {
+      quiz_id: quizId,
+      quiz_title: quizTitle,
+      score,
+      correct_answers: correctCount,
+      total_questions: questions.length
+    });
 
     addQuizResult({
       score,

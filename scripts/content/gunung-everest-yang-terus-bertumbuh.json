@@ -1,0 +1,52 @@
+{
+  "category": "dunia",
+  "title": "Gunung Everest yang Terus Bertumbuh",
+  "slug": "gunung-everest-yang-terus-bertumbuh",
+  "excerpt": "Titik tertinggi di Bumi tidak diam — Everest tumbuh beberapa milimeter setiap tahun dan terus bergerak ke arah tertentu.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Mt._Everest_from_Gokyo_Ri_November_5%2C_2012.jpg/1280px-Mt._Everest_from_Gokyo_Ri_November_5%2C_2012.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Gunung Everest adalah titik tertinggi di permukaan Bumi dengan ketinggian resmi 8.848,86 meter. Tapi angka itu tidak selamanya tetap — Everest terus bertumbuh." } },
+    { "type": "heading", "data": { "text": "Bertumbuh beberapa milimeter per tahun" } },
+    { "type": "paragraph", "data": { "text": "Everest naik sekitar 4 milimeter setiap tahun. Penyebabnya adalah tumbukan lempeng tektonik India yang terus mendorong ke utara dan 'menekan' Pegunungan Himalaya ke atas." } },
+    { "type": "fact", "data": { "text": "Gerakan lempeng yang sama juga membuat Everest bergeser ke timur laut beberapa sentimeter per tahun." } },
+    { "type": "paragraph", "data": { "text": "Pendakian pertama puncaknya dilakukan Edmund Hillary dan Tenzing Norgay pada tahun 1953. Sejak itu, ribuan orang berhasil sampai ke puncak, namun ratusan lainnya kehilangan nyawa di sana." } },
+    { "type": "list", "data": { "items": ["Tinggi resmi 8.848,86 meter (hasil pengukuran 2020)", "Bertambah ± 4 mm per tahun", "Didorong tumbukan lempeng India-Eurasia", "Pertama kali ditaklukkan 1953 oleh Hillary & Tenzing Norgay", "Lebih dari 300 pendaki telah meninggal di gunung ini"] } }
+  ],
+  "fact": "Gunung Everest bertumbuh ± 4 milimeter per tahun karena tumbukan lempeng tektonik India.",
+  "quiz": {
+    "title": "Kuis: Gunung Everest",
+    "description": "Uji pengetahuanmu tentang puncak tertinggi di Bumi.",
+    "questions": [
+      {
+        "question": "Mengapa Gunung Everest terus bertambah tinggi?",
+        "options": [
+          { "label": "Tumbukan lempeng India yang mendorong Himalaya ke atas", "is_correct": true },
+          { "label": "Tumpukan salju yang mengeras", "is_correct": false },
+          { "label": "Aktivitas gunung berapi", "is_correct": false },
+          { "label": "Erosi angin yang membalik", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Siapa yang pertama kali mencapai puncak Everest?",
+        "options": [
+          { "label": "Edmund Hillary dan Tenzing Norgay", "is_correct": true },
+          { "label": "Neil Armstrong dan Buzz Aldrin", "is_correct": false },
+          { "label": "Columbus dan Magellan", "is_correct": false },
+          { "label": "Rudyard Kipling dan Marco Polo", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Berapa ketinggian resmi Everest menurut pengukuran terbaru?",
+        "options": [
+          { "label": "8.848,86 meter", "is_correct": true },
+          { "label": "6.000 meter", "is_correct": false },
+          { "label": "10.000 meter", "is_correct": false },
+          { "label": "7.500 meter", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Gunung Everest — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Gunung_Everest", "publisher": "Wikipedia" }
+  ]
+}

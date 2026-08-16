@@ -12,6 +12,7 @@ import { app, toggleSaveArticle, toggleTheme } from '$lib/stores/app.svelte';
 import { getArticleReactions, setArticleReaction, getComments, addComment } from '$lib/api';
 import { timeAgo, videoEmbedUrl, tiktokVideoId, tiktokProfile, applyIdVoice } from '$lib/format';
 import { recordRead } from '$lib/stores/reading.svelte';
+import { track } from '$lib/track';
 
   let { data } = $props();
 
@@ -46,6 +47,7 @@ import { recordRead } from '$lib/stores/reading.svelte';
   function shareArticle(article: Article) {
     const url = window.location.href;
     const text = `${article.title}\n\n${article.excerpt ?? ''}`;
+    track('article_shared', { slug: article.slug, title: article.title });
     if (navigator.share) {
       navigator.share({ title: article.title, text, url }).catch(() => {});
     } else {
@@ -122,6 +124,9 @@ import { recordRead } from '$lib/stores/reading.svelte';
     let alive = true;
     socialLoading = true;
     untrack(() => recordRead(article!));
+    if (article) {
+      track('article_viewed', { slug: article.slug, title: article.title, category: article.category });
+    }
     Promise.all([
       getArticleReactions(currentId).catch(() => null),
       getComments(currentId).catch(() => null)
@@ -142,6 +147,7 @@ import { recordRead } from '$lib/stores/reading.svelte';
   async function react(type: ArticleReaction) {
     const res = await setArticleReaction(currentId, type);
     if (!res) return;
+    track('article_reaction', { type, slug: article?.slug });
     if (res === 'removed') {
       reactions = reactions.filter((r) => r !== type);
       myReaction = null;
@@ -273,6 +279,7 @@ import { recordRead } from '$lib/stores/reading.svelte';
     const ok = await addComment(currentId, text, app.user.name || 'Pengguna');
     posting = false;
     if (ok) {
+      track('article_commented', { slug: article?.slug });
       comments = [
         { id: Date.now(), authorName: app.user.name || 'Pengguna', content: text, createdAt: new Date().toISOString(), mine: true },
         ...comments

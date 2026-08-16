@@ -1,0 +1,53 @@
+{
+  "category": "sejarah",
+  "title": "Misteri Segitiga Bermuda: Lebih Misterius di Cerita daripada Fakta",
+  "slug": "misteri-segitiga-bermuda",
+  "excerpt": "Puluhan kapal dan pesawat dikabarkan hilang di Segitiga Bermuda. Tapi data menunjukkan kawasan ini tidak lebih berbahaya dari laut lain.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/3/33/Bermuda_Triangle.png",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Segitiga Bermuda adalah wilayah laut di antara Miami, Puerto Riko, dan Bermuda. Selama puluhan tahun, kawasan ini dikaitkan dengan ratusan kasus kapal dan pesawat yang hilang secara misterius." } },
+    { "type": "heading", "data": { "text": "Misteri yang mulai terkuak" } },
+    { "type": "paragraph", "data": { "text": "Istrakan 'Segitiga Bermuda' baru populer pada tahun 1950-an lewat artikel dan buku. Tapi para peneliti yang menelusuri catatan pelayaran menemukan bahwa jumlah kecelakaan di kawasan ini tidak lebih tinggi dibandingkan wilayah laut lain yang seramai itu." } },
+    { "type": "fact", "data": { "text": "Banyak kasus 'hilang' ternyata bisa dijelaskan: badai tiba-tiba, ombak raksasa, kesalahan navigasi, hingga kesalahan pencatatan data." } },
+    { "type": "paragraph", "data": { "text": "Beberapa teori liar menyebut medan magnet aneh atau gas metana yang menyembur dari dasar laut. Teori metana memang punya dasar ilmiah — gelembung besar bisa mengganggu daya apung kapal — tapi belum terbukti menjadi penyebab utama." } },
+    { "type": "list", "data": { "items": ["Berada di antara Miami, Puerto Riko, dan Bermuda", "Populer sebagai misteri sejak 1950-an", "Statistik kecelakaan tidak lebih tinggi dari laut lain", "Teori populer: gelombang raksasa, metana, medan magnet", "Kebanyakan kasus bisa dijelaskan secara rasional"] } }
+  ],
+  "fact": "Segitiga Bermuda tidak lebih berbahaya dari laut lain — kebanyakan kasus 'hilang' bisa dijelaskan secara ilmiah.",
+  "quiz": {
+    "title": "Kuis: Segitiga Bermuda",
+    "description": "Pisahkan fakta dari mitos soal kawasan misterius ini.",
+    "questions": [
+      {
+        "question": "Wilayah mana yang menjadi titik-titik Segitiga Bermuda?",
+        "options": [
+          { "label": "Miami, Puerto Riko, dan Bermuda", "is_correct": true },
+          { "label": "London, Paris, dan Roma", "is_correct": false },
+          { "label": "Tokyo, Seoul, dan Beijing", "is_correct": false },
+          { "label": "Sydney, Perth, dan Darwin", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Apa temuan peneliti soal angka kecelakaan di Segitiga Bermuda?",
+        "options": [
+          { "label": "Tidak lebih tinggi dari laut lain yang seramai", "is_correct": true },
+          { "label": "Jauh lebih tinggi dari semua lautan", "is_correct": false },
+          { "label": "Tidak ada catatan sama sekali", "is_correct": false },
+          { "label": "Selalu terjadi setiap minggu", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Kapan istilah Segitiga Bermuda mulai populer?",
+        "options": [
+          { "label": "Tahun 1950-an", "is_correct": true },
+          { "label": "Tahun 1800-an", "is_correct": false },
+          { "label": "Tahun 1200-an", "is_correct": false },
+          { "label": "Tahun 2020", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Segitiga Bermuda — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Segitiga_Bermuda", "publisher": "Wikipedia" },
+    { "title": "Bermuda Triangle — National Ocean Service (NOAA)", "url": "https://oceanservice.noaa.gov/facts/bermudatri.html", "publisher": "NOAA" }
+  ]
+}

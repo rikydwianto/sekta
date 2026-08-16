@@ -6,6 +6,7 @@
   import DashboardFooter from '$lib/components/DashboardFooter.svelte';
   import SiteModal from '$lib/components/SiteModal.svelte';
   import { app, initAuth, initTheme } from '$lib/stores/app.svelte';
+  import { flushPendingIdentify } from '$lib/track';
   import { PUBLIC_POSTHOG_KEY, PUBLIC_POSTHOG_HOST } from '$env/static/public';
   import posthog from 'posthog-js';
 
@@ -36,6 +37,7 @@
         person_profiles: 'identified_only'
       });
     }
+    if (posthog.__loaded) flushPendingIdentify();
   });
 
   afterNavigate(() => {

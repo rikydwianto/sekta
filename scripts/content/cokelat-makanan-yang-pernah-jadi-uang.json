@@ -1,0 +1,53 @@
+{
+  "category": "sejarah",
+  "title": "Cokelat: Makanan yang Pernah Jadi Uang",
+  "slug": "cokelat-makanan-yang-pernah-jadi-uang",
+  "excerpt": "Di zaman suku Aztec, biji kakao dipakai sebagai uang. Sebatang cokelat seperti sekarang bahkan baru ada setelah 1875.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Three_Bars_%281%29.jpg/1280px-Three_Bars_%281%29.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Cokelat berasal dari biji pohon kakao yang disebut Theobroma cacao — nama Yunani yang artinya 'makanan para dewa'. Sudah sejak ribuan tahun lalu suku Maya dan Aztec menikmatinya." } },
+    { "type": "heading", "data": { "text": "Biji kakao sebagai mata uang" } },
+    { "type": "paragraph", "data": { "text": "Bagi suku Aztec, biji kakao sangat berharga sampai dijadikan alat tukar. Satu kalkun bisa ditukar dengan sekitar 100 biji kakao. Cokelat kala itu pun bukan manisan — melainkan minuman pahit berbusa yang dicampur rempah." } },
+    { "type": "fact", "data": { "text": "Cokelat manis seperti batangan sekarang baru diciptakan pada 1875 oleh Daniel Peter, yang mencampur cokelat dengan susu kental." } },
+    { "type": "paragraph", "data": { "text": "Setelah penjelajah Spanyol membawanya ke Eropa pada abad ke-16, cokelat menyebar, diberi gula, lalu menjadi minuman favorit kalangan bangsawan sebelum akhirnya menjelma jadi camilan yang kita kenal sekarang." } },
+    { "type": "list", "data": { "items": ["Theobroma cacao = 'makanan para dewa'", "Biji kakao dipakai sebagai mata uang Aztec", "Cokelat awalnya minuman pahit, bukan manisan", "Dibawa ke Eropa oleh penjelajah Spanyol abad ke-16", "Cokelat batangan manis lahir 1875 oleh Daniel Peter"] } }
+  ],
+  "fact": "Biji kakao pernah dipakai sebagai uang oleh suku Aztec, dan cokelat manis baru lahir tahun 1875.",
+  "quiz": {
+    "title": "Kuis: Cokelat",
+    "description": "Uji pengetahuanmu tentang sejarah makanan para dewa.",
+    "questions": [
+      {
+        "question": "Apa arti nama Theobroma cacao?",
+        "options": [
+          { "label": "Makanan para dewa", "is_correct": true },
+          { "label": "Manisan raja", "is_correct": false },
+          { "label": "Biji emas", "is_correct": false },
+          { "label": "Pohon kehidupan", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Bagaimana biji kakao dipakai suku Aztec?",
+        "options": [
+          { "label": "Sebagai mata uang / alat tukar", "is_correct": true },
+          { "label": "Sebagai bahan bangunan", "is_correct": false },
+          { "label": "Sebagai bahan bakar", "is_correct": false },
+          { "label": "Sebagai obat luka saja", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Kapan cokelat batangan manis pertama kali dibuat?",
+        "options": [
+          { "label": "Tahun 1875", "is_correct": true },
+          { "label": "Tahun 1700", "is_correct": false },
+          { "label": "Tahun 1950", "is_correct": false },
+          { "label": "Tahun 1492", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Cokelat — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Cokelat", "publisher": "Wikipedia" },
+    { "title": "Theobroma cacao — Wikipedia", "url": "https://id.wikipedia.org/wiki/Theobroma_cacao", "publisher": "Wikipedia" }
+  ]
+}

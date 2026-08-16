@@ -1,0 +1,52 @@
+{
+  "category": "sains",
+  "title": "Pelangi: Kenapa Selalu Melengkung?",
+  "slug": "pelangi-kenapa-selalu-melengkung",
+  "excerpt": "Kamu tidak akan pernah bisa sampai di ujung pelangi. Sebab pelangi bukan benda di satu tempat — ia muncul dari sudut pandangmu.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Double-alaskan-rainbow.jpg/1280px-Double-alaskan-rainbow.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Pelangi terbentuk ketika cahaya matahari dibelokkan dan dipantulkan oleh tetesan air hujan. Setiap tetesan bertindak seperti prisma kecil yang memecah cahaya menjadi warna-warninya." } },
+    { "type": "heading", "data": { "text": "Selalu melengkung, selalu di sisi berlawanan" } },
+    { "type": "paragraph", "data": { "text": "Pelangi selalu muncul di sisi langit yang berlawanan dengan matahari, dan bentuknya selalu busur. Karena pembelokan cahaya terjadi pada sudut yang tetap — sekitar 42 derajat — setiap orang melihat pelangi 'miliknya sendiri'." } },
+    { "type": "fact", "data": { "text": "Itulah kenapa ujung pelangi tak mungkin dijangkau: saat kamu bergerak, pelangi ikut berpindah. Ia bukan objek fisik di satu lokasi." } },
+    { "type": "paragraph", "data": { "text": "Kadang muncul pelangi ganda — busur kedua dengan warna terbalik (merah di dalam, ungu di luar). Pada malam terang bulan, ada juga pelangi yang dibentuk cahaya bulan dan disebut moonbow, walau warnanya nyaris tak terlihat." } },
+    { "type": "list", "data": { "items": ["Terbentuk dari pembelokan cahaya oleh tetesan air", "Selalu berlawanan arah dengan matahari", "Sudut busur utama ± 42 derajat", "Setiap orang melihat pelangi yang berbeda", "Pelangi ganda membalik urutan warna", "Moonbow = pelangi dari cahaya bulan"] } }
+  ],
+  "fact": "Pelangi selalu berbentuk busur di sisi berlawanan matahari, dan ujungnya tak akan pernah bisa kamu kejar.",
+  "quiz": {
+    "title": "Kuis: Pelangi",
+    "description": "Seberapa paham kamu soal fisika di balik pelangi?",
+    "questions": [
+      {
+        "question": "Apa yang membuat pelangi terbentuk?",
+        "options": [
+          { "label": "Cahaya matahari dibelokkan tetesan air hujan", "is_correct": true },
+          { "label": "Dedaunan yang memantulkan warna", "is_correct": false },
+          { "label": "Warna yang disemprotkan awan", "is_correct": false },
+          { "label": "Pantulan gedung kaca", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Kenapa kamu tidak bisa sampai di ujung pelangi?",
+        "options": [
+          { "label": "Pelangi ikut berpindah mengikuti posisi pengamat", "is_correct": true },
+          { "label": "Pelangi selalu sangat jauh", "is_correct": false },
+          { "label": "Pelangi hanya ada di lukisan", "is_correct": false },
+          { "label": "Ujungnya dijaga hewan mistis", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Berapa besar sudut busur utama pelangi?",
+        "options": [
+          { "label": "± 42 derajat", "is_correct": true },
+          { "label": "± 90 derajat", "is_correct": false },
+          { "label": "± 180 derajat", "is_correct": false },
+          { "label": "± 5 derajat", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Pelangi — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Pelangi", "publisher": "Wikipedia" }
+  ]
+}

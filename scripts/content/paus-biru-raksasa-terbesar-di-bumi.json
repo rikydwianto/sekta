@@ -1,0 +1,52 @@
+{
+  "category": "hewan",
+  "title": "Paus Biru: Raksasa Terbesar yang Pernah Hidup di Bumi",
+  "slug": "paus-biru-raksasa-terbesar-di-bumi",
+  "excerpt": "Lebih besar dari dinosaurus mana pun, jantungnya seukuran mobil kecil — inilah paus biru, raksasa lautan yang nyaris tak bisa dibayangkan.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Anim1754_-_Flickr_-_NOAA_Photo_Library.jpg/1280px-Anim1754_-_Flickr_-_NOAA_Photo_Library.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Paus biru adalah hewan terbesar yang pernah hidup di Bumi — bahkan lebih besar dari dinosaurus. Panjangnya bisa mencapai 30 meter dengan berat lebih dari 180 ton." } },
+    { "type": "heading", "data": { "text": "Angka-angka yang sulit dipercaya" } },
+    { "type": "fact", "data": { "text": "Jantung paus biru bisa seberat seekor mobil kecil, dan lingkar aorta-nya cukup besar untuk dilewati seekor anak manusia." } },
+    { "type": "paragraph", "data": { "text": "Lidahnya saja bisa berbobot sekitar 2,7 ton — seberat seekor gajah dewasa. Seekor anak paus biru minum sekitar 380 liter susu setiap hari dan bisa bertambah berat puluhan kilogram per hari." } },
+    { "type": "list", "data": { "items": ["Panjang maksimal ± 30 meter, setara tiga bus", "Berat maksimal ± 180 ton", "Suara panggilan bisa terdengar hingga ratusan kilometer di bawah air", "Umur bisa mencapai 80–90 tahun"] } },
+    { "type": "quote", "data": { "text": "Di laut, yang terbesar ternyata juga salah satu yang paling lembut." } }
+  ],
+  "fact": "Paus biru lebih besar dari dinosaurus: jantungnya seukuran mobil kecil dan lidahnya seberat gajah.",
+  "quiz": {
+    "title": "Kuis: Paus Biru",
+    "description": "Uji pengetahuanmu tentang raksasa terbesar di Bumi.",
+    "questions": [
+      {
+        "question": "Berapa panjang maksimal paus biru?",
+        "options": [
+          { "label": "± 30 meter", "is_correct": true },
+          { "label": "± 10 meter", "is_correct": false },
+          { "label": "± 5 meter", "is_correct": false },
+          { "label": "± 50 meter", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Seberapa besar jantung paus biru?",
+        "options": [
+          { "label": "Seukuran mobil kecil", "is_correct": true },
+          { "label": "Seukuran kelereng", "is_correct": false },
+          { "label": "Seukuran bola sepak", "is_correct": false },
+          { "label": "Seukuran gedung", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Apa yang dimakan anak paus biru setiap hari?",
+        "options": [
+          { "label": "Sekitar 380 liter susu", "is_correct": true },
+          { "label": "Plankton dalam jumlah kecil", "is_correct": false },
+          { "label": "Ikan tuna besar", "is_correct": false },
+          { "label": "Tidak makan sama sekali", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Paus biru — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Paus_biru", "publisher": "Wikipedia" }
+  ]
+}

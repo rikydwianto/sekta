@@ -7,7 +7,10 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [sveltekit()],
-    server: { port },
+    server: {
+      port,
+      allowedHosts: ['sekta.my.id', '.sekta.my.id']
+    },
     preview: { port }
   };
 });

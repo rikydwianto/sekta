@@ -1,0 +1,52 @@
+{
+  "category": "hewan",
+  "title": "Beruang Kutub: Kulit Hitam di Balik Bulu Putih",
+  "slug": "beruang-kutub-kulit-hitam-di-balik-bulu-putih",
+  "excerpt": "Bulu beruang kutub sebenarnya bening dan transparan, bukan putih. Di baliknya, kulitnya hitam pekat.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Polar_Bear_-_Alaska_%28cropped%29.jpg/1280px-Polar_Bear_-_Alaska_%28cropped%29.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Sekilas beruang kutub tampak putih bersih. Tapi itu ilusi — bulu mereka sebenarnya transparan dan berongga, dan kulit mereka hitam pekat." } },
+    { "type": "heading", "data": { "text": "Bulu transparan, kulit hitam" } },
+    { "type": "paragraph", "data": { "text": "Setiap helai bulu beruang kutub berbentuk tabung kecil yang kosong di dalamnya, seperti sedotan. Cahaya yang dipantulkan tabung-tabung kosong inilah yang membuat mereka tampak putih." } },
+    { "type": "fact", "data": { "text": "Kulit hitam di bawah bulunya membantu menyerap panas matahari agar tubuhnya tetap hangat di Kutub Utara yang membeku." } },
+    { "type": "paragraph", "data": { "text": "Selain itu, hidung mereka sangat tajam: beruang kutub bisa mencium bau anjing laut dari jarak sekitar 1,6 kilometer, bahkan melalui satu meter lapisan es." } },
+    { "type": "list", "data": { "items": ["Bulu transparan dan berongga, tampak putih karena pantulan cahaya", "Kulit berwarna hitam untuk menyerap panas", "Karnivora darat terbesar di dunia", "Bisa mencium bau mangsa dari ± 1,6 km", "Mahir berenang puluhan kilometer tanpa berhenti"] } }
+  ],
+  "fact": "Beruang kutub punya bulu transparan dan kulit hitam — bulunya hanya terlihat putih karena cahaya.",
+  "quiz": {
+    "title": "Kuis: Beruang Kutub",
+    "description": "Tahukah kamu rahasia di balik bulu putihnya?",
+    "questions": [
+      {
+        "question": "Apa warna kulit beruang kutub sebenarnya?",
+        "options": [
+          { "label": "Hitam", "is_correct": true },
+          { "label": "Merah muda", "is_correct": false },
+          { "label": "Hijau", "is_correct": false },
+          { "label": "Putih", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Kenapa bulu beruang kutub tampak putih?",
+        "options": [
+          { "label": "Bulu transparan yang memantulkan cahaya", "is_correct": true },
+          { "label": "Mereka dicat oleh alam", "is_correct": false },
+          { "label": "Karena salju menempel permanen", "is_correct": false },
+          { "label": "Bulu mengeluarkan pigmen putih", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Apa fungsi kulit hitam beruang kutub?",
+        "options": [
+          { "label": "Menyerap panas matahari agar tetap hangat", "is_correct": true },
+          { "label": "Menakut-nakuti pemangsa", "is_correct": false },
+          { "label": "Menjaga agar tidak terlalu panas", "is_correct": false },
+          { "label": "Sebagai kamuflase di kegelapan", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Beruang kutub — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Beruang_kutub", "publisher": "Wikipedia" }
+  ]
+}

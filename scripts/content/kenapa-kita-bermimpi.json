@@ -1,0 +1,52 @@
+{
+  "category": "manusia",
+  "title": "Kenapa Kita Bermimpi?",
+  "slug": "kenapa-kita-bermimpi",
+  "excerpt": "Kita bermimpi 4–6 kali semalam dan bisa melupakannya dalam hitungan menit setelah bangun. Apa yang sebenarnya terjadi di otak?",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Domenico_Fetti_-_Sleeping_Girl_-_WGA7863.jpg/1280px-Domenico_Fetti_-_Sleeping_Girl_-_WGA7863.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Mimpi adalah serangkaian gambar, cerita, dan perasaan yang muncul di otak saat kita tidur. Hampir semua orang bermimpi, bahkan beberapa hewan melakukannya." } },
+    { "type": "heading", "data": { "text": "Mimpi terjadi saat fase REM" } },
+    { "type": "paragraph", "data": { "text": "Mimpi paling jelas terjadi saat fase tidur REM (Rapid Eye Movement). Pada fase ini otak hampir seaktif saat terjaga, tapi tubuh kita dibuat 'lumpuh' sementara agar tidak bergerak mengikuti mimpi." } },
+    { "type": "fact", "data": { "text": "Rata-rata orang bermimpi 4–6 kali semalam dan menghabiskan sekitar dua jam per malam untuk bermimpi." } },
+    { "type": "paragraph", "data": { "text": "Kenapa kita bermimpi? Para ahli punya beberapa teori: mimpi membantu memproses memori, melatih otak menghadapi ancaman, atau sekadar 'suara bising' aktivitas listrik otak. Satu hal yang pasti — sekitar 95% mimpi terlupakan dalam lima menit pertama setelah bangun." } },
+    { "type": "list", "data": { "items": ["Mimpi terjelas terjadi saat fase REM", "Bermimpi 4–6 kali semalam, total ± 2 jam", "Tubuh dibuat 'lumpuh' sementara saat bermimpi", "Teori: memproses memori dan melatih menghadapi ancaman", "95% mimpi terlupakan dalam 5 menit setelah bangun"] } }
+  ],
+  "fact": "Kita bermimpi 4–6 kali semalam dan melupakan hampir 95% mimpinya dalam lima menit setelah bangun.",
+  "quiz": {
+    "title": "Kuis: Mimpi",
+    "description": "Seberapa banyak kamu tahu tentang dunia mimpi?",
+    "questions": [
+      {
+        "question": "Pada fase tidur apa mimpi paling jelas terjadi?",
+        "options": [
+          { "label": "Fase REM", "is_correct": true },
+          { "label": "Fase pra-tidur", "is_correct": false },
+          { "label": "Fase tidur siang", "is_correct": false },
+          { "label": "Fase menguap", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Berapa kali rata-rata orang bermimpi dalam semalam?",
+        "options": [
+          { "label": "4–6 kali", "is_correct": true },
+          { "label": "20–30 kali", "is_correct": false },
+          { "label": "1 kali seminggu", "is_correct": false },
+          { "label": "Tidak pernah", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Apa yang terjadi pada tubuh saat kita bermimpi?",
+        "options": [
+          { "label": "Tubuh 'lumpuh' sementara agar tidak bergerak mengikuti mimpi", "is_correct": true },
+          { "label": "Tubuh selalu bergerak mengikuti mimpi", "is_correct": false },
+          { "label": "Tubuh berhenti bernapas", "is_correct": false },
+          { "label": "Tubuh menjadi sangat panas", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Mimpi — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Mimpi", "publisher": "Wikipedia" }
+  ]
+}

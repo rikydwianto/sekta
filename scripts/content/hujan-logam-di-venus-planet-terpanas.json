@@ -1,0 +1,53 @@
+{
+  "category": "dunia",
+  "title": "Hujan Logam di Venus: Planet Terpanas di Tata Surya",
+  "slug": "hujan-logam-di-venus-planet-terpanas",
+  "excerpt": "Di Venus hujan asam sulfat, dan di puncak gunungnya turun 'salju logam'. Inilah neraka kembaran Bumi.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Venus_2_Approach_Image.jpg/1280px-Venus_2_Approach_Image.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Venus sering disebut kembaran Bumi karena ukurannya mirip. Tapi suasana di sana lebih mirip neraka: permukaannya sekitar 465°C, cukup panas untuk melelehkan timah." } },
+    { "type": "heading", "data": { "text": "Hujan asam dan salju logam" } },
+    { "type": "paragraph", "data": { "text": "Awan Venus mengandung asam sulfat pekat. Hujan asam memang turun di sana, tapi menguap kembali sebelum menyentuh permukaan yang sangat panas. Para ilmuwan juga menemukan 'salju' atau embun beku logam — seperti pirit (besi sulfida) — yang turun di puncak gunung Venus." } },
+    { "type": "fact", "data": { "text": "Tekanan atmosfer di permukaan Venus sekitar 92 kali tekanan di permukaan Bumi — setara berada 900 meter di bawah laut." } },
+    { "type": "paragraph", "data": { "text": "Atmosfernya 96% karbon dioksida dengan efek rumah kaca yang ekstrem. Akibatnya, Venus lebih panas daripada Merkurius yang lebih dekat ke Matahari." } },
+    { "type": "list", "data": { "items": ["Suhu permukaan ± 465°C", "Atmosfer 96% CO₂", "Hujan asam sulfat yang menguap sebelum jatuh", "Ada 'salju' logam di pegunungan", "Rotasi terbalik: Matahari terbit dari barat"] } }
+  ],
+  "fact": "Di Venus hujan asam sulfat dan turun 'salju' logam — planet terpanas di tata surya meski bukan yang paling dekat ke Matahari.",
+  "quiz": {
+    "title": "Kuis: Planet Venus",
+    "description": "Seberapa tahu kamu soal si kembaran neraka Bumi?",
+    "questions": [
+      {
+        "question": "Kenapa Venus lebih panas daripada Merkurius?",
+        "options": [
+          { "label": "Efek rumah kaca ekstrem dari atmosfer CO₂ yang tebal", "is_correct": true },
+          { "label": "Karena lebih dekat ke Matahari", "is_correct": false },
+          { "label": "Karena tidak punya laut", "is_correct": false },
+          { "label": "Karena sering terkena badai matahari", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Apa yang turun di puncak gunung Venus?",
+        "options": [
+          { "label": "'Salju' atau embun beku logam", "is_correct": true },
+          { "label": "Salju air biasa", "is_correct": false },
+          { "label": "Hujan es batu", "is_correct": false },
+          { "label": "Abu vulkanik saja", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Mengapa hujan asam di Venus tidak sampai ke permukaan?",
+        "options": [
+          { "label": "Menguap karena suhu permukaan sangat panas", "is_correct": true },
+          { "label": "Awan menyerapnya sepenuhnya", "is_correct": false },
+          { "label": "Venus tidak punya hujan sama sekali", "is_correct": false },
+          { "label": "Permukaannya tertutup air", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Venus — Wikipedia Indonesia", "url": "https://id.wikipedia.org/wiki/Venus", "publisher": "Wikipedia" },
+    { "title": "Venus: The Making of an Uninhabitable World — NASA", "url": "https://science.nasa.gov/venus/venus-the-making-of-an-uninhabitable-world/", "publisher": "NASA" }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "category": "sains",
+  "title": "Kenapa Langit Berwarna Biru?",
+  "slug": "kenapa-langit-berwarna-biru",
+  "excerpt": "Jawabannya bukan karena laut memantulkan warna. Ini soal bagaimana cahaya matahari 'dibengkokkan' oleh udara.",
+  "cover_image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/Cirrus_uncinus_clouds_in_the_morning_sky.jpg/1280px-Cirrus_uncinus_clouds_in_the_morning_sky.jpg",
+  "content": [
+    { "type": "paragraph", "data": { "text": "Saat kita menengadah di siang hari, langit tampak biru. Ternyata bukan karena laut memantulkan warna biru ke langit — melainkan karena cara cahaya matahari berinteraksi dengan udara." } },
+    { "type": "heading", "data": { "text": "Hamburan Rayleigh" } },
+    { "type": "paragraph", "data": { "text": "Cahaya matahari terdiri dari semua warna. Saat melewati atmosfer, molekul udara menghamburkan cahaya gelombang pendek — seperti biru dan ungu — jauh lebih kuat daripada gelombang panjang seperti merah dan oranye." } },
+    { "type": "fact", "data": { "text": "Warna ungu sebenarnya lebih banyak dihamburkan daripada biru, tapi mata kita lebih peka terhadap biru dan langit juga memancarkan lebih banyak cahaya biru." } },
+    { "type": "paragraph", "data": { "text": "Itulah kenapa saat matahari terbenam, langit berubah oranye dan merah: cahaya matahari harus menembus atmosfer yang jauh lebih tebal, sehingga warna biru habis dihamburkan sebelum sampai ke mata kita." } },
+    { "type": "list", "data": { "items": ["Langit biru = hamburan Rayleigh pada molekul udara", "Matahari terbenam merah karena jalur cahaya lebih panjang", "Di Mars, langit siang tampak kemerahan", "Saat gerhana total, langit bisa tampak seperti senja"] } }
+  ],
+  "fact": "Langit biru bukan pantulan laut — itu hamburan cahaya biru oleh molekul udara (efek Rayleigh).",
+  "quiz": {
+    "title": "Kuis: Langit Biru",
+    "description": "Seberapa paham kamu soal sains di balik langit?",
+    "questions": [
+      {
+        "question": "Kenapa langit terlihat biru di siang hari?",
+        "options": [
+          { "label": "Molekul udara lebih banyak menghamburkan cahaya biru", "is_correct": true },
+          { "label": "Laut memantulkan warna birunya ke langit", "is_correct": false },
+          { "label": "Langit memancarkan cahaya biru sendiri", "is_correct": false },
+          { "label": "Matahari berwarna biru", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Fenomena hamburan cahaya biru oleh udara disebut...",
+        "options": [
+          { "label": "Hamburan Rayleigh", "is_correct": true },
+          { "label": "Efek Doppler", "is_correct": false },
+          { "label": "Fotosintesis", "is_correct": false },
+          { "label": "Gravitasi Newton", "is_correct": false }
+        ]
+      },
+      {
+        "question": "Mengapa matahari terbenam tampak merah atau oranye?",
+        "options": [
+          { "label": "Cahaya menempuh atmosfer lebih tebal sehingga biru habis terhambur", "is_correct": true },
+          { "label": "Matahari berubah warna saat sore", "is_correct": false },
+          { "label": "Awan menyerap cahaya biru", "is_correct": false },
+          { "label": "Laut berubah menjadi merah", "is_correct": false }
+        ]
+      }
+    ]
+  },
+  "sources": [
+    { "title": "Hamburan Rayleigh — Wikipedia", "url": "https://id.wikipedia.org/wiki/Hamburan_Rayleigh", "publisher": "Wikipedia" }
+  ]
+}
