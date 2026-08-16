@@ -333,7 +333,7 @@
         </p>
         <div class="flex items-center justify-between">
           <a
-            href={fact.articleId ? `/article/${(articles.find(a => a.id === fact.articleId) ?? hero)?.slug}` : '/explore'}
+            href={fact.articleSlug ? `/article/${fact.articleSlug}` : '/explore'}
             class="text-sm font-bold text-emerald-300 hover:text-emerald-200 inline-flex items-center gap-1"
             onclick={closeFactModal}
           >

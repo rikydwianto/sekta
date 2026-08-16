@@ -4,6 +4,7 @@
   import { goto } from '$app/navigation';
   import BottomNav from '$lib/components/BottomNav.svelte';
   import DashboardFooter from '$lib/components/DashboardFooter.svelte';
+  import SiteModal from '$lib/components/SiteModal.svelte';
   import { app, initAuth, initTheme } from '$lib/stores/app.svelte';
 
   let { children } = $props();
@@ -70,5 +71,7 @@
         <BottomNav />
       </div>
     {/if}
+
+    <SiteModal />
   </div>
 </div>

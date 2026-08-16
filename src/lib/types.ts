@@ -49,6 +49,7 @@ export interface SekejapFact {
   id: number;
   fact: string;
   articleId: number | null;
+  articleSlug: string | null;
 }
 
 export interface QuizOption {
@@ -110,6 +111,19 @@ export interface CommentItem {
   content: string;
   createdAt: string;
   mine: boolean;
+}
+
+export type ModalFrequency = 'always' | 'session' | 'once';
+
+export interface SiteModal {
+  id: number;
+  title: string;
+  body: string;
+  imageUrl: string;
+  buttonLabel: string;
+  buttonUrl: string;
+  frequency: ModalFrequency;
+  dismissible: boolean;
 }
 
 export interface VideoItem {

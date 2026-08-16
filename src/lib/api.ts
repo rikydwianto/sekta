@@ -1,5 +1,5 @@
 import { supabase } from '$lib/supabase';
-import type { Article, ArticleBlock, ArticleReaction, Category, CommentItem, NotificationItem, Quiz, QuizQuestion, SekejapFact, UserProfile, UserRole, VideoItem } from '$lib/types';
+import type { Article, ArticleBlock, ArticleReaction, Category, CommentItem, ModalFrequency, NotificationItem, Quiz, QuizQuestion, SekejapFact, SiteModal, UserProfile, UserRole, VideoItem } from '$lib/types';
 
 const CACHE_TTL_MS = 30_000;
 const cache = new Map<string, { t: number; v: unknown }>();
@@ -257,13 +257,37 @@ export async function searchArticles(q: string): Promise<Article[]> {
 
 export async function getSekejapFacts(): Promise<SekejapFact[]> {
   return cached('facts', async () => {
-    const { data, error } = await supabase.from('sekejap_facts').select('*').order('created_at', { ascending: false });
+    const { data, error } = await supabase.from('sekejap_facts').select('*, articles(slug)').order('created_at', { ascending: false });
     if (error) throw error;
     return (data ?? []).map(f => ({
       id: Number(f.id),
       fact: String(f.fact),
-      articleId: f.article_id != null ? Number(f.article_id) : null
+      articleId: f.article_id != null ? Number(f.article_id) : null,
+      articleSlug: f.articles && typeof f.articles === 'object' ? String((f.articles as Record<string, unknown>).slug ?? '') || null : null
     }));
+  });
+}
+
+export async function getSiteModal(): Promise<SiteModal | null> {
+  return cached('site-modal', async () => {
+    const { data, error } = await supabase
+      .from('site_modals')
+      .select('id, title, body, image_url, button_label, button_url, frequency, dismissible')
+      .eq('active', true)
+      .limit(1)
+      .maybeSingle();
+    if (error) throw error;
+    if (!data) return null;
+    return {
+      id: Number(data.id),
+      title: String(data.title),
+      body: String(data.body),
+      imageUrl: String(data.image_url ?? ''),
+      buttonLabel: String(data.button_label ?? ''),
+      buttonUrl: String(data.button_url ?? ''),
+      frequency: (String(data.frequency ?? 'session') as ModalFrequency),
+      dismissible: Boolean(data.dismissible ?? true)
+    };
   });
 }
 
